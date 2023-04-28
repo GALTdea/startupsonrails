@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   def index
+    @companies = Company.all
   end
 
   def show
@@ -33,6 +34,6 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :url, :email)
+    params.require(:company).permit(:name, :url, :email, :about, :user_id, :tech_stack)
   end
 end

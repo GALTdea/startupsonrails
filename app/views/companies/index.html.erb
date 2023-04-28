@@ -1,2 +1,16 @@
 <h1>Companies#index</h1>
 <p>Find me in app/views/companies/index.html.erb</p>
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Companies</h6>
+
+    <% @companies.each do |company| %>
+      <%= render partial: 'company', locals: { company: company } %>
+    <% end %>
+
+    <small class="d-block text-end mt-3">
+      <a href="#">All updates</a>
+    </small>
+</div> 
+
+
