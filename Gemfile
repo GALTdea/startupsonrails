@@ -76,4 +76,5 @@ group :development do
   # gem "spring"
 end
 
-gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'devise', '~> 4.9', '>= 4.9.2' 
+gem 'friendly_id', '~> 5.5'

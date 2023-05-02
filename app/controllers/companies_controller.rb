@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [ :edit, :update, :destroy]
   def index
     @companies = Company.all
   end
 
   def show
+    @company = Company.friendly.find(params[:id])
   end
 
   def new
