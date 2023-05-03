@@ -6,11 +6,17 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+admin = User.create!( { name: "admin", username: "admin", email: "admin@email.com", password: "password", admin?: true } )
+
+
 30.times.map do
   Company.create!(
     name: Faker::Company.name,
     url: Faker::Internet.url,
     email: Faker::Internet.email,
+    about: Faker::Company.catch_phrase,
+    location: Faker::Address.city,
+    tech_stack: Faker::Company.bs,
     user: User.first,
   )
 end
