@@ -2,10 +2,7 @@ class CompaniesController < ApplicationController
   include Pagy::Backend
   before_action :set_company, only: [ :edit, :update, :destroy]
   def index
-
-    # binding.b
-    @pagy, @companies = pagy(Company.all, items: 5)
-    # @companies = Company.all
+    @pagy, @companies = pagy(Company.all, items: 15)
   end
 
   def show

@@ -1,19 +1,17 @@
-<h1>Companies#index</h1>
-<p>Find me in app/views/companies/index.html.erb</p>
-
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h6 class="border-bottom pb-2 mb-0">Companies</h6>
+    <h2 class="border-bottom pb-2 mb-0">Companies</h2>
 
     <% @companies.each do |company| %>
       <%= render partial: 'company', locals: { company: company } %>
     <% end %>
 
     <small class="d-block text-end mt-3">
-      <a href="#">All updates</a>
+      <a href="#"></a>
     </small>
 
-    <%# Render a view helper in your views (skipping nav links for empty pages) %>
-    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>  
+
+
+    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
 </div> 
 
 
