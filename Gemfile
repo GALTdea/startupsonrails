@@ -56,6 +56,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
    gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
    gem 'factory_bot_rails'
+   gem 'faker'
 end
 
 group :test do
@@ -76,5 +77,7 @@ group :development do
   # gem "spring"
 end
 
-gem 'devise', '~> 4.9', '>= 4.9.2' 
+gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'friendly_id', '~> 5.5'
+
+gem 'pagy', '~> 6.0' # omit patch digit

@@ -1,7 +1,11 @@
 class CompaniesController < ApplicationController
+  include Pagy::Backend
   before_action :set_company, only: [ :edit, :update, :destroy]
   def index
-    @companies = Company.all
+
+    # binding.b
+    @pagy, @companies = pagy(Company.all, items: 5)
+    # @companies = Company.all
   end
 
   def show
@@ -14,7 +18,11 @@ class CompaniesController < ApplicationController
 
   def create 
     @company = Company.new(company_params)
-    @company.user_id = current_user.id
+     if user_signed_in?
+      @company.user_id = current_user.id
+     else
+      @company.user_id = 1
+     end
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: "Thank you for your submission! The company's profile will be activated upon review." }

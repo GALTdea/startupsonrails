@@ -11,6 +11,9 @@
     <small class="d-block text-end mt-3">
       <a href="#">All updates</a>
     </small>
+
+    <%# Render a view helper in your views (skipping nav links for empty pages) %>
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>  
 </div> 
 
 
