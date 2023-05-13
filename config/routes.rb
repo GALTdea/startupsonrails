@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   get 'home/show'
   
-  root "companies#index"
+  root "home#show"
 end
