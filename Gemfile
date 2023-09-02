@@ -81,3 +81,5 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'friendly_id', '~> 5.5'
 
 gem 'pagy', '~> 6.0' # omit patch digit
+
+gem 'pundit', '~> 2.3', '>= 2.3.1'
