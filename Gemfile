@@ -56,13 +56,12 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
    gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
    gem 'factory_bot_rails'
-   gem 'faker'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver [
     gem 'shoulda-matchers', '~> 5.3'
-    gem 'faker'
+    gem 'faker', '~> 3.2', '>= 3.2.1'
     
 end
 
@@ -75,6 +74,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'annotate', '~> 3.2'
 end
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
