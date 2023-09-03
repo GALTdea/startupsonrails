@@ -16,6 +16,9 @@
 #  slug       :string
 #
 class Company < ApplicationRecord
+  has_many :categorizations 
+  has_many :categories, through: :categorizations
+
   extend FriendlyId
   belongs_to :user
   
