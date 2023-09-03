@@ -56,13 +56,12 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
    gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
    gem 'factory_bot_rails'
+   gem 'faker', '~> 3.2', '>= 3.2.1'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver [
     gem 'shoulda-matchers', '~> 5.3'
-    gem 'faker', '~> 3.2', '>= 3.2.1'
-    
 end
 
 group :development do
