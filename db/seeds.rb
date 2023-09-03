@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-admin = User.create!( { name: "admin", username: "admin", email: "admin@email.com", password: "password", admin?: true } )
+admin = User.create!( { name: "admin", username: "admin", email: "admin@email.com", password: "password", user_type: :admin } )
 
 
 30.times.map do
