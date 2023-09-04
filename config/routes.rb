@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  # resources :category_companies, only: [:create, :destroy]
+  
+  resources :categories do
+    resources :companies, only: [:create], controller: 'category_companies'
+  end
+  
 
-  resources :categories
+
   devise_for :users
   resources :users
 

@@ -1,2 +1,19 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1>Category: <%= @category.name %></h1>
+
+<%= form_with url: category_companies_path(@category), method: :post do %>
+
+  <div class="field">
+    <%= label_tag :company_id, "Select a company to add" %>
+    <%= select_tag :company_id, options_from_collection_for_select(Company.all, "id", "name") %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Add Company" %>
+  </div>
+<% end %>
+
+
+<% @category.companies.each do |company|  %>
+  <%= company.name %> <br>
+
+<% end %>

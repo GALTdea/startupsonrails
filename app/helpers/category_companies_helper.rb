@@ -1,0 +1,2 @@
+module CategoryCompaniesHelper
+end
