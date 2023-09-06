@@ -12,7 +12,11 @@
 
   <body class="bg-light">
     <div class="container">
-      <%= render 'shared/navbar' %>
+      <% if user_signed_in? && current_user.admin? %>
+        <%= render 'shared/admin_navbar' %>
+      <% else %>
+         <%= render 'shared/navbar' %>
+      <% end %>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
       <%= yield %>
