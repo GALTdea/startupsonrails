@@ -13,5 +13,4 @@ class CategoryCompaniesController < ApplicationController
   def set_category
     @category = Category.find(params[:category_id])
   end
-  
 end

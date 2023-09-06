@@ -21,38 +21,62 @@
 </head>
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-md-6">
         <h2>Hiring</h2>
         <ul class="list-group">
           <% @test_list.each do |comp|  %>
-            <li class="list-group-item"><%= comp.name %> </li>
-          
+            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
           <% end %>
-          
         </ul>
       </div>
       <div class="col-md-6">
         <h2>Cool Cats</h2>
         <ul class="list-group">
-          <li class="list-group-item">Item 3</li>
-          <li class="list-group-item">Item 4</li>
+          <% @cool_cats.each do |comp| %>
+            <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
+          <% end %>
+            
         </ul>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-md-6">
-        <h2>HotWire</h2>
+        <h2>Companies using HotWire</h2>
         <ul class="list-group">
-          <li class="list-group-item">Item 5</li>
-          <li class="list-group-item">Item 6</li>
+          <% @hotwire.each do |comp|  %>
+            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
+          <% end %>
         </ul>
       </div>
       <div class="col-md-6">
-        <h2>Killing it</h2>
+        <h2>Up and comers!</h2>
         <ul class="list-group">
-          <li class="list-group-item">Item 7</li>
-          <li class="list-group-item">Item 8</li>
+        <ul class="list-group">
+          <% @test_list.each do |comp|  %>
+            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
+          <% end %>
+        </ul>
+        </ul>
+      </div>
+    </div>
+        <div class="row mb-5">
+      <div class="col-md-6">
+        <h2>Open Source</h2>
+        <ul class="list-group">
+          <% @test_list.each do |comp|  %>
+            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h2>Top 100 Co's using rails</h2>
+        <ul class="list-group">
+          <% @cool_cats.each do |comp| %>
+            <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
+            
+          <% end %>
+            
         </ul>
       </div>
     </div>
