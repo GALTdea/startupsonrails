@@ -1,2 +1,14 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+.company-logo {
+  // border-radius: 50%;
+  // overflow: hidden;
+}
+
+.company-logo rect {
+  fill: #007bff;
+}
+
+.company-logo text {
+  fill: white;
+}
