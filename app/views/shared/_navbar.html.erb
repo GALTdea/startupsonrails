@@ -15,22 +15,7 @@
       </ul>
 
 
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a> 
-          <ul class="dropdown-menu text-small" style="">
-        <li class="nav-item dropdown">
-          <% if user_signed_in? %>
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
-          <% else %>
-            <li><%= link_to "Login", new_user_session_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Register", new_user_registration_path, class: "dropdown-item" %></li>
-          <% end %>
-        </li>
-          </ul>
-        </div>
+
     </div>
   </div>
 </nav>
