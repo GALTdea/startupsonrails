@@ -1,8 +1,11 @@
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <% @companies.each do |company| %>
-      <%= render partial: 'company', locals: { company: company } %>
-    <% end %>
-    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
+  <% @companies.each do |company| %>
+    <%= render partial: 'company', locals: { company: company } %>
+  <% end %>
+
+  <div class="d-flex justify-content-center mt-4">
+      <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
+  </div>
 </div> 
 
 
