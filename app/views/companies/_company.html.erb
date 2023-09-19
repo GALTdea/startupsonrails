@@ -1,13 +1,14 @@
-<div class="row card company mb-3 text-body-secondary">
-  <div class="row g-0 card-body">
-    <div class="col-1">
-        <%= generate_svg_with_initials(company.name) %>
+<div class="card mb-3 companies-card">
+  <div class="row g-0 p-1">
+    <!-- Hide on xs screens, take up 4 columns on sm screens and up -->
+    <div class="col-1 d-none d-sm-block svg-container">
+      <%= generate_svg_with_initials(company.name) %>
     </div>
-
-    <div class="col-11">
-      <div class="pb-3 mb-0  ms-2 ">
-        <div class="fs-4"><%= link_to company.name, company_path(company)  if company.name %></div>
-        <p class="fs-5"><%= company.about %></p> 
+    <!-- Take up full width on xs screens, take up 8 columns on sm screens and up -->
+    <div class="col-11 col-sm-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= company.name %></h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
   </div>

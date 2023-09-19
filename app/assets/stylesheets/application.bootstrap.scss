@@ -12,3 +12,16 @@
 .company-logo text {
   fill: white;
 }
+
+.companies-card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-height: 10em;
+}
+
+.svg-container {
+  /* Set whatever height you want here or make it dynamic */
+  height: 100px;
+  /* This will ensure that the aspect ratio of your SVG is maintained */
+  aspect-ratio: 1 / 1;
+}
