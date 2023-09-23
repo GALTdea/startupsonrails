@@ -27,6 +27,7 @@ class Company < ApplicationRecord
   
   validates :name, :url, :user_id, presence: true
 
+  enum status: { pending: 0, active: 1, rejected: 2 }
 
 
   def self.import_from_csv(current_user)
