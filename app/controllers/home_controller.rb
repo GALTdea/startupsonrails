@@ -1,13 +1,14 @@
 class HomeController < ApplicationController
   def show
-    test_category = Category.first
-    @test_list = test_category.companies
+    category_names = ["cool_cats", "hotwire", "trending", "up_and_comers"]
+    @categories = Category.where(name: category_names)
 
-    cool_cats = Category.find(2)
-    @cool_cats = cool_cats.companies
 
-    hotwire = Category.find(3)
-    @hotwire = hotwire.companies
+    @companies_by_category = {}
+
+    @categories.each do |category|
+      @companies_by_category[category.name] = category.companies
+    end
     
   end
 end
