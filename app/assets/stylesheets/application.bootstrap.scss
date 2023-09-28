@@ -25,3 +25,21 @@
   /* This will ensure that the aspect ratio of your SVG is maintained */
   aspect-ratio: 1 / 1;
 }
+
+
+[data-controller="autocomplete"] ul {
+  list-style-type: none;
+  padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+[data-controller="autocomplete"] li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+[data-controller="autocomplete"] li:hover {
+  background-color: #f5f5f5;
+}

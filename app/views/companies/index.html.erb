@@ -1,3 +1,8 @@
+<div data-controller="autocomplete">
+  <input data-autocomplete-target="input" data-action="keyup->autocomplete#search" type="text" placeholder="Search companies...">
+  <ul data-autocomplete-target="results"></ul>
+</div>
+
 <div class="my-3 p-3 bg-body rounded">
   <% @companies.each do |company| %>
     <%= render partial: 'company', locals: { company: company } %>
