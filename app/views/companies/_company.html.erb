@@ -1,11 +1,11 @@
 <div class="card mb-3 companies-card">
-  <div class="row g-0 p-1">
-    <!-- Hide on xs screens, take up 4 columns on sm screens and up -->
-    <div class="col-1 d-none d-sm-block svg-container">
+  <div class="row g-0 p-2">
+    <!-- Company Logo/Icon -->
+    <div class="col-3 col-md-2 d-flex align-items-center justify-content-center">
       <%= generate_svg_with_initials(company.name) %>
     </div>
-    <!-- Take up full width on xs screens, take up 8 columns on sm screens and up -->
-    <div class="col-11 col-sm-8">
+    <!-- Company Details -->
+    <div class="col-9 col-md-10">
       <div class="card-body">
         <h5 class="card-title"><%= company.name %></h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
