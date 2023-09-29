@@ -53,67 +53,21 @@
   
   <!--Listing section -->
   <section class="">
-    <div class="row mb-5">
-      <div class="col-md-6">
-        <h2>Trending Companies</h2>
+<% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
+  <div class="row mt-4"> <!-- mt-4 gives margin-top for spacing between rows -->
+    <% category_slice.each do |category_name, companies| %>
+      <div class="col-md-3"> <!-- col-md-3 ensures 4 categories per row -->
+        <h3><%= category_name.titleize %></h3>
         <ul class="list-group">
-          <% @test_list.each do |comp|  %>
-            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h2>Cool Builds</h2>
-        <ul class="list-group">
-          <% @cool_cats.each do |comp| %>
+          <% companies.each do |comp| %>
             <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
           <% end %>
-            
         </ul>
       </div>
-    </div>
-  
-    <div class="row mb-5">
-      <div class="col-md-6">
-        <h2>Up-and-Comers</h2>
-        <ul class="list-group">
-          <% @hotwire.each do |comp|  %>
-            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h2>Top Rails Companies</h2>
-        <ul class="list-group">
-        <ul class="list-group">
-          <% @test_list.each do |comp|  %>
-            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
-          <% end %>
-        </ul>
-        </ul>
-      </div>
-    </div>
+    <% end %>
+  </div>
+<% end %>
 
-    <div class="row mb-5">
-      <div class="col-md-6">
-        <h2>Open Source</h2>
-        <ul class="list-group">
-          <% @test_list.each do |comp|  %>
-            <li class="list-group-item"><%= link_to comp.name, company_path(comp) %> </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h2>Hiring Now</h2>
-        <ul class="list-group">
-          <% @cool_cats.each do |comp| %>
-            <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
-            
-          <% end %>
-            
-        </ul>
-      </div>
-    </div>
   </section>
   <!-- End of listing section -->
 </main> 

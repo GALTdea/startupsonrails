@@ -1,8 +1,17 @@
 class CompaniesController < ApplicationController
   include Pagy::Backend
   before_action :set_company, only: [ :edit, :update, :destroy]
+ 
   def index
-    @pagy, @companies = pagy(Company.all, items: 15)
+    if params[:query].present?
+      @companies = Company.where("name ILIKE ?", "%#{params[:query]}%")
+      respond_to do |format|
+        format.html
+        format.json { render json: @companies.as_json(only: [:id, :name]) }
+      end
+    else
+      @pagy, @companies = pagy(Company.all)
+    end
   end
 
   def show
