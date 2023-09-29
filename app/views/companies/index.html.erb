@@ -1,8 +1,28 @@
-<div class="container">
-  <div class="row justify-content-left">
-    <div class="col-md-4 col-12">
-      <div data-controller="autocomplete" class="">
-        <div class="input-group">
+<div class="container mt-4">
+  <!-- Search and Filters -->
+  <div class="row">
+    <!-- Filters Section -->
+    <div class="col-md-3">
+      <h5>Filters</h5>
+      <hr>
+      <!-- Category Filter -->
+      <div class="mb-3">
+        <label for="categoryFilter" class="form-label">Category</label>
+        <select class="form-select" id="categoryFilter">
+          <option selected>All Categories</option>
+          <!-- Add your categories here -->
+          <option value="category1">Category 1</option>
+          <option value="category2">Category 2</option>
+        </select>
+      </div>
+      <!-- Other filters can be added similarly -->
+    </div>
+
+    <!-- Search and Companies List -->
+    <div class="col-md-9">
+      <!-- Search Bar -->
+      <div data-controller="autocomplete">
+        <div class="input-group mb-3">
           <input data-autocomplete-target="input" data-action="keyup->autocomplete#search" type="text" placeholder="Search companies..." class="form-control">
           <div class="input-group-append">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -10,19 +30,17 @@
         </div>
         <ul data-autocomplete-target="results"></ul>
       </div>
+
+      <!-- Companies List -->
+      <div class="bg-body rounded">
+        <% @companies.each do |company| %>
+          <%= render partial: 'company', locals: { company: company } %>
+        <% end %>
+
+        <div class="d-flex justify-content-center mt-4">
+          <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-<div class="my-3 bg-body rounded">
-  <% @companies.each do |company| %>
-    <%= render partial: 'company', locals: { company: company } %>
-  <% end %>
-
-  <div class="d-flex justify-content-center mt-4">
-      <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
-  </div>
-</div> 
-
-
