@@ -1,9 +1,21 @@
-<div data-controller="autocomplete">
-  <input data-autocomplete-target="input" data-action="keyup->autocomplete#search" type="text" placeholder="Search companies...">
-  <ul data-autocomplete-target="results"></ul>
+<div class="container">
+  <div class="row justify-content-left">
+    <div class="col-md-4 col-12">
+      <div data-controller="autocomplete" class="">
+        <div class="input-group">
+          <input data-autocomplete-target="input" data-action="keyup->autocomplete#search" type="text" placeholder="Search companies..." class="form-control">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+        <ul data-autocomplete-target="results"></ul>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="my-3 p-3 bg-body rounded">
+
+<div class="my-3 bg-body rounded">
   <% @companies.each do |company| %>
     <%= render partial: 'company', locals: { company: company } %>
   <% end %>
