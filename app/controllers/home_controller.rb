@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def show
-    category_names = ["cool_cats", "hotwire", "trending", "up_and_comers"]
-    @categories = Category.where(name: category_names)
+    @categories = Category.showcased
 
 
     @companies_by_category = {}
