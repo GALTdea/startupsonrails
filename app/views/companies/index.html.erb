@@ -7,13 +7,11 @@
       <hr>
       <!-- Category Filter -->
       <div class="mb-3">
-        <label for="categoryFilter" class="form-label">Category</label>
-        <select class="form-select" id="categoryFilter">
-          <option selected>All Categories</option>
-          <!-- Add your categories here -->
-          <option value="category1">Category 1</option>
-          <option value="category2">Category 2</option>
-        </select>
+        <%= form_with url: companies_path, method: :get, local: true do |f|  %>
+          <%= f.label :category_id, "Category" %>
+          <%= f.collection_select :category_id, Category.showcased, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+          <%= f.submit "Filter", class: "btn btn-primary mt-2" %>
+        <% end %>
       </div>
       <!-- Other filters can be added similarly -->
     </div>
