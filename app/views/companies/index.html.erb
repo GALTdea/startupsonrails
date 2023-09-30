@@ -9,7 +9,7 @@
       <div class="mb-3">
         <%= form_with url: companies_path, method: :get, local: true do |f|  %>
           <%= f.label :category_id, "Category" %>
-          <%= f.collection_select :category_id, Category.showcased, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+          <%= f.collection_select :category, Category.showcased, :name, :name, {prompt: "Select a category"}, {class: "form-control"} %>
           <%= f.submit "Filter", class: "btn btn-primary mt-2" %>
         <% end %>
       </div>

@@ -19,17 +19,14 @@ require 'csv'
 class Company < ApplicationRecord
   has_many :categorizations
   has_many :categories, through: :categorizations
-
-  extend FriendlyId
   belongs_to :user, optional: true
 
+  extend FriendlyId
   friendly_id :name, use: :slugged
 
   validates :name, :url, :user_id, presence: true
 
   enum status: { pending: 0, active: 1, rejected: 2 }
-
-
 
   def self.import_from_csv(current_user)
     csv_file_path = Rails.root.join('data', 'companies-3.csv')

@@ -9,6 +9,8 @@ class CompaniesController < ApplicationController
         format.html
         format.json { render json: @companies.as_json(only: [:id, :name]) }
       end
+    elsif params[:category].present?
+      @pagy, @companies = pagy(Category.find_by(name: params[:category]).companies)
     else
       @pagy, @companies = pagy(Company.all)
     end
