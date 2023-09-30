@@ -13,10 +13,13 @@
   fill: white;
 }
 
-.companies-card {
+.company-card {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  max-height: 10em;
+  min-height: 10em;
+}
+.company-card-body{
+  padding: .5em;
 }
 
 .svg-container {

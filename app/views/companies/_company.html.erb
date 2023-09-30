@@ -1,14 +1,32 @@
-<div class="card mb-3 companies-card">
+<div class="card mb-3 company-card">
   <div class="row g-0 p-2">
     <!-- Company Logo/Icon -->
-    <div class="col-3 col-md-2 d-flex align-items-center justify-content-center">
+    <div class="col-3 col-md-2 d-none d-sm-flex d-flex align-items-center justify-content-center company-logo-container">
       <%= generate_svg_with_initials(company.name) %>
+      <!-- Optional: Company Logo -->
+      <!-- <img src="<%#= company.logo_url %>" alt="<%= company.name %> Logo" class="img-fluid"> -->
     </div>
     <!-- Company Details -->
     <div class="col-9 col-md-10">
-      <div class="card-body">
-        <h5 class="card-title"><%= company.name %></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div class="company-card-body">
+        <h5 class="card-title">
+          <%= company.name %>
+          <!-- Optional: Category Badge -->
+          <span class="badge bg-primary"><%#= company.category %></span>
+        </h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the bulk of the card's content.
+          <!-- Optional: Read More Toggle -->
+          <!-- <a href="#" class="text-primary">Read More</a> -->
+        </p>
+        <!-- Optional: Metadata -->
+        <small class="text-muted">Founded: <%#= company.founded_date %></small>
+        <small class="text-muted ml-3">Location: <%#= company.location %></small>
+        <!-- Optional: Action Buttons/Links -->
+        <div class="mt-2">
+          <a href="<%#= company.website_url %>" class="btn btn-sm btn-link" target="_blank">Visit Website</a>
+          <a href="#" class="btn btn-sm btn-link">More Info</a>
+        </div>
       </div>
     </div>
   </div>
