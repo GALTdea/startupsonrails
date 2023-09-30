@@ -1,22 +1,73 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
-admin = User.create!( { name: "admin", username: "admin", email: "admin@email.com", password: "password", user_type: :admin } )
+case Rails.env
+when "development"
+  puts "Creating users..."
+  admin = User.create!( { name: "admin", username: "admin", email: "admin@email.com", password: "password", user_type: :admin } )
+  puts "Created #{User.count} users."
 
 
-30.times.map do
-  Company.create!(
-    name: Faker::Company.name,
-    url: Faker::Internet.url,
-    email: Faker::Internet.email,
-    about: Faker::Company.catch_phrase,
-    location: Faker::Address.city,
-    tech_stack: Faker::Company.bs,
-    user: User.first,
-  )
+  puts "Creating companies..."
+  if Company.count == 0
+    Company.import_from_csv(admin)
+  end
+  puts "Created #{Company.count} companies."
+
+  # puts "Creating categories..."
+  # category_names = ["cool_cats", "hotwire", "trending", "up_and_comers"]
+
+  # categories = category_names.map do |name|
+  #   Category.find_or_create_by!(name: name)
+  # end
+  # puts "Created #{Category.count} categories."
+
+  puts "Creating categories and adding companies to them..."
+    CATEGORIZATIONS = {
+      cool_cats: [
+        'Basecamp',
+        'Costco',
+        'GitLab',
+        'Heroku',
+        'GoRails',
+      ],
+      hotwire: [
+        'Basecamp',
+        'Costco',
+        'GitLab',
+        'Heroku',
+        'GoRails',
+      ],
+      trending: [
+        'Basecamp',
+        'Costco',
+        'GitLab',
+        'Heroku',
+        'GoRails',
+      ],
+      up_and_comers: [
+        'Basecamp',
+        'Costco',
+        'GitLab',
+        'Heroku',
+        'GoRails',
+      ]
+    }
+
+    all_companies = CATEGORIZATIONS.values.flatten.uniq.map do |company_name|
+      Company.find_by!(name: company_name)
+    end
+
+    CATEGORIZATIONS.each do |category_name, company_names|
+      puts "Creating #{category_name} category and adding companies to it..."
+      Category.find_or_create_by!(name: category_name) do |category|
+        companies_for_category = all_companies.select { |company| company_names.include?(company.name) }
+        category.companies = companies_for_category
+      end
+    end
+
+
+
+ 
+when "production"
+
 end
+
+
