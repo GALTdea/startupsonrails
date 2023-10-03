@@ -14,6 +14,11 @@ class CompaniesController < ApplicationController
     else
       @pagy, @companies = pagy(Company.all)
     end
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end
 
   def show

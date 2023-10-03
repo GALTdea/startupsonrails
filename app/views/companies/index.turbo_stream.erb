@@ -1,0 +1,11 @@
+<turbo-stream action="replace" target="companies_list" >
+  <template>
+    <% @companies.each do |company| %>
+     <%= render partial: 'company', locals: { company: company } %>
+    <% end %>
+  </template>
+</turbo-stream>
+
+
+
+#  <%= render company %>
