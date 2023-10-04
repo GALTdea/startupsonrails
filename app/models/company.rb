@@ -24,6 +24,8 @@ class Company < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  scope :with_about, -> { where.not(about:  nil).where.not(about: '') }
+
   validates :name, :url, :user_id, presence: true
 
   enum status: { pending: 0, active: 1, rejected: 2 }
