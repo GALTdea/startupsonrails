@@ -23,28 +23,28 @@ when "development"
     CATEGORIZATIONS = {
       cool_cats: [
         'Basecamp',
-        'Costco',
+        'Costco.com',
         'GitLab',
         'Heroku',
         'GoRails',
       ],
       hotwire: [
         'Basecamp',
-        'Costco',
+        'Costco.com',
         'GitLab',
         'Heroku',
         'GoRails',
       ],
       trending: [
         'Basecamp',
-        'Costco',
+        'Costco.com',
         'GitLab',
         'Heroku',
         'GoRails',
       ],
       up_and_comers: [
         'Basecamp',
-        'Costco',
+        'Costco.com',
         'GitLab',
         'Heroku',
         'GoRails',
