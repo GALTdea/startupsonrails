@@ -28,6 +28,28 @@
   /* This will ensure that the aspect ratio of your SVG is maintained */
   aspect-ratio: 1 / 1;
 }
+.badge-list {
+  display: flex;
+  list-style-type: none;
+  padding-left: 0;
+}
+.badge {
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  font-size: 10px;
+  flex-shrink: 0;
+  background-color: #e0f9ea;
+  color: #00431b;
+}
+
+.badge2 {
+  background-color: #f8f1ff;
+  color: #4039a8;
+}
 
 
 
@@ -67,3 +89,5 @@
 [data-autocomplete-target="results"].has-results {
   border: 1px solid #ccc;
 }
+
+
