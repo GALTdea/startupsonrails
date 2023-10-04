@@ -1,13 +1,13 @@
 <div class="card mb-3 company-card">
   <div class="row g-0 p-2">
     <!-- Company Logo/Icon -->
-    <div class="col-3 col-md-2 d-none d-sm-flex d-flex align-items-center justify-content-center company-logo-container">
+   <div class="col-1 col-md-1 d-none d-sm-flex d-flex  pt-2 justify-content-center company-logo-container">
       <%= generate_svg_with_initials(company.name) %>
       <!-- Optional: Company Logo -->
       <!-- <img src="<%#= company.logo_url %>" alt="<%= company.name %> Logo" class="img-fluid"> -->
     </div>
     <!-- Company Details -->
-    <div class="col-9 col-md-10">
+    <div class="col-10 col-md-11">
       <div class="company-card-body">
         <h5 class="card-title">
           <%= company.name %>
@@ -15,15 +15,40 @@
           <span class="badge bg-primary"><%#= company.category %></span>
         </h5>
         <p class="card-text">
-          Some quick example text to build on the card title and make up the bulk of the card's content.
+          <%= company.about %>
           <!-- Optional: Read More Toggle -->
           <!-- <a href="#" class="text-primary">Read More</a> -->
         </p>
         <!-- Optional: Metadata -->
-        <small class="text-muted">Founded: <%#= company.founded_date %></small>
-        <small class="text-muted ml-3">Location: <%#= company.location %></small>
-        <!-- Optional: Action Buttons/Links -->
+        <%# <small class="text-muted">Category: </small>
+        <small class="text-muted ml-3">Location:</small> %>
+
+        <!-- Badges -->
         <div class="mt-2">
+          <ul class="badge-list">
+            <li  class="badge me-2 rounded-pill">
+              <div  class="">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                  <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                  HIRING
+              </div>
+
+            <li  class="badge badge2">
+              <div>
+                <svg height="1em" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Drawing the shield shape -->
+                    <path d="M25 3 Q31 -1 37 3 L45 10 Q50 16 48 26 L38 43 Q31 50 25 46 Q19 50 12 43 L2 26 Q0 16 5 10 L13 3 Q19 -1 25 3" fill="#D3D3D3" stroke="#000" stroke-width="1.5"/>
+                    <!-- Drawing the checkmark -->
+                    <path d="M12 25 L22 35 L38 15" stroke="#00FF00" stroke-width="2.5" fill="none"/>
+                </svg>
+                VERIFIED
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Optional: Action Buttons/Links -->
+        <div class="mt-2 float-end">
           <a href="<%#= company.website_url %>" class="btn btn-sm btn-link" target="_blank">Visit Website</a>
           <a href="#" class="btn btn-sm btn-link">More Info</a>
         </div>
