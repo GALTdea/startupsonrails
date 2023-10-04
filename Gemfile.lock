@@ -122,6 +122,9 @@ GEM
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
+    madmin (1.2.8)
+      pagy (>= 3.5)
+      rails (>= 6.0.3)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -260,6 +263,7 @@ DEPENDENCIES
   friendly_id (~> 5.5)
   jbuilder
   jsbundling-rails
+  madmin (~> 1.2)
   pagy (~> 6.0)
   pg (~> 1.1)
   puma (~> 5.0)
