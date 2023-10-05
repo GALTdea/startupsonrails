@@ -1,5 +1,91 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333; /* Dark gray for better readability */
+  line-height: 1.5;
+}
+
+.bg-body {
+  background-color: #f5f5f5; /* Light gray background for subtle contrast */
+}
+
+.container h1, .container h2, .container h4 {
+  font-weight: 600; /* Semi-bold weight for emphasis */
+  margin-bottom: 20px;
+}
+
+h1.display-2 {
+  font-size: 2.5rem;
+}
+
+.container h4 span {
+  font-size: 1.2rem; /* Slightly larger icons for emphasis */
+  vertical-align: middle;
+  margin-right: 8px; /* Space between icon and text */
+}
+
+ul.list-group {
+  border-radius: 4px;
+}
+
+// not sure if
+// ul.list-group-item {
+//   border-color: #ddd; /* Subtle borders for list items */
+// }
+
+ul.list-group-item a {
+  color: rgb(14,17,17) !important; 
+  text-decoration: none;
+}
+
+
+ul.list-group-item a:hover {
+  text-decoration: underline; /* Underline on hover for emphasis */
+}
+
+// .container > .row:first-child {
+//   margin-top: 0; /* Remove top margin for the first row for even spacing */
+// }
+
+@media screen and (max-width: 768px) {
+  h1.display-2, h2.display-6 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+}
+
+.container h1, .container h2, .container h4 {
+  font-weight: 600; 
+  margin-bottom: 20px;
+}
+
+h1.display-2 {
+  font-size: 2.5rem;
+  color: #DC2626; /* Ruby red */
+}
+
+h2.display-6 {
+  font-size: 1.5rem;
+  color: #777; 
+}
+
+
+// ul.list-group-item a:hover {
+//   text-decoration: underline;
+//   color: #CC0000; /* Ruby red on hover */
+// }
+
+/* If you have any buttons */
+.btn-primary {
+  background-color: #DC2626;
+  border-color: #DC2626;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #990000; /* Darkened ruby red for hover/focus */
+  border-color: #990000;
+}
+
 .company-logo {
   // border-radius: 50%;
   // overflow: hidden;
@@ -89,5 +175,6 @@
 [data-autocomplete-target="results"].has-results {
   border: 1px solid #ccc;
 }
+
 
 
