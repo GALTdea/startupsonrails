@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  draw :madmin
   # resources :category_companies, only: [:create, :destroy]
   
   resources :categories do

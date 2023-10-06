@@ -85,3 +85,5 @@ gem 'friendly_id', '~> 5.5'
 gem 'pagy', '~> 6.0' # omit patch digit
 
 gem 'pundit', '~> 2.3', '>= 2.3.1'
+
+gem "madmin", "~> 1.2"
