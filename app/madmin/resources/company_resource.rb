@@ -12,7 +12,7 @@ class CompanyResource < Madmin::Resource
   attribute :updated_at, form: false
   attribute :slug
   attribute :status
-  attribute :about_tech
+  # attribute :about_tech
 
   # Associations
   attribute :categorizations
