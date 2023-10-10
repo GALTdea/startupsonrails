@@ -45,6 +45,14 @@ when "development"
       'Heroku',
       'GoRails',
     ],
+    tooling: [
+      'Basecamp',
+      'Costco.com',
+      'GitLab',
+      'Heroku',
+      'GoRails',
+    ],
+
     up_and_comers: [
       'Basecamp',
       'Costco.com',
@@ -52,6 +60,13 @@ when "development"
       'Heroku',
       'GoRails',
     ],
+    tooling: [
+      'AppSignal',
+      'Github',
+      'GitLab',
+      'Heroku',
+      'Jumpstart',
+    ]
   }
 
   all_companies = CATEGORIZATIONS.values.flatten.uniq.map do |company_name|
