@@ -55,9 +55,9 @@
   <div class="row mt-4"> <!-- mt-4 gives margin-top for spacing between rows -->
     <% category_slice.each do |category_name, companies| %>
       <div class="col-md-3"> <!-- col-md-3 ensures 4 categories per row -->
-        <h3><%= category_name.titleize %></h3>
+        <h5><%= category_name.titleize %></h5>
         <ul class="list-group">
-          <% companies.each do |comp| %>
+          <% companies.take(5).each do |comp| %>
             <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
           <% end %>
         </ul>
