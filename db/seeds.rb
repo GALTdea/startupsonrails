@@ -51,7 +51,7 @@ when "development"
       'GitLab',
       'Heroku',
       'GoRails',
-    ]
+    ],
   }
 
   all_companies = CATEGORIZATIONS.values.flatten.uniq.map do |company_name|
@@ -68,6 +68,7 @@ when "development"
     Category.find_or_create_by!(name: category_name) do |category|
       companies_for_category = all_companies.select { |company| company_names.include?(company.name) }
       category.companies = companies_for_category
+      puts "Created  #{category_name} category with #{category.companies.count} companies. "
     end
   end
 
