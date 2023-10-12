@@ -52,7 +52,6 @@ when "development"
       'Heroku',
       'GoRails',
     ],
-
     up_and_comers: [
       'Basecamp',
       'Costco.com',
