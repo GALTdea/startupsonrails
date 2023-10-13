@@ -42,7 +42,10 @@
             <h5><%= category_name.titleize %></h5>
             <ul class="list-group">
               <% companies.take(5).each do |comp| %>
-                <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
+                <li class="list-group-item company-logo-container">
+                  <%= raw generate_svg_with_initials(comp.name) %>
+                  <%= link_to comp.name, company_path(comp) %>
+                </li>
               <% end %>
             </ul>
           </div>
@@ -52,3 +55,5 @@
   </section>
   <!-- End of listing section -->
 </main> 
+
+   

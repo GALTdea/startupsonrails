@@ -10,10 +10,8 @@
         <turbo-frame id="filter_frame">
           <div data-controller="filter">
             <%= form_with url: companies_path, method: :get, data: { turbo_frame: "companies_list", turbo: "true" }, local: true do |f| %>
-
               <%= f.label :category_id, "Category" %>
               <%= f.collection_select :category, Category.showcased, :name, :name, {prompt: "Select a category"}, {class: "form-control", data: {action: "change->filter#submit"}} %>
-
               <%= f.submit "Submit", class: 'd-none', data:{ filter_target: "submitButton"} %>
             <% end %>
           </div>
