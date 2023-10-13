@@ -132,10 +132,11 @@ h2.display-6 {
 .company-logo {
   // border-radius: 50%;
   // overflow: hidden;
+  color: rgb(214,68,46) !important;
 }
 
 .company-logo rect {
-  fill: #007bff;
+  fill: rgb(224,90,65) !important;
 }
 
 .company-logo text {
@@ -234,10 +235,10 @@ h2.display-6 {
 
 
 // Companies, index
-// .company-logo-container{
-//   width: 3em;
-//   height: 3em;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+.company-logo-container-large{
+  width: 3em;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
