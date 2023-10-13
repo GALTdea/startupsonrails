@@ -1,48 +1,32 @@
-
-<main class="my-3 p-3 bg-body rounded shadow-sm">
-  
-  <section class=" py-5">
-    <div class="container text-center">
-      <h1 class="display-2 mb-2">Welcome to StartupsOnRails</h1>
+<main class="my-3 p-3">
+  <section class="mb-5 container-fluid full-width-section header-section text-center">
+    <div class="row py-lg-5 header-section-content">
+      <h1 class="display-2 mb-4">Welcome to StartupsOnRails</h1>
       <h2 class="display-6 mb-4">A One-Stop Hub for All Things Ruby on Rails Startups</h2>
     </div>
   </section>
 
-
   <!-- What We Offer Section -->
-  <section class=" py-5">
-    <div class="container">
-      <div class="row">
-        <!-- Trending Companies -->
-        <div class="col-md-4 mb-4">
-          <h4><span class="text-primary">🌟</span> Trending Companies</h4>
-          <p>Wondering which Ruby on Rails companies are making headlines? We've got real-time updates on the movers and shakers in the industry.</p>
-        </div>
-        
-        <!-- Cool Builds -->
-        <div class="col-md-4 mb-4">
-          <h4><span class="text-success">🛠</span> Cool Builds</h4>
-          <p>From fintech to healthcare, discover Ruby on Rails startups that are building something amazing right now.</p>
-        </div>
-        
-        <!-- New Up-and-Comers -->
-        <div class="col-md-4 mb-4">
-          <h4><span class="text-warning">🚀</span> New Up-and-Comers</h4>
-          <p>Get the inside scoop on the most promising Ruby on Rails startups that could be tomorrow's industry leaders.</p>
-        </div>
-      </div>
-
-      <div class="row mt-4">
-        <!-- Top Rails Companies -->
-        <div class="col-md-6 mb-4">
-          <h4><span class="text-info">🔝</span> Top Rails Companies</h4>
-          <p>From established giants to boutique agencies, we've analyzed data to present you with a list of the top-performing Ruby on Rails companies out there.</p>
-        </div>
-        
-        <!-- Hiring Now -->
-        <div class="col-md-6 mb-4">
-          <h4><span class="text-danger">💼</span> Hiring Now</h4>
-          <p>Whether you're a Rails veteran or a newcomer looking to break into the scene, find companies that are on the hunt for talent just like you.</p>
+  <section>
+    <div class=" py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h4><span class="text-primary">🌟</span> Discovery</h4>
+            <p>Dive into the Rails ecosystem! Explore cool builds, catch up with the trending players, spot the next big startups, and discover unique projects that are pushing boundaries.</p>
+          </div>
+          
+          <!-- Cool Builds -->
+          <div class="col-md-4 mb-4">
+            <h4><span class="text-success">🛠</span>Engage</h4>
+            <p>Stay updated and engaged. Follow your favorite Rails companies and receive a weekly digest filled with their latest blogs and social updates..</p>
+          </div>
+          
+          <!-- New Up-and-Comers -->
+          <div class="col-md-4 mb-4">
+            <h4><span class="text-warning">🚀</span> Hiring</h4>
+            <p>Seeking your next Rails role? Discover companies actively recruiting talent. Even if they aren't hiring now, it's the perfect time to connect with your dream company.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -51,23 +35,20 @@
 
   <!--Listing section -->
   <section class="">
-<% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
-  <div class="row mt-4"> <!-- mt-4 gives margin-top for spacing between rows -->
-    <% category_slice.each do |category_name, companies| %>
-      <div class="col-md-3"> <!-- col-md-3 ensures 4 categories per row -->
-        <h5><%= category_name.titleize %></h5>
-        <ul class="list-group">
-          <% companies.take(5).each do |comp| %>
-            <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
-          <% end %>
-        </ul>
+    <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
+      <div class="row mt-5"> <!-- mt-4 gives margin-top for spacing between rows -->
+        <% category_slice.each do |category_name, companies| %>
+          <div class="col-md-3"> <!-- col-md-3 ensures 4 categories per row -->
+            <h5><%= category_name.titleize %></h5>
+            <ul class="list-group">
+              <% companies.take(5).each do |comp| %>
+                <li class="list-group-item"> <%= link_to comp.name, company_path(comp) %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  </div>
-<% end %>
-
   </section>
   <!-- End of listing section -->
 </main> 
-
-

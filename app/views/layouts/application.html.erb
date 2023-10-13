@@ -10,15 +10,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="bg-body">
+  <body class="">
     <div class="container">
       <% if user_signed_in? && current_user.admin? %>
         <%= render 'shared/admin_navbar' %>
       <% else %>
          <%= render 'shared/navbar' %>
       <% end %>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+       <span class="notice"><%= notice %></span>
+       <span class="alert"><%= alert %></span>
       <%= yield %>
       <%= render 'shared/footer' %>
     </div>
