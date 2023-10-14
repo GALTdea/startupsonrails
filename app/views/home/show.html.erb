@@ -7,26 +7,31 @@
   </section>
 
   <!--Listing section -->
-  <section class="">
-    <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
-      <div class="row mt-5"> <!-- mt-4 gives margin-top for spacing between rows -->
-        <% category_slice.each do |category_name, companies| %>
-          <div class="col-md-3"> <!-- col-md-3 ensures 4 categories per row -->
-            <ul class="list-group">
-              <li class="list-group-item"><%= category_name.titleize %></li>
-              <% companies.take(5).each do |comp| %>
-                <li class="list-group-item company-logo-container">
-                  <%= raw generate_svg_with_initials(comp.name) %>
-                  <%= link_to comp.name, company_path(comp) %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+  <div class="">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Top Listings</h2>
+          <%# <h3 class="mt-4 font-normal text-lg leading-8 text-gray-600">subheader if needed</h3> %>
       </div>
-    <% end %>
-  </section>
+      <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
+        <div class="row mt-5"> <!-- mt-4 gives margin-top for spacing between rows -->
+          <% category_slice.each do |category_name, companies| %>
+            <div class="col-md-3"> <!-- col-md-3 ensures 4 categories per row -->
+              <ul class="list-group">
+                <li class="list-group-item"><%= category_name.titleize %></li>
+                <% companies.take(5).each do |comp| %>
+                  <li class="list-group-item company-logo-container">
+                    <%= raw generate_svg_with_initials(comp.name) %>
+                    <%= link_to comp.name, company_path(comp) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <!-- End of listing section -->
 </main> 
-
-   
