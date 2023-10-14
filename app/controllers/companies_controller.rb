@@ -5,19 +5,22 @@ class CompaniesController < ApplicationController
   def index
     if params[:query].present?
       @companies = Company.where("name ILIKE ?", "%#{params[:query]}%")
-      respond_to do |format|
-        format.html
-        format.json { render json: @companies.as_json(only: [:id, :name]) }
-      end
     elsif params[:category].present?
       @pagy, @companies = pagy(Category.find_by(name: params[:category]).companies.with_about)
     else
       @pagy, @companies = pagy(Company.all.with_about)
     end
-
+  
     respond_to do |format|
-      format.turbo_stream
       format.html
+      format.turbo_stream
+      format.json {
+        if params[:query].present?
+          render json: @companies.as_json(only: [:id, :name])
+        else
+          # You can handle other JSON responses here if needed.
+        end
+      }
     end
   end
 
