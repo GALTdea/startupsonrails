@@ -14,6 +14,5 @@ Rails.application.routes.draw do
   resources :companies
 
   get 'home/show'
-  
   root "home#show"
 end

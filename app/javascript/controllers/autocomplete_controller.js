@@ -11,6 +11,7 @@ export default class extends Controller {
 
   search() {
     if (this.inputTarget.value.length > 1) {
+
       fetch(`/companies?query=${this.inputTarget.value}`, {
         headers: { "Accept": "application/json" }
       })
@@ -35,7 +36,6 @@ export default class extends Controller {
   populateResults(data) {
     // populate the results
 
-  
     if (this.haveResults()) {
       this.resultsTarget.classList.add('has-results');
     } else {
