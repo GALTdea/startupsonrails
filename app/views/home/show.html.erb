@@ -24,6 +24,7 @@
                   <li class="list-group-item company-logo-container">
                     <%= raw generate_svg_with_initials(comp.name) %>
                     <%= link_to comp.name, company_path(comp) %>
+                    <i class="fa-solid fa-circle-plus icon-right"></i>
                   </li>
                 <% end %>
               </ul>
@@ -35,3 +36,5 @@
   </div>
   <!-- End of listing section -->
 </main> 
+
+<%# <i class="fa-solid fa-plus"></i> %>
