@@ -7,10 +7,6 @@ body {
   background-color: #F7F9FC;
 }
 
-// .bg-body {
-//   background-color: #f5f5f5; /* Light gray background for subtle contrast */
-// }
-
 .icon-right {
   margin-left: auto;
 }
@@ -22,7 +18,6 @@ body {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  
 }
 // hide empty notices
 span.notice:empty, span.alert:empty {
@@ -34,28 +29,20 @@ span.notice:empty, span.alert:empty {
   // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 1em;
   min-height: 20em;
-
-
 }
 
 .header-section-content { 
   // padding-top: 10em !important;
 }
 
-// .header-section-content {
-//   max-width: 800px;
-//   margin: 0 auto;
-//   padding: 1em;
-//   text-align: center;
-//   h1 {
-//     font-size: 3em;
-//     margin-bottom: 0;
-//   }
-//   h2 {
-//     font-size: 2em;
-//     margin-top: 0;
-//   }
-// }
+.custom-list-group-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 1em; /* Start the line 1em from the left side */
+  right: 1em; /* End the line 1em before the right side */
+  bottom: 0;
+  border-bottom: 1px solid #dee2e6; /* Default border color for Bootstrap's list-group-item */
+}
 
 .container h1, .container h2, .container h4 {
   font-weight: 600; /* Semi-bold weight for emphasis */
@@ -76,24 +63,14 @@ ul.list-group {
   border-radius: 4px;
 }
 
-// not sure if
-// ul.list-group-item {
-//   border-color: #ddd; /* Subtle borders for list items */
-// }
-
 ul.list-group-item a {
   color: rgb(14,17,17) !important; 
   text-decoration: none;
 }
 
-
 ul.list-group-item a:hover {
   text-decoration: underline; /* Underline on hover for emphasis */
 }
-
-// .container > .row:first-child {
-//   margin-top: 0; /* Remove top margin for the first row for even spacing */
-// }
 
 @media screen and (max-width: 768px) {
   h1.display-2, h2.display-6 {
@@ -115,12 +92,6 @@ h2.display-6 {
   font-size: 1.5rem;
   color: #777; 
 }
-
-
-// ul.list-group-item a:hover {
-//   text-decoration: underline;
-//   color: #CC0000; /* Ruby red on hover */
-// }
 
 /* If you have any buttons */
 .btn-primary {
@@ -152,6 +123,7 @@ h2.display-6 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   min-height: 10em;
 }
+
 .company-card-body{
   padding: .5em;
 }
@@ -162,11 +134,13 @@ h2.display-6 {
   /* This will ensure that the aspect ratio of your SVG is maintained */
   aspect-ratio: 1 / 1;
 }
+
 .badge-list {
   display: flex;
   list-style-type: none;
   padding-left: 0;
 }
+
 .badge {
   display: flex;
   border-radius: 10px;
@@ -185,8 +159,6 @@ h2.display-6 {
   color: #4039a8;
 }
 
-
-
 [data-controller="autocomplete"] {
   position: relative;
 }
@@ -200,8 +172,6 @@ h2.display-6 {
   z-index: 10; /* Ensure it's on top of other content */
   list-style-type: none;
   padding-left: 0; /* to remove any default padding browsers might add */
-  
-  
   /*  add some basic styling for the dropdown: */
   background-color: #fff;
   border: none;
@@ -224,7 +194,6 @@ h2.display-6 {
   border: 1px solid #ccc;
 }
 
-
 // Home, show
 .company-logo-container {
   display: flex;
@@ -233,7 +202,6 @@ h2.display-6 {
 
 .company-logo-container svg {
 }
-
 
 // Companies, index
 .company-logo-container-large{
