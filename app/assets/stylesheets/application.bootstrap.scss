@@ -163,7 +163,6 @@ h2.display-6 {
   position: relative;
 }
 
-
 [data-autocomplete-target="results"] {
   position: absolute;
   top: 100%;   /* Align it right below the input field */
@@ -201,6 +200,20 @@ h2.display-6 {
 }
 
 .company-logo-container svg {
+}
+
+
+.custom-numbered-list {
+  counter-reset: list-counter;
+}
+
+.custom-numbered-list > li:not(:first-child):before {
+  content: counter(list-counter) ".";
+  counter-increment: list-counter;
+  position: absolute;
+  left: 0.5rem; /* Adjust as necessary */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 // Companies, index
