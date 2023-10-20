@@ -25,6 +25,15 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+      if @category.update(category_params)
+        redirect_to @category, notice: "Category was successfully updated."
+      else
+        render :edit
+      end
   end
 
   private 
@@ -36,5 +45,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit( :name, :description)
   end
-
 end
