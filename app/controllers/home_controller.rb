@@ -8,8 +8,9 @@ class HomeController < ApplicationController
 
     @tops_categories = Category.tops_categories
     @tops_companies = {}
-    @tops_categories.each do |category|
-      @tops_companies[category.name] = category.companies
+    Category::TOPS_CATEGORIES_HASH.each do |category, name|
+      cat = Category.find_by(name: category)
+      @tops_companies[name] = cat.companies
     end
   end
 end
