@@ -9,7 +9,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
   end
-  
 
   def new
     @category = Category.new
@@ -29,15 +28,14 @@ class CategoriesController < ApplicationController
   end
 
   def update
-      if @category.update(category_params)
-        redirect_to @category, notice: "Category was successfully updated."
-      else
-        render :edit
-      end
+    if @category.update(category_params)
+      redirect_to @category, notice: "Category was successfully updated."
+    else
+      render :edit
+    end
   end
 
   private 
-
   def set_category
     @category = Category.find(params[:id])
   end
