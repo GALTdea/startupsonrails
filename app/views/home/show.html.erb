@@ -8,7 +8,6 @@
 
   <!-- top ruby on rails companies in 2023 by category -->
   <div class="mt-5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:max-w-none">
         <div class="text-center">
           <h2 class="text-3xl text-gray-900 sm:text-4xl">Top Ruby on Rails Companies in 2023 by Category </h2>
@@ -35,16 +34,14 @@
           <% end %>
         </div>
       <% end %>
-    </div>
   </div>
   <!-- end -->
   <!--Listing section -->
   <div class="mt-5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl lg:max-w-none">
-        <div class="text-center">
-          <h2 class="text-3xl text-gray-900 sm:text-4xl">Top Listings</h2>
-          <%# <h3 class="mt-4 font-normal text-lg leading-8 text-gray-600">subheader if needed</h3> %>
+    <div class="mx-auto max-w-2xl lg:max-w-none">
+      <div class="text-center">
+        <h2 class="text-3xl text-gray-900 sm:text-4xl">Top Listings</h2>
+        <%# <h3 class="mt-4 font-normal text-lg leading-8 text-gray-600">subheader if needed</h3> %>
       </div>
       <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
         <div class="row mt-5">
