@@ -6,11 +6,8 @@ Rails.application.routes.draw do
     resources :companies, only: [:create], controller: 'category_companies'
   end
   
-
-
   devise_for :users
   resources :users
-
   resources :companies
 
   get 'home/show'
