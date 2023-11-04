@@ -1,5 +1,26 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+// Additional spacing classes
+/* Padding */
+.pt-6 { padding-top: 6rem !important; }
+.pr-6 { padding-right: 6rem !important; }
+.pb-6 { padding-bottom: 6rem !important; }
+.pl-6 { padding-left: 6rem !important; }
+.px-6 { padding-right: 6rem !important; padding-left: 6rem !important; }
+.py-6 { padding-top: 6rem !important; padding-bottom: 6rem !important; }
+
+/* Margin */
+.mt-6 { margin-top: 6rem !important; }
+.mr-6 { margin-right: 6rem !important; }
+.mb-6 { margin-bottom: 6rem !important; }
+.ml-6 { margin-left: 6rem !important; }
+.mx-6 { margin-right: 6rem !important; margin-left: 6rem !important; }
+.my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
+
+/* And so on for .mt-7, .mt-8, etc. if you need them */
+
+
 body {
   font-family: 'Arial', sans-serif;
   color: #333; /* Dark gray for better readability */
@@ -49,10 +70,6 @@ span.notice:empty, span.alert:empty {
   margin-bottom: 20px;
 }
 
-h1.display-2 {
-  font-size: 2.5rem;
-}
-
 .container h4 span {
   font-size: 1.2rem; /* Slightly larger icons for emphasis */
   vertical-align: middle;
@@ -78,14 +95,19 @@ ul.list-group-item a:hover {
   }
 }
 
-.container h1, .container h2, .container h4 {
-  font-weight: 600; 
-  margin-bottom: 20px;
+@media screen and (max-width: 768px) {
+  h1.display-1, h2.display-6 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+}
+
+h1.display-1 {
+  font-size: 3.5rem;
+  color: #DC2626; /* Ruby red */
 }
 
 h1.display-2 {
-  font-size: 2.5rem;
-  color: #DC2626; /* Ruby red */
+  font-size: 1.5rem;
 }
 
 h2.display-6 {
