@@ -1,24 +1,11 @@
-# README
+# README 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# StartupsOnRails - Documenting and Cataloging all sites built on Rails/Ruby
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- Ruby 3.0.2
+- Rails 7.0.4
+- Postgres
+- Yarn
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
