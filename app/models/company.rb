@@ -30,46 +30,46 @@ class Company < ApplicationRecord
 
   enum status: { pending: 0, active: 1, rejected: 2 }
 
-  # def self.import_from_csv(current_user)
-  #   csv_file_path = Rails.root.join('data', 'companies-6.csv')
+  def self.import_from_csv(current_user)
+    csv_file_path = Rails.root.join('data', 'companies-6.csv')
   
-  #   success_count = 0
-  #   error_count = 0
-  #   error_messages = []
+    success_count = 0
+    error_count = 0
+    error_messages = []
   
-  #   allowed_attributes = Company.new.attributes.keys.map(&:to_sym) # Get all allowed attributes
+    allowed_attributes = Company.new.attributes.keys.map(&:to_sym) # Get all allowed attributes
   
-  #   CSV.foreach(csv_file_path, headers: true, header_converters: :symbol) do |row|
-  #     row_hash = row.to_h
+    CSV.foreach(csv_file_path, headers: true, header_converters: :symbol) do |row|
+      row_hash = row.to_h
   
-  #     # Keep only the allowed attributes
-  #     filtered_row_hash = row_hash.slice(*allowed_attributes)
+      # Keep only the allowed attributes
+      filtered_row_hash = row_hash.slice(*allowed_attributes)
   
-  #     # Add the user_id to the attributes
-  #     filtered_row_hash[:user_id] = current_user.id
+      # Add the user_id to the attributes
+      filtered_row_hash[:user_id] = current_user.id
   
-  #     company = self.new(filtered_row_hash)
+      company = self.new(filtered_row_hash)
   
-  #     begin
-  #       if company.save
-  #         success_count += 1
-  #       else
-  #         error_count += 1
-  #         error_messages << company.errors.full_messages.join(', ')
-  #       end
-  #     rescue ActiveRecord::RecordNotFound => e
-  #       error_count += 1
-  #       error_message = "Failed to save or find company named '#{filtered_row_hash[:name]}': #{e.message}"
-  #       error_messages << error_message
-  #       Rails.logger.error(error_message)
-  #     end
-  #   end
+      begin
+        if company.save
+          success_count += 1
+        else
+          error_count += 1
+          error_messages << company.errors.full_messages.join(', ')
+        end
+      rescue ActiveRecord::RecordNotFound => e
+        error_count += 1
+        error_message = "Failed to save or find company named '#{filtered_row_hash[:name]}': #{e.message}"
+        error_messages << error_message
+        Rails.logger.error(error_message)
+      end
+    end
   
-  #   {
-  #     success_count: success_count,
-  #     error_count: error_count,
-  #     error_messages: error_messages
-  #   }
-  # end
+    {
+      success_count: success_count,
+      error_count: error_count,
+      error_messages: error_messages
+    }
+  end
   
 end
