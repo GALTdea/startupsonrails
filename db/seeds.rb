@@ -1,5 +1,5 @@
-case Rails.env
-when "development"
+# case Rails.env
+# when "development"
   puts "Creating users..."
   admin = User.create!( {
     name: "admin",
@@ -173,8 +173,8 @@ when "development"
     end
   end
 
-when "production"
+# when "production"
 
-end
+# end
 
 
