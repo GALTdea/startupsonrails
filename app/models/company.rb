@@ -31,7 +31,7 @@ class Company < ApplicationRecord
   enum status: { pending: 0, active: 1, rejected: 2 }
 
   def self.import_from_csv(current_user)
-    csv_file_path = Rails.root.join('data', 'companies-6.csv')
+    csv_file_path = Rails.root.join('db/seeds', 'companies-6.csv')
   
     success_count = 0
     error_count = 0
