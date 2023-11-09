@@ -19,7 +19,10 @@
 .my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
 
 /* And so on for .mt-7, .mt-8, etc. if you need them */
-
+// theme colors
+.red-ruby-text {
+  color: #DC2626;
+}
 
 body {
   font-family: 'Arial', sans-serif;
@@ -50,10 +53,6 @@ span.notice:empty, span.alert:empty {
   // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 1em;
   min-height: 20em;
-}
-
-.header-section-content { 
-  // padding-top: 10em !important;
 }
 
 .custom-list-group-item:not(:last-child)::after {
@@ -90,13 +89,7 @@ ul.list-group-item a:hover {
 }
 
 @media screen and (max-width: 768px) {
-  h1.display-2, h2.display-6 {
-    font-size: 1.5rem; /* Adjust font size for smaller screens */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  h1.display-1, h2.display-6 {
+  p.display-2, h2.display-6, h1.display-1 {
     font-size: 1.5rem; /* Adjust font size for smaller screens */
   }
 }
@@ -106,8 +99,9 @@ h1.display-1 {
   color: #DC2626; /* Ruby red */
 }
 
-h1.display-2 {
+.header-2 {
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 h2.display-6 {

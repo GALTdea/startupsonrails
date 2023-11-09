@@ -1,32 +1,62 @@
-<main class="my-3 p-3">
-    <section class="container-fluid pb-6 ml-6">
-      <div class="row py-lg-5 header-section-content">
-        <div class="col-md-6">
-          <h1 class="display-1 mb-2">StartupsOnRails</h1>
-          <h1 class="display-2 mb-2">The framework For entrepreneurs by entrepreneurs</h1>
-          <p class="mb-4">Find out which companies are built on Rails and support its thriving community.</p>
-          <%# <button type="button" class="btn btn-primary ">Add your company</button> %>
-          <div class="d-flex justify-content-center">
-              <button class="btn btn-primary">Add A Company</button>
-          </div>
+<main class="my-3">
+  <div class="row justify-content-center align-items-center py-lg-5 text-center">
+    <div class="col-md-6">
+      <h1 class="red-ruby-text fw-light mb-1">StartupsOnRails</h1>
+      <p class="lead text-body-secondary fw-bold mb-1">The framework for entrepreneurs by entrepreneurs</p>
+      <p class="lead mb-4">Find out which companies are built on Rails and support its thriving community.</p>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Search", companies_path, class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- top ruby on rails companies in 2023 by category -->
+  <div class="mt-5">
+    <div class=" max-w-7xl px-6 lg:px-8">
+      <div class="max-w-2xl lg:max-w-none">
+        <div class="text-center">
+          <h2 class="text-3xl text-gray-900 sm:text-4xl">Top Ruby on Rails Companies in 2023 by Category </h2>
         </div>
       </div>
-    </section>
-    
-    <!-- top ruby on rails companies in 2023 by category -->
-    <div class="mt-5">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
-          <div class="text-center">
-            <h2 class="text-3xl text-gray-900 sm:text-4xl">Top Ruby on Rails Companies in 2023 by Category </h2>
-          </div>
+      <% @tops_companies.each_slice(4).with_index do |listing, index|  %>
+        <div class="row mb-lg-3 mb-sm-0">
+          <% listing.each do | name, companies| %>
+            <div class="col-md-3 mb-0 mb-sm-3">
+              <ol class="list-group custom-numbered-list">
+                <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= name %></li>
+                <% companies.take(10).each do |comp| %>
+                  <li class="list-group-item company-logo-container" style="position: relative;">
+                    <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
+                    <%= link_to comp.name, company_path(comp), class:"ms-2" %>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
+                      <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
+                      <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
+                    </svg>
+                  </li>
+                <% end %>
+              </ol>
+            </div>
+          <% end %>
         </div>
-        <% @tops_companies.each_slice(4).with_index do |listing, index|  %>
-          <div class="row mb-lg-3 mb-sm-0">
-            <% listing.each do | name, companies| %>
-              <div class="col-md-3 mb-0 mb-sm-3">
+      <% end %>
+    </div>
+  </div>
+  <!-- end -->
+  <!--Listing section -->
+  <div class="mt-5">
+    <div class="mx-auto max-w-7xl px-6 ">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="text-center">
+          <h2 class="text-3xl text-gray-900 sm:text-4xl">Top Listings</h2>
+          <%# <h3 class="mt-4 font-normal text-lg leading-8 text-gray-600">subheader if needed</h3> %>
+        </div>
+        <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
+          <div class="row  ">
+            <% category_slice.each do |category_name, companies| %>
+              <div class="col-md-3">
                 <ol class="list-group custom-numbered-list">
-                  <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= name %></li>
+                  <!-- Special first item without number -->
+                  <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= category_name.titleize %></li>
                   <% companies.take(10).each do |comp| %>
                     <li class="list-group-item company-logo-container" style="position: relative;">
                       <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
@@ -44,39 +74,7 @@
         <% end %>
       </div>
     </div>
-    <!-- end -->
-    <!--Listing section -->
-    <div class="mt-5">
-      <div class="mx-auto max-w-7xl px-6 ">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
-          <div class="text-center">
-            <h2 class="text-3xl text-gray-900 sm:text-4xl">Top Listings</h2>
-            <%# <h3 class="mt-4 font-normal text-lg leading-8 text-gray-600">subheader if needed</h3> %>
-          </div>
-          <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
-            <div class="row  ">
-              <% category_slice.each do |category_name, companies| %>
-                <div class="col-md-3">
-                  <ol class="list-group custom-numbered-list">
-                    <!-- Special first item without number -->
-                    <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= category_name.titleize %></li>
-                    <% companies.take(10).each do |comp| %>
-                      <li class="list-group-item company-logo-container" style="position: relative;">
-                        <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
-                        <%= link_to comp.name, company_path(comp), class:"ms-2" %>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
-                          <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
-                          <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
-                        </svg>
-                      </li>
-                    <% end %>
-                  </ol>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <!-- End of listing section -->
+  </div>
+  <!-- End of listing section -->
+
 </main>
