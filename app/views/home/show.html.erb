@@ -21,7 +21,7 @@
       <% @tops_companies.each_slice(4).with_index do |listing, index|  %>
         <div class="row mb-lg-3 mb-sm-0">
           <% listing.each do | name, companies| %>
-            <div class="col-md-3 mb-0 mb-sm-3">
+            <div class="col-md-3 mb-3 mb-sm-3">
               <ol class="list-group custom-numbered-list">
                 <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= name %></li>
                 <% companies.take(10).each do |comp| %>
@@ -51,7 +51,7 @@
         <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
           <div class="row  ">
             <% category_slice.each do |category_name, companies| %>
-              <div class="col-md-3">
+              <div class="col-md-3 mb-3 mb-sm-3">
                 <ol class="list-group custom-numbered-list">
                   <!-- Special first item without number -->
                   <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= category_name.titleize %></li>
