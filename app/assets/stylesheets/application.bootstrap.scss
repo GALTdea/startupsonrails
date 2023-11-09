@@ -17,8 +17,9 @@
 .ml-6 { margin-left: 6rem !important; }
 .mx-6 { margin-right: 6rem !important; margin-left: 6rem !important; }
 .my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
-
 /* And so on for .mt-7, .mt-8, etc. if you need them */
+
+
 // theme colors
 .red-ruby-text {
   color: #DC2626;
@@ -43,6 +44,7 @@ body {
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
 // hide empty notices
 span.notice:empty, span.alert:empty {
   display: none;
