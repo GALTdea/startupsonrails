@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def show
+    ahoy.track "My first event", language: "Ruby"
     @top_categories = Category.showcased
     @companies_by_category = {}
     @top_categories.each do |category|

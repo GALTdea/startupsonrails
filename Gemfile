@@ -74,7 +74,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'annotate', '~> 3.2'
-  
+
   gem "better_errors"
   gem "binding_of_caller"
 end
@@ -87,3 +87,5 @@ gem 'pagy', '~> 6.0' # omit patch digit
 gem 'pundit', '~> 2.3', '>= 2.3.1'
 
 gem "madmin", "~> 1.2"
+
+gem 'ahoy_matey', '~> 5.0', '>= 5.0.2'
