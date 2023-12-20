@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_15_204921) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_20_221109) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_204921) do
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.string "published_at"
+    t.string "category"
+    t.bigint "user_id", null: false
+    t.string "status", default: "draft"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_blogs_on_title"
+    t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -116,6 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_204921) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "blogs", "users"
   add_foreign_key "categorizations", "categories"
   add_foreign_key "categorizations", "companies"
   add_foreign_key "companies", "users"
