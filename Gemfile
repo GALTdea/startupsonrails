@@ -89,3 +89,5 @@ gem 'pundit', '~> 2.3', '>= 2.3.1'
 gem "madmin", "~> 1.2"
 
 gem 'ahoy_matey', '~> 5.0', '>= 5.0.2'
+
+gem 'aws-sdk-s3'
