@@ -8,6 +8,10 @@ class BlogPolicy < ApplicationPolicy
     !user.nil?
   end
 
+  def create?
+    !user.nil?
+  end
+
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
