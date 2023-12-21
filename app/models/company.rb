@@ -32,24 +32,23 @@ class Company < ApplicationRecord
 
   def self.import_from_csv(current_user)
     csv_file_path = Rails.root.join('db/seeds', 'companies-6.csv')
-  
+
     success_count = 0
     error_count = 0
     error_messages = []
-  
+
     allowed_attributes = Company.new.attributes.keys.map(&:to_sym) # Get all allowed attributes
-  
+
     CSV.foreach(csv_file_path, headers: true, header_converters: :symbol) do |row|
       row_hash = row.to_h
-  
+
       # Keep only the allowed attributes
       filtered_row_hash = row_hash.slice(*allowed_attributes)
-  
+
       # Add the user_id to the attributes
       filtered_row_hash[:user_id] = current_user.id
-  
+
       company = self.new(filtered_row_hash)
-  
       begin
         if company.save
           success_count += 1
@@ -64,12 +63,12 @@ class Company < ApplicationRecord
         Rails.logger.error(error_message)
       end
     end
-  
+
     {
       success_count: success_count,
       error_count: error_count,
       error_messages: error_messages
     }
   end
-  
+
 end
