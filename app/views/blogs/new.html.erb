@@ -1,2 +1,21 @@
-<h1>Blogs#new</h1>
-<p>Find me in app/views/blogs/new.html.erb</p>
+<h1>Blogs</h1>
+
+
+
+
+<%= form_with model: @blog do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+  
