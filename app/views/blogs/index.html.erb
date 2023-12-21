@@ -1,2 +1,20 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<%# Ensure that the Bootstrap CSS is included in your application layout %>
+
+<div class="container my-5">
+  <div class="row">
+    <% @blogs.each do |blog| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <%= image_tag "https://via.placeholder.com/350x150", class: "card-img-top", alt: "Placeholder Image" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to blog.title, blog %></h5>
+            <p class="card-text"><%= truncate(blog.content.to_plain_text, length: 100) %></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Published <%#= time_ago_in_words(blog.published_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

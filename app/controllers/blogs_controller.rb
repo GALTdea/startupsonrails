@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   def index
-    authorize :blog
+    @blogs = authorize Blog.all
   end
 
   def show
