@@ -6,6 +6,7 @@ class Blog < ApplicationRecord
 
   has_one_attached :image
   before_save :set_image_key, if: :image_attached?
+
   private
 
   def image_attached?
