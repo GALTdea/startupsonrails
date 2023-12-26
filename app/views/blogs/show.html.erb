@@ -6,9 +6,7 @@
 
       <% if @blog.image.attached? %>
         <div class="mb-4">
-          <%= image_tag @blog.image, class: "img-fluid rounded" %>
           <%= image_tag url_for(@blog.image) if @blog.image.attached? %>
-
         </div>
       <% end %>
 
