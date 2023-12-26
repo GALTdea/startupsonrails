@@ -21,6 +21,9 @@ class Company < ApplicationRecord
   has_many :categories, through: :categorizations
   belongs_to :user, optional: true
 
+  has_one_attached :logo
+  before_save :set_logo_key, if: :logo_attached?
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -71,4 +74,15 @@ class Company < ApplicationRecord
     }
   end
 
+  private
+
+  def logo_attached?
+    logo.attached?
+  end
+
+  def set_logo_key
+    if logo.attached?
+      logo.blob.update!(key: "company-logos/#{SecureRandom.uuid}-#{logo.filename}")
+    end
+  end
 end

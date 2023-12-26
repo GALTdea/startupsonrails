@@ -1,14 +1,12 @@
-<%# Ensure that the Bootstrap CSS is included in your application layout %>
-
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
 
-      <%# if @blog.featured_image.attached? %>
+      <% if @blog.image.attached? %>
         <div class="mb-4">
-          <%#= image_tag @blog.featured_image, class: "img-fluid rounded" %>
+          <%= image_tag url_for(@blog.image) if @blog.image.attached? %>
         </div>
-      <%# end %>
+      <% end %>
 
       <div class="card">
         <div class="card-body">
