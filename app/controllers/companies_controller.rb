@@ -6,9 +6,9 @@ class CompaniesController < ApplicationController
     if params[:query].present?
       @companies = Company.where("name ILIKE ?", "%#{params[:query]}%")
     elsif params[:category].present?
-      @pagy, @companies = pagy(Category.find_by(name: params[:category]).companies.with_about)
+      @pagy, @companies = pagy(Category.find_by(name: params[:category]).companies)
     else
-      @pagy, @companies = pagy(Company.all.with_about)
+      @pagy, @companies = pagy(Company.where(status: :active).order(name: :asc))
     end
 
     respond_to do |format|
