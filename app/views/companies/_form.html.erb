@@ -42,5 +42,10 @@
     <%= form.label :tech_stack, "Tec stac description" %>
     <%= form.text_area :tech_stack, class: "form-control" %>
   </div>
+
+  <div class="row mb-3">
+    <%= form.label :logo %>
+    <%= form.file_field :logo, direct_upload: true %>
+  </div>
   <%= form.submit %>
 <% end %>

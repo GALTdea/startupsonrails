@@ -21,6 +21,8 @@ class Company < ApplicationRecord
   has_many :categories, through: :categorizations
   belongs_to :user, optional: true
 
+  has_one_attached :logo
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   include Pagy::Backend
   before_action :set_company, only: [ :edit, :update, :destroy]
- 
+
   def index
     if params[:query].present?
       @companies = Company.where("name ILIKE ?", "%#{params[:query]}%")
@@ -10,7 +10,7 @@ class CompaniesController < ApplicationController
     else
       @pagy, @companies = pagy(Company.all.with_about)
     end
-  
+
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
-  def create 
+  def create
     @company = Company.new(company_params)
      if user_signed_in?
       @company.user_id = current_user.id
@@ -58,6 +58,6 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :url, :email, :about, :user_id, :tech_stack)
+    params.require(:company).permit(:name, :url, :email, :about, :user_id, :tech_stack, :logo)
   end
 end
