@@ -43,3 +43,4 @@
 
 # Ignore data files
 /data/
+/config/credentials/production.key
