@@ -21,29 +21,8 @@ amazon_production:
   region: us-west-2
   bucket: startupsonrails-bucket
 
-# production:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-west-2
-#   bucket: startupsonrails-bucket
-
 # Remember not to checkin your GCS keyfile to a repository
 # mirror:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
-
-# development:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-west-2
-#   bucket: startupsonrails-bucket-development
-
-# production:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-west-2
-#   bucket: startupsonrails-bucket
