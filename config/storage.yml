@@ -16,7 +16,7 @@ amazon_development:
 
 amazon_production:
   service: S3
-  acces_key_id: <%= Rails.application.credentials.dig(:aws, :production, :access_key_id) %>
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :production, :access_key_id) %>
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :production, :secret_access_key) %>
   region: us-west-2
   bucket: startupsonrails-bucket
