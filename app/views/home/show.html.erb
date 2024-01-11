@@ -1,5 +1,5 @@
-<main class="p-4">
-  <div class="container-smd mt-4">
+<main class="container-fluid mx-auto max-width-xl">
+  <div class=" mt-4">
     <div class="row">
       <div class="col-md-6">
         <div class="position-sticky card" style="top: 2rem;">
@@ -57,64 +57,59 @@
   </div>
     
   <!-- top ruby on rails companies in 2023 by category -->
-    <div class="mx-auto max-w-2xl lg:max-w-7xl mt-5">
-      <%# <div class="max-w-2xl lg:max-w-none"> %>
-      <div class="">
-        <div class="text-center">
-          <%# <h3 class="">Top Ruby on Rails Companies in 2023 by Category </h3> %>
-        </div>
+  <div class="mx-auto max-w-2xl lg:max-w-7xl mt-5">
+    <% @tops_companies.each_slice(4).with_index do |listing, index|  %>
+      <div class="row mb-lg-3 mb-sm-0">
+        <% listing.each do | name, companies| %>
+          <div class="col-md-3 mb-3 mb-sm-3">
+            <ol class="list-group custom-numbered-list">
+              <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= name %></li>
+              <% companies.take(10).each do |comp| %>
+                <li class="list-group-item company-logo-container" style="position: relative;">
+                  <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
+                  <%= link_to comp.name, company_path(comp), class:"ms-2" %>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
+                    <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
+                    <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
+                  </svg>
+                </li>
+              <% end %>
+            </ol>
+          </div>
+        <% end %>
       </div>
-      <% @tops_companies.each_slice(4).with_index do |listing, index|  %>
-        <div class="row mb-lg-3 mb-sm-0">
-          <% listing.each do | name, companies| %>
-            <div class="col-md-3 mb-3 mb-sm-3">
-              <ol class="list-group custom-numbered-list">
-                <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= name %></li>
-                <% companies.take(10).each do |comp| %>
-                  <li class="list-group-item company-logo-container" style="position: relative;">
-                    <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
-                    <%= link_to comp.name, company_path(comp), class:"ms-2" %>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
-                      <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
-                      <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
-                    </svg>
-                  </li>
-                <% end %>
-              </ol>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+    <% end %>
+  </div>
+  <!-- end -->
+
+  <!--Listing section -->
+  <div class="mx-auto max-w-2xl lg:max-w-7xl">
+    <div class="text-center">
+      <h3 class="">Top Listings</h3>
     </div>
-    <!-- end -->
-    <!--Listing section -->
-    <div class="mx-auto max-w-2xl lg:max-w-7xl">
-      <div class="text-center">
-        <h3 class="">Top Listings</h3>
+    <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
+      <div class="row  ">
+        <% category_slice.each do |category_name, companies| %>
+          <div class="col-md-3 mb-3 mb-sm-3">
+            <ol class="list-group custom-numbered-list">
+              <!-- Special first item without number -->
+              <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= category_name.titleize %></li>
+              <% companies.take(10).each do |comp| %>
+                <li class="list-group-item company-logo-container" style="position: relative;">
+                  <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
+                  <%= link_to comp.name, company_path(comp), class:"ms-2" %>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
+                    <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
+                    <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
+                  </svg>
+                </li>
+              <% end %>
+            </ol>
+          </div>
+        <% end %>
       </div>
-      <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
-        <div class="row  ">
-          <% category_slice.each do |category_name, companies| %>
-            <div class="col-md-3 mb-3 mb-sm-3">
-              <ol class="list-group custom-numbered-list">
-                <!-- Special first item without number -->
-                <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= category_name.titleize %></li>
-                <% companies.take(10).each do |comp| %>
-                  <li class="list-group-item company-logo-container" style="position: relative;">
-                    <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
-                    <%= link_to comp.name, company_path(comp), class:"ms-2" %>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
-                      <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
-                      <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
-                    </svg>
-                  </li>
-                <% end %>
-              </ol>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
   <!-- End of listing section -->
 </main>
 
