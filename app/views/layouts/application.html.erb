@@ -34,10 +34,11 @@
        <span class="alert"><%= alert %></span>
 
     </div>
-
-    <div class="container-fluid">
-      <%= render 'shared/welcome_header' %>
-    </div>
+    <% if controller_name == 'home' && action_name == 'show' %>
+      <div class="container-fluid">
+        <%= render 'shared/welcome_header' %>
+      </div>
+    <% end %>
 
     <div class="container-sm">
       <%= yield %>
