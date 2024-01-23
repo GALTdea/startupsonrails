@@ -1,23 +1,24 @@
 <main class="container-fluid mx-auto max-width-xl">
   <div class=" mt-4">
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-6">
-        <div class="position-sticky card" style="top: 2rem;">
-          <div class="card-body">
-            <ul class="list-unstyled">
-              <% Blog::FEATURED.all.each do |blog| %>
-                <li>
-                  <%= link_to blog_path(blog) , class:'d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top' do %>
-                    <%= image_tag blog.image,  width: "50%", height: "150", class:"bd-placeholder-img" %>
-                    <div class="col-lg-8">
-                      <h6 class="mb-0"><%= blog.title %></h6>
-                      <small class="text-body-secondary"><%= blog.created_at.strftime("%B %d, %Y") %></small>
-                    </div>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+        <div class="card">
+          <% Blog::FEATURED.all.each do |blog| %>
+            <%= link_to blog_path(blog) , class:'d-flex flex-column flex-lg-row align-items-start align-items-lg-center link-body-emphasis text-decoration-none' do %>
+              <div class="card-body">
+                <!-- Blog Post -->
+                <div class="blog-post">
+                  <%= image_tag blog.image,  width: "150", height: "150", class:"bd-placeholder-img" %>
+                  <div>
+                    <div class="blog-post-title"> <%= blog.title %>  </div>
+                    <div class="blog-post-date"><%= blog.created_at.strftime("%B %d, %Y") %></div>
+                    <p>Some other relevant info about Blog 1...</p>
+                  </div>
+                </div>
+                <hr class="m-0">
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="col-md-6">
@@ -68,4 +69,3 @@
   </div>
   <!-- End of listing section -->
 </main>
-
