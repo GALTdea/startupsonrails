@@ -19,6 +19,12 @@
 .my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
 /* And so on for .mt-7, .mt-8, etc. if you need them */
 
+.blog-blurb {
+  font-weight: 200;
+  margin-top: 8px;
+  color: #282828;
+  
+}
 
 // theme colors
 .red-ruby-text {
@@ -262,8 +268,6 @@ h2.display-6 {
   // Add more styles as per your requirements
 }
 
-
-
 .recent-blogs .blog-card {
   height: 250px; /* Adjust as needed */
   border: 1px solid #ddd;
@@ -304,11 +308,24 @@ h2.display-6 {
 }
 
 .blog-post-title {
-  font-size: 1.25rem;
   font-weight: bold;
+  color: #146aff;
+  font-weight: 500;
 }
 
 .blog-post-date {
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: #666;
+}
+
+// .card:last-child hr {
+//   display: none;
+// }
+
+// .card-body:last-of-type hr:last-of-type {
+//   display: none;
+// }
+
+.last-hr {
+  display: none;
 }

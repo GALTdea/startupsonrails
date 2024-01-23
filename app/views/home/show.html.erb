@@ -3,23 +3,28 @@
     <div class="row mt-4">
       <div class="col-md-6">
         <div class="card">
-          <% Blog::FEATURED.all.each do |blog| %>
-            <%= link_to blog_path(blog) , class:'d-flex flex-column flex-lg-row align-items-start align-items-lg-center link-body-emphasis text-decoration-none' do %>
+          <% Blog::FEATURED.all.each_with_index do |blog, index| %>
+            <%= link_to blog_path(blog), class: 'd-flex flex-column flex-lg-row align-items-start align-items-lg-center link-body-emphasis text-decoration-none' do %>
               <div class="card-body">
                 <!-- Blog Post -->
                 <div class="blog-post">
-                  <%= image_tag blog.image,  width: "150", height: "150", class:"bd-placeholder-img" %>
+                  <%= image_tag blog.image, width: "150", height: "150", class: "bd-placeholder-img" %>
                   <div>
-                    <div class="blog-post-title"> <%= blog.title %>  </div>
-                    <div class="blog-post-date"><%= blog.created_at.strftime("%B %d, %Y") %></div>
-                    <p>Some other relevant info about Blog 1...</p>
+                    <div class="blog-post-title fs-5"> <%= blog.title %> </div>
+                    <div class="blog-post-date fs-base"><%= blog.created_at.strftime("%B %d, %Y") %></div>
+                    <p class="blog-blurb">Some other relevant info about Blog 1...</p>
                   </div>
                 </div>
-                <hr class="m-0">
+                <% unless index == Blog::FEATURED.all.size - 1 %>
+                  <hr class="m-0">
+                <% else %>
+                  <hr class="m-0 last-hr">
+                <% end %>
               </div>
             <% end %>
           <% end %>
         </div>
+
       </div>
       <div class="col-md-6">
         <div class="card">
