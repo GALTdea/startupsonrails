@@ -231,7 +231,6 @@ h2.display-6 {
 .company-logo-container svg {
 }
 
-
 .custom-numbered-list {
   counter-reset: list-counter;
 }
@@ -254,9 +253,6 @@ h2.display-6 {
   justify-content: center;
   align-items: center;
 }@import 'actiontext.css';
-
-
-
 
 .rich-text-content {
   // Custom styles for your rich text content
@@ -317,14 +313,6 @@ h2.display-6 {
   font-size: 0.75rem;
   color: #666;
 }
-
-// .card:last-child hr {
-//   display: none;
-// }
-
-// .card-body:last-of-type hr:last-of-type {
-//   display: none;
-// }
 
 .last-hr {
   display: none;
