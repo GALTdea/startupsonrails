@@ -15,14 +15,12 @@
                     <p class="blog-blurb">Some other relevant info about Blog 1...</p>
                   </div>
                 </div>
-                <% unless index == Blog::FEATURED.all.size - 1 %>
-                  <hr class="m-0">
-                <% else %>
-                  <hr class="m-0 last-hr">
-                <% end %>
               </div>
             <% end %>
           <% end %>
+          <div class="show-all-links-container text-center p-2 border-top">
+            <%= link_to 'More Articles', "#" , class:'styles-link' %>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
