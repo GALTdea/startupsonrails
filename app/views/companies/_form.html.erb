@@ -1,27 +1,23 @@
-
-
+<% if company.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+    <ul>
+    <% company.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_with(model: company, local: true) do |form| %>
-  <% if company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
-      <ul>
-      <% company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
   <div class="mb-3">
-    <%= form.label :name, "Company Name" , class: 'form-label' %> 
+    <%= form.label :name, "Company Name", class: 'form-label' %> 
     <%= form.text_field :name, placeholder:"",  class: 'form-control ' %>
   </div>
 
   <div class="row mb-3">
     <div class="col-md-6">
-      <%= form.label  :url, "Company URL" , class: 'form-label' %> <br> 
+      <%= form.label  :url, "Company URL", class: 'form-label' %> <br> 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon3">https://www</span>
           <%= form.text_field :url, class: 'form-control' %>
@@ -47,5 +43,7 @@
     <%= form.label :logo %>
     <%= form.file_field :logo, direct_upload: true %>
   </div>
+  
+  <% if company.persisted? %>  <%= form.hidden_field :_method, value: 'patch' %>  <% end %>
   <%= form.submit %>
 <% end %>
