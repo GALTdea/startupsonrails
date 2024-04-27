@@ -1,79 +1,126 @@
-<main class="container-fluid mx-auto max-width-xl">
-  <div class=" mt-4">
-    <div class="row mt-4">
-      <div class="col-md-6">
-        <div class="card">
-          <% Blog::FEATURED.all.each_with_index do |blog, index| %>
-            <%= link_to blog_path(blog), class: 'd-flex flex-column flex-lg-row align-items-start align-items-lg-center link-body-emphasis text-decoration-none' do %>
-              <div class="card-body">
-                <!-- Blog Post -->
-                <div class="blog-post">
-                  <%= image_tag blog.image, width: "150", height: "150", class: "bd-placeholder-img" %>
-                  <div>
-                    <div class="blog-post-title fs-5"> <%= blog.title %> </div>
-                    <div class="blog-post-date fs-base"><%= blog.created_at.strftime("%B %d, %Y") %></div>
-                    <p class="blog-blurb">Some other relevant info about Blog 1...</p>
+<div class="container py-5">
+  <section class="feature-bg my-5 p-4 rounded">
+      <h2 class="mb-3">Featured Companies</h2>
+      <p>Discover the cutting-edge projects and inspiring stories of companies making significant impacts with Ruby on Rails.</p>
+      <div class="row">
+          <div class="col-md-6">
+            
+              <div class="card">
+                  <img src="company1.jpg" class="card-img-top" alt="Company 1 Image">
+                  <div class="card-body">
+                      <h5 class="card-title">RailsWare Innovations</h5>
+                      <p class="card-text">Pioneering new integration tools for seamless software solutions.</p>
                   </div>
-                </div>
-                <% unless index == Blog::FEATURED.all.size - 1 %>
-                  <hr class="m-0">
-                <% else %>
-                  <hr class="m-0 last-hr">
-                <% end %>
               </div>
-            <% end %>
-          <% end %>
-          <div class="show-all-links-container text-center p-3 border-top">
-            <%= link_to "#" , class:'styles-link' do  %>
-              More Articles <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="col-md-6">
+              <div class="card">
+                  <img src="company2.jpg" class="card-img-top" alt="Company 2 Image">
+                  <div class="card-body">
+                      <h5 class="card-title">TechStream Studios</h5>  
+                      <p class="card-text">Revolutionizing content delivery through Rails-powered platforms.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a href="#" class="btn btn-warm mt-3">See All Featured Companies</a>
+  </section>
+  
+  <section class="my-5">
+    <h2 class="mb-3">Featured Companies</h2>
+    <p>Explore the most popular tools in the Ruby on Rails ecosystem, utilized by industry leaders for development and production.</p>
+    <div class="row">
+      <% @featured_companies.each do |company| %>
+        <div class="col-md-4">
+          <div class="card">
+            <%# <img src="tool1.jpg" class="card-img-top" alt="Tool 1 Image"> %>
+            <% if company.logo.attached? %>
+                <%= image_tag company.logo, class:"card-img-top" %>
             <% end %>
             
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <p class="p-3">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam perspiciatis dolorum cumque vero atque. Harum dolor non suscipit architecto reprehenderit, voluptatem aut impedit, incidunt minus ipsa perferendis recusandae vitae labore.
-          </p>
-        </div>
-        <div class="card mt-3">
-            <div class="p-2">
-              <h3>Sponsors</h3>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam perspiciatis dolorum cumque vero atque. Harum dolor non suscipit architecto reprehenderit, voluptatem aut impedit, incidunt minus ipsa perferendis recusandae vitae labore.
+            <div class="card-body">
+              <h5 class="card-title"><%= company.name %></h5>
+              <p class="card-text"> <%= truncate(company.about, length: 80 ) %> </p>
             </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--Listing section -->
-  <div class="mx-auto max-w-2xl lg:max-w-7xl">
-    <div class="text-center">
-      <h3 class="">Top Listings</h3>
-    </div>
-    <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
-      <div class="row  ">
-        <% category_slice.each do |category_name, companies| %>
-          <div class="col-md-3 mb-3 mb-sm-3">
-            <ol class="list-group custom-numbered-list">
-              <!-- Special first item without number -->
-              <li class="list-group-item border border-bottom-0 fw-medium fs-5 text" style="list-style-type: none; position: relative;"><%= category_name.titleize %></li>
-              <% companies.take(10).each do |comp| %>
-                <li class="list-group-item company-logo-container" style="position: relative;">
-                  <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
-                  <%= link_to comp.name, company_path(comp), class:"ms-2" %>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
-                    <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
-                    <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
-                  </svg>
-                </li>
-              <% end %>
-            </ol>
           </div>
-        <% end %>
+        </div>
+      
+      <% end %>
+      
+    </div>
+  </section>
+
+  <section class="my-5">
+      <h2 class="mb-3">Top Used Tools</h2>
+      <p>Explore the most popular tools in the Ruby on Rails ecosystem, utilized by industry leaders for development and production.</p>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card">
+                  <img src="tool1.jpg" class="card-img-top" alt="Tool 1 Image">
+                  <div class="card-body">
+                      <h5 class="card-title">RSpec</h5>
+                      <p class="card-text">The leading tool for Ruby testing, ensuring high-quality applications.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card">
+                  <img src="tool2.jpg" class="card-img-top" alt="Tool 2 Image">
+                  <div class="card-body">
+                      <h5 class="card-title">Capistrano</h5>
+                      <p class="card-text">Streamlines the deployment process, making it faster and more reliable.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card">
+                  <img src="tool3.jpg" class="card-img-top" alt="Tool 3 Image">
+                  <div class="card-body">
+                      <h5 class="card-title">Sidekiq</h5>
+                      <p class="card-text">Efficient background processing for Ruby on Rails applications.</p>
+                  </div>
+              </div>
+          </div>
       </div>
-    <% end %>
-  </div>
-  <!-- End of listing section -->
-</main>
+  </section>
+
+  <section class="feature-bg my-5 p-4 rounded">
+      <h2 class="mb-3">Up and Coming Startups</h2>
+      <p>Meet the startups that are set to revolutionize the industry with innovative Ruby on Rails applications.</p>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card">
+                  <img src="startup1.jpg" class="card-img-top" alt="Startup 1 Image">
+                  <div class="card-body">
+                      <h5 class="card-title">NextGen Tech</h5>
+                      <p class="card-text">Developing AI-driven analytics platforms with Ruby on Rails.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card">
+                  <img src="startup2.jpg" class="card-img-top" alt="Startup 2 Image">
+                  <div class="card-body">
+                      <h5 class="card-title">EcoApps</h5>
+                      <p class="card-text">Creating sustainable solutions for environmental management systems.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card">
+                  <img src="startup3.jpg" class="card-img-top" alt="Startup 3 Image">
+                  <div the="card-body">
+                      <h5 class="card-title">HealthTrack</h5>
+                      <p class="card-text">Innovating healthcare with patient management software built on Rails.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a href="#" class="btn btn-warm mt-3">Discover More Startups</a>
+  </section>
+
+  <footer class="text-center mt-5 pt-4">
+      <p>Follow us on <a href="#" class="warm-color">Twitter</a>, <a href="#" class="warm-color">LinkedIn</a>, and <a href="#" class="warm-color">Facebook</a> to stay updated on the latest news and events.</p>
+  </footer>
+</div>
+
