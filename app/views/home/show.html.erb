@@ -33,18 +33,13 @@
       <% @featured_companies.each do |company| %>
         <div class="col-md-4">
           <div class="card">
-            <%# <img src="tool1.jpg" class="card-img-top" alt="Tool 1 Image"> %>
-            <% if company.logo.attached? %>
-                <%= image_tag company.logo, class:"card-img-top" %>
-            <% end %>
-            
+              <%= image_tag company.logo, class:"card-img-top" if company.logo.attached? %>
             <div class="card-body">
               <h5 class="card-title"><%= company.name %></h5>
               <p class="card-text"> <%= truncate(company.about, length: 80 ) %> </p>
             </div>
           </div>
         </div>
-      
       <% end %>
       
     </div>
