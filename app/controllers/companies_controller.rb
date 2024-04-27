@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   include Pagy::Backend
   before_action :set_company, only: [ :show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   def index
     if params[:query].present?
       @companies = Company.where("name ILIKE ?", "%#{params[:query]}%")
@@ -49,6 +49,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
