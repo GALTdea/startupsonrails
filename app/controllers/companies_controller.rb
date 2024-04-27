@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   include Pagy::Backend
-  before_action :set_company, only: [ :edit, :update, :destroy]
+  before_action :set_company, only: [ :show, :edit, :update, :destroy]
 
   def index
     if params[:query].present?
@@ -25,7 +25,6 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.friendly.find(params[:id])
   end
 
   def new
@@ -52,9 +51,17 @@ class CompaniesController < ApplicationController
   def edit
   end
 
+  def update
+    if @company.update(company_params)
+      redirect_to @company, notice: "Company was successfully updated."
+    else
+      render :edit
+    end
+  end
+
   private
   def set_company
-    @company = Company.find(params[:id])
+    @company = Company.friendly.find(params[:id])
   end
 
   def company_params
