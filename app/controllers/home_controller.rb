@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   def show
     ahoy.track "My first event", language: "Ruby"
 
+    @featured_companies = Category.where(name: 'top_rails_companies').first.companies.limit(3)
     @top_categories = Category.showcased
     @companies_by_category = {}
 
