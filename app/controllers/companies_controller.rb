@@ -49,7 +49,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-
+    authorize @company
   end
 
   def update
