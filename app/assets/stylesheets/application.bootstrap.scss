@@ -1,326 +1,367 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-// Additional spacing classes
-/* Padding */
-.pt-6 { padding-top: 6rem !important; }
-.pr-6 { padding-right: 6rem !important; }
-.pb-6 { padding-bottom: 6rem !important; }
-.pl-6 { padding-left: 6rem !important; }
-.px-6 { padding-right: 6rem !important; padding-left: 6rem !important; }
-.py-6 { padding-top: 6rem !important; padding-bottom: 6rem !important; }
-
-/* Margin */
-.mt-6 { margin-top: 6rem !important; }
-.mr-6 { margin-right: 6rem !important; }
-.mb-6 { margin-bottom: 6rem !important; }
-.ml-6 { margin-left: 6rem !important; }
-.mx-6 { margin-right: 6rem !important; margin-left: 6rem !important; }
-.my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
-/* And so on for .mt-7, .mt-8, etc. if you need them */
 
 
-// link classes
-.styles-link {
-  color: #146aff;
-  text-decoration: none;
+
+:root {
+  --primary-color: #2a6f97; /* Dark blue */
+  --secondary-color: #4c8da7; /* Lighter blue */
+  --background-color: #f0f8ff; /* Very light blue */
+  --button-color: #03506f; /* Deep blue */
+  --button-hover-color: #023e58; /* Even deeper blue */
+  --feature-background: #e7eff6; /* Soft light blue */
 }
-
-.blog-blurb {
-  font-weight: 200;
-  margin-top: 8px;
-  color: #282828;
-  
-}
-
-// theme colors
-.red-ruby-text {
-  color: #DC2626;
-}
-
-.bg-header{
-  background-color: #F0F4F8;
-}
-
 
 body {
   font-family: 'Arial', sans-serif;
-  color: #333; /* Dark gray for better readability */
-  line-height: 1.5;
-  background-color: #F7F7F7;
+  color: var(--primary-color);
+  background-color: var(--background-color);
 }
 
-.icon-right {
-  margin-left: auto;
+.btn-warm {
+  background-color: var(--button-color);
+  border: none;
+  color: white;
 }
 
-.full-width-section {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+.btn-warm:hover {
+  background-color: var(--button-hover-color);
+  color: white;
 }
 
-// hide empty notices
-span.notice:empty, span.alert:empty {
-  display: none;
+.feature-bg {
+  background-color: var(--feature-background);
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.header-section {
-  background-color: #CBDDFF;
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 1em;
-  min-height: 20em;
-}
-
-.custom-list-group-item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 1em; /* Start the line 1em from the left side */
-  right: 1em; /* End the line 1em before the right side */
-  bottom: 0;
-  border-bottom: 1px solid #dee2e6; /* Default border color for Bootstrap's list-group-item */
-}
-
-.container h1, .container h2, .container h4 {
-  font-weight: 600; /* Semi-bold weight for emphasis */
-  margin-bottom: 20px;
-}
-
-.container h4 span {
-  font-size: 1.2rem; /* Slightly larger icons for emphasis */
-  vertical-align: middle;
-  margin-right: 8px; /* Space between icon and text */
-}
-
-ul.list-group {
-  border-radius: 4px;
-}
-
-ul.list-group-item a {
-  color: rgb(14,17,17) !important; 
-  text-decoration: none;
-}
-
-ul.list-group-item a:hover {
-  text-decoration: underline; /* Underline on hover for emphasis */
-}
-
-@media screen and (max-width: 768px) {
-  p.display-2, h2.display-6, h1.display-1 {
-    font-size: 1.5rem; /* Adjust font size for smaller screens */
-  }
-}
-
-h1.display-1 {
-  font-size: 3.5rem;
-  color: #DC2626; /* Ruby red */
-}
-
-.header-2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-h2.display-6 {
-  font-size: 1.5rem;
-  color: #777; 
-}
-
-/* If you have any buttons */
-.btn-primary {
-  background-color: #DC2626;
-  border-color: #DC2626;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-  background-color: #990000; /* Darkened ruby red for hover/focus */
-  border-color: #990000;
-}
-
-.company-logo {
-  // border-radius: 50%;
-  // overflow: hidden;
-  color: rgb(214,68,46) !important;
-}
-
-.company-logo rect {
-  fill: rgb(224,90,65) !important;
-}
-
-.company-logo text {
-  fill: white;
-}
-
-.company-card {
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  min-height: 10em;
-}
-
-.company-card-body{
-  padding: .5em;
-}
-
-.svg-container {
-  /* Set height here or make it dynamic */
-  height: 100px;
-  /* This will ensure that the aspect ratio of your SVG is maintained */
-  aspect-ratio: 1 / 1;
-}
-
-.badge-list {
-  display: flex;
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.badge {
-  display: flex;
-  border-radius: 10px;
-  align-items: center;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  font-size: 10px;
-  flex-shrink: 0;
-  background-color: #e0f9ea;
-  color: #00431b;
-}
-
-.badge2 {
-  background-color: #f8f1ff;
-  color: #4039a8;
-}
-
-[data-controller="autocomplete"] {
-  position: relative;
-}
-
-[data-autocomplete-target="results"] {
-  position: absolute;
-  top: 100%;   /* Align it right below the input field */
-  left: 0;     /* Align it to the left of the container */
-  width: 100%; /* Make it as wide as the container */
-  z-index: 10; /* Ensure it's on top of other content */
-  list-style-type: none;
-  padding-left: 0; /* to remove any default padding browsers might add */
-  /*  add some basic styling for the dropdown: */
+.card {
   background-color: #fff;
   border: none;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  max-height: 300px;  /* or whatever height you prefer */
-  overflow-y: auto;
-}
-
-[data-autocomplete-target="results"] li {
-  padding: 10px;
-  cursor: pointer;
-}
-
-[data-autocomplete-target="results"] li:hover {
-  background-color: #f7f7f7;
-}
-
-[data-autocomplete-target="results"].has-results {
-  border: 1px solid #ccc;
-}
-
-// Home, show
-.company-logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.company-logo-container svg {
-}
-
-.custom-numbered-list {
-  counter-reset: list-counter;
-}
-
-.custom-numbered-list > li:not(:first-child):before {
-  content: counter(list-counter) ".";
-  counter-increment: list-counter;
-  position: absolute;
-  left: 0.5rem; /* Adjust as necessary */
-  top: 50%;
-  transform: translateY(-50%);
-  color: #00000061;
-}
-
-// Companies, index
-.company-logo-container-large{
-  width: 3em;
-  height: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}@import 'actiontext.css';
-
-.rich-text-content {
-  // Custom styles for your rich text content
-  p, h1, h2, h3, h4, h5, h6 {
-    // Example: Add some bottom margin to paragraphs and headers
-    margin-bottom: 1rem;
-  }
-
-  // Add more styles as per your requirements
-}
-
-.recent-blogs .blog-card {
-  height: 250px; /* Adjust as needed */
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.recent-blogs .blog-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover; /* Ensure image fills container properly */
-}
-
-.recent-blogs .blog-date {
-  font-size: 0.8rem;
-  color: #999;
-}
-
-.recent-blogs .blog-excerpt {
-  margin-bottom: 10px;
 }
 
 
-.blog-post {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
+// // Additional spacing classes
+// /* Padding */
+// .pt-6 { padding-top: 6rem !important; }
+// .pr-6 { padding-right: 6rem !important; }
+// .pb-6 { padding-bottom: 6rem !important; }
+// .pl-6 { padding-left: 6rem !important; }
+// .px-6 { padding-right: 6rem !important; padding-left: 6rem !important; }
+// .py-6 { padding-top: 6rem !important; padding-bottom: 6rem !important; }
 
-.blog-post:last-child {
-  margin-bottom: 0;
-}
+// /* Margin */
+// .mt-6 { margin-top: 6rem !important; }
+// .mr-6 { margin-right: 6rem !important; }
+// .mb-6 { margin-bottom: 6rem !important; }
+// .ml-6 { margin-left: 6rem !important; }
+// .mx-6 { margin-right: 6rem !important; margin-left: 6rem !important; }
+// .my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
+// /* And so on for .mt-7, .mt-8, etc. if you need them */
 
-.blog-post img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  margin-right: 1rem;
-}
 
-.blog-post-title {
-  font-weight: bold;
-  color: #146aff;
-  font-weight: 500;
-}
+// // link classes
+// .styles-link {
+//   color: #146aff;
+//   text-decoration: none;
+// }
 
-.blog-post-date {
-  font-size: 0.75rem;
-  color: #666;
-}
+// .blog-blurb {
+//   font-weight: 200;
+//   margin-top: 8px;
+//   color: #282828;
+  
+// }
 
-.last-hr {
-  display: none;
-}
+// // theme colors
+// .red-ruby-text {
+//   color: #DC2626;
+// }
+
+// .bg-header{
+//   background-color: #F0F4F8;
+// }
+
+
+// body {
+//   font-family: 'Arial', sans-serif;
+//   color: #333; /* Dark gray for better readability */
+//   line-height: 1.5;
+//   background-color: #F7F7F7;
+// }
+
+// .icon-right {
+//   margin-left: auto;
+// }
+
+// .full-width-section {
+//   width: 100vw;
+//   position: relative;
+//   left: 50%;
+//   right: 50%;
+//   margin-left: -50vw;
+//   margin-right: -50vw;
+// }
+
+// // hide empty notices
+// span.notice:empty, span.alert:empty {
+//   display: none;
+// }
+
+// .header-section {
+//   background-color: #CBDDFF;
+//   // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+//   padding: 1em;
+//   min-height: 20em;
+// }
+
+// .custom-list-group-item:not(:last-child)::after {
+//   content: "";
+//   position: absolute;
+//   left: 1em; /* Start the line 1em from the left side */
+//   right: 1em; /* End the line 1em before the right side */
+//   bottom: 0;
+//   border-bottom: 1px solid #dee2e6; /* Default border color for Bootstrap's list-group-item */
+// }
+
+// .container h1, .container h2, .container h4 {
+//   font-weight: 600; /* Semi-bold weight for emphasis */
+//   margin-bottom: 20px;
+// }
+
+// .container h4 span {
+//   font-size: 1.2rem; /* Slightly larger icons for emphasis */
+//   vertical-align: middle;
+//   margin-right: 8px; /* Space between icon and text */
+// }
+
+// ul.list-group {
+//   border-radius: 4px;
+// }
+
+// ul.list-group-item a {
+//   color: rgb(14,17,17) !important; 
+//   text-decoration: none;
+// }
+
+// ul.list-group-item a:hover {
+//   text-decoration: underline; /* Underline on hover for emphasis */
+// }
+
+// @media screen and (max-width: 768px) {
+//   p.display-2, h2.display-6, h1.display-1 {
+//     font-size: 1.5rem; /* Adjust font size for smaller screens */
+//   }
+// }
+
+// h1.display-1 {
+//   font-size: 3.5rem;
+//   color: #DC2626; /* Ruby red */
+// }
+
+// .header-2 {
+//   font-size: 1.5rem;
+//   font-weight: 600;
+// }
+
+// h2.display-6 {
+//   font-size: 1.5rem;
+//   color: #777; 
+// }
+
+// /* If you have any buttons */
+// .btn-primary {
+//   background-color: #DC2626;
+//   border-color: #DC2626;
+// }
+
+// .btn-primary:hover, .btn-primary:focus {
+//   background-color: #990000; /* Darkened ruby red for hover/focus */
+//   border-color: #990000;
+// }
+
+// .company-logo {
+//   // border-radius: 50%;
+//   // overflow: hidden;
+//   color: rgb(214,68,46) !important;
+// }
+
+// .company-logo rect {
+//   fill: rgb(224,90,65) !important;
+// }
+
+// .company-logo text {
+//   fill: white;
+// }
+
+// .company-card {
+//   border-radius: 10px;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+//   min-height: 10em;
+// }
+
+// .company-card-body{
+//   padding: .5em;
+// }
+
+// .svg-container {
+//   /* Set height here or make it dynamic */
+//   height: 100px;
+//   /* This will ensure that the aspect ratio of your SVG is maintained */
+//   aspect-ratio: 1 / 1;
+// }
+
+// .badge-list {
+//   display: flex;
+//   list-style-type: none;
+//   padding-left: 0;
+// }
+
+// .badge {
+//   display: flex;
+//   border-radius: 10px;
+//   align-items: center;
+//   font-weight: 500;
+//   text-transform: uppercase;
+//   padding: 4px 8px;
+//   font-size: 10px;
+//   flex-shrink: 0;
+//   background-color: #e0f9ea;
+//   color: #00431b;
+// }
+
+// .badge2 {
+//   background-color: #f8f1ff;
+//   color: #4039a8;
+// }
+
+// [data-controller="autocomplete"] {
+//   position: relative;
+// }
+
+// [data-autocomplete-target="results"] {
+//   position: absolute;
+//   top: 100%;   /* Align it right below the input field */
+//   left: 0;     /* Align it to the left of the container */
+//   width: 100%; /* Make it as wide as the container */
+//   z-index: 10; /* Ensure it's on top of other content */
+//   list-style-type: none;
+//   padding-left: 0; /* to remove any default padding browsers might add */
+//   /*  add some basic styling for the dropdown: */
+//   background-color: #fff;
+//   border: none;
+//   border-radius: 4px;
+//   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+//   max-height: 300px;  /* or whatever height you prefer */
+//   overflow-y: auto;
+// }
+
+// [data-autocomplete-target="results"] li {
+//   padding: 10px;
+//   cursor: pointer;
+// }
+
+// [data-autocomplete-target="results"] li:hover {
+//   background-color: #f7f7f7;
+// }
+
+// [data-autocomplete-target="results"].has-results {
+//   border: 1px solid #ccc;
+// }
+
+// // Home, show
+// .company-logo-container {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .company-logo-container svg {
+// }
+
+// .custom-numbered-list {
+//   counter-reset: list-counter;
+// }
+
+// .custom-numbered-list > li:not(:first-child):before {
+//   content: counter(list-counter) ".";
+//   counter-increment: list-counter;
+//   position: absolute;
+//   left: 0.5rem; /* Adjust as necessary */
+//   top: 50%;
+//   transform: translateY(-50%);
+//   color: #00000061;
+// }
+
+// // Companies, index
+// .company-logo-container-large{
+//   width: 3em;
+//   height: 3em;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }@import 'actiontext.css';
+
+// .rich-text-content {
+//   // Custom styles for your rich text content
+//   p, h1, h2, h3, h4, h5, h6 {
+//     // Example: Add some bottom margin to paragraphs and headers
+//     margin-bottom: 1rem;
+//   }
+
+//   // Add more styles as per your requirements
+// }
+
+// .recent-blogs .blog-card {
+//   height: 250px; /* Adjust as needed */
+//   border: 1px solid #ddd;
+//   border-radius: 5px;
+// }
+
+// .recent-blogs .blog-card img {
+//   width: 100%;
+//   height: 150px;
+//   object-fit: cover; /* Ensure image fills container properly */
+// }
+
+// .recent-blogs .blog-date {
+//   font-size: 0.8rem;
+//   color: #999;
+// }
+
+// .recent-blogs .blog-excerpt {
+//   margin-bottom: 10px;
+// }
+
+
+// .blog-post {
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 1rem;
+// }
+
+// .blog-post:last-child {
+//   margin-bottom: 0;
+// }
+
+// .blog-post img {
+//   width: 150px;
+//   height: 150px;
+//   object-fit: cover;
+//   margin-right: 1rem;
+// }
+
+// .blog-post-title {
+//   font-weight: bold;
+//   color: #146aff;
+//   font-weight: 500;
+// }
+
+// .blog-post-date {
+//   font-size: 0.75rem;
+//   color: #666;
+// }
+
+// .last-hr {
+//   display: none;
+// }
