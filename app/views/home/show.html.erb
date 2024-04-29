@@ -1,48 +1,35 @@
 <div class="container py-5">
   <section class="feature-bg my-5 p-4 rounded">
-      <h2 class="mb-3">Featured Companies</h2>
-      <p>Discover the cutting-edge projects and inspiring stories of companies making significant impacts with Ruby on Rails.</p>
-      <div class="row">
-          <div class="col-md-6">
-            
-              <div class="card">
-                  <img src="company1.jpg" class="card-img-top" alt="Company 1 Image">
-                  <div class="card-body">
-                      <h5 class="card-title">RailsWare Innovations</h5>
-                      <p class="card-text">Pioneering new integration tools for seamless software solutions.</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6">
-              <div class="card">
-                  <img src="company2.jpg" class="card-img-top" alt="Company 2 Image">
-                  <div class="card-body">
-                      <h5 class="card-title">TechStream Studios</h5>  
-                      <p class="card-text">Revolutionizing content delivery through Rails-powered platforms.</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <a href="#" class="btn btn-warm mt-3">See All Featured Companies</a>
-  </section>
-  
-  <section class="my-5">
     <h2 class="mb-3">Featured Companies</h2>
     <p>Explore the most popular tools in the Ruby on Rails ecosystem, utilized by industry leaders for development and production.</p>
     <div class="row">
       <% @featured_companies.each do |company| %>
         <div class="col-md-4">
-          <div class="card">
-              <%= image_tag company.logo, class:"card-img-top" if company.logo.attached? %>
-            <div class="card-body">
-              <h5 class="card-title"><%= company.name %></h5>
-              <p class="card-text"> <%= truncate(company.about, length: 80 ) %> </p>
+          <div class="company-card card" style="max-width: 540px;" >
+            <div class="m-4">
+              <div card="company-card-header">
+                <div class="row">
+                  <div class="col-md-3">
+                    <%= image_tag company.logo, { class:"img-fluid"}  if company.logo.attached? %>
+                  </div>
+                  <div class="col-md-9">
+                    <h5 class="card-title fs-5 fw-medium">Card </h5>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="company-card-body mt-3">
+                <p class="fs-6 fw-lighter">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aperiam eligendi optio id aspernatur quos ullam. Ex, sed. Nemo suscipit qui eveniet ea quis recusandae temporibus perspiciatis voluptatum distinctio nam.m
+                </p>
+              </div>
             </div>
           </div>
         </div>
       <% end %>
-      
     </div>
+    <a href="#" class="btn btn-warm mt-3">See All Featured Companies</a>
   </section>
 
   <section class="my-5">
