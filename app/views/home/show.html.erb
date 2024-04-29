@@ -16,7 +16,6 @@
                     <h5 class="card-title fs-5 fw-medium"><%= company.name %> </h5>
                     <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                   </div>
-                  
                 </div>
               </div>
               <div class="company-card-body mt-3">
@@ -43,6 +42,63 @@
       <% end %>
     </div>
     <a href="#" class="btn btn-warm mt-3">See All Featured Companies</a>
+  </section> 
+
+  <section class="">
+    <h2 class="mb-3">Recent articles</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card article-card h-100 shadow-sm">
+            <%= image_tag("sample_image.jpeg", class: "card-img-top rounded-top") %>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title fs-5 fw-bold">How to Build a Ruby on Rails Application</h5>
+                <p class="card-text mb-4">Learn how to create a Ruby on Rails application from scratch with this step-by-step guide.</p>
+                <div class="mt-auto">
+                    <small class="text-muted">Published on January 5, 2024 by John Doe</small>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+                <a href="#" class="btn btn-primary stretched-link">Read More</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-5">
+    <h2 class="mb-3">Top Categories</h2>
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">RSpec</h5>
+                <p class="card-text">The leading tool for Ruby testing, ensuring high-quality applications.</p>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+            <img src="tool2.jpg" class="card-img-top" alt="Tool 2 Image">
+            <div class="card-body">
+                <h5 class="card-title">Capistrano</h5>
+                <p class="card-text">Streamlines the deployment process, making it faster and more reliable.</p>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+            <img src="tool3.jpg" class="card-img-top" alt="Tool 3 Image">
+            <div class="card-body">
+                <h5 class="card-title">Sidekiq</h5>
+                <p class="card-text">Efficient background processing for Ruby on Rails applications.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    
   </section>
 
   <section class="my-5">
@@ -77,41 +133,6 @@
               </div>
           </div>
       </div>
-  </section>
-
-  <section class="feature-bg my-5 p-4 rounded">
-      <h2 class="mb-3">Up and Coming Startups</h2>
-      <p>Meet the startups that are set to revolutionize the industry with innovative Ruby on Rails applications.</p>
-      <div class="row">
-          <div class="col-md-4">
-              <div class="card">
-                  <img src="startup1.jpg" class="card-img-top" alt="Startup 1 Image">
-                  <div class="card-body">
-                      <h5 class="card-title">NextGen Tech</h5>
-                      <p class="card-text">Developing AI-driven analytics platforms with Ruby on Rails.</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card">
-                  <img src="startup2.jpg" class="card-img-top" alt="Startup 2 Image">
-                  <div class="card-body">
-                      <h5 class="card-title">EcoApps</h5>
-                      <p class="card-text">Creating sustainable solutions for environmental management systems.</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card">
-                  <img src="startup3.jpg" class="card-img-top" alt="Startup 3 Image">
-                  <div the="card-body">
-                      <h5 class="card-title">HealthTrack</h5>
-                      <p class="card-text">Innovating healthcare with patient management software built on Rails.</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <a href="#" class="btn btn-warm mt-3">Discover More Startups</a>
   </section>
 
   <footer class="text-center mt-5 pt-4">
