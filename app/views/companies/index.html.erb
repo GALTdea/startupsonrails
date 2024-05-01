@@ -34,7 +34,7 @@
 
       <!-- Companies List -->
       <turbo-frame id="companies_list">
-        <div class="bg-body rounded">
+        <div class="">
           <% @companies.each do |company| %>
             <%= render partial: 'company', locals: { company: company } %>
           <% end %>
