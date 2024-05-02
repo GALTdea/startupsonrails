@@ -55,7 +55,7 @@
   font-size: 34px; /* example size */
   font-weight: 100; /* lighter */
 }
-
+// blue theme
 :root {
   --primary-color: #2a6f97; /* Dark blue */
   --secondary-color: #4c8da7; /* Lighter blue */
@@ -268,44 +268,45 @@ body {
 //   color: #00431b;
 // }
 
-// .badge2 {
-//   background-color: #f8f1ff;
-//   color: #4039a8;
-// }
+// style for search dropdown , needs to be updated
+.badge2 {
+  background-color: #f8f1ff;
+  color: #4039a8;
+}
 
-// [data-controller="autocomplete"] {
-//   position: relative;
-// }
+[data-controller="autocomplete"] {
+  position: relative;
+}
 
-// [data-autocomplete-target="results"] {
-//   position: absolute;
-//   top: 100%;   /* Align it right below the input field */
-//   left: 0;     /* Align it to the left of the container */
-//   width: 100%; /* Make it as wide as the container */
-//   z-index: 10; /* Ensure it's on top of other content */
-//   list-style-type: none;
-//   padding-left: 0; /* to remove any default padding browsers might add */
-//   /*  add some basic styling for the dropdown: */
-//   background-color: #fff;
-//   border: none;
-//   border-radius: 4px;
-//   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-//   max-height: 300px;  /* or whatever height you prefer */
-//   overflow-y: auto;
-// }
+[data-autocomplete-target="results"] {
+  position: absolute;
+  top: 100%;   /* Align it right below the input field */
+  left: 0;     /* Align it to the left of the container */
+  width: 100%; /* Make it as wide as the container */
+  z-index: 10; /* Ensure it's on top of other content */
+  list-style-type: none;
+  padding-left: 0; /* to remove any default padding browsers might add */
+  /*  add some basic styling for the dropdown: */
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-height: 300px;  /* or whatever height you prefer */
+  overflow-y: auto;
+}
 
-// [data-autocomplete-target="results"] li {
-//   padding: 10px;
-//   cursor: pointer;
-// }
+[data-autocomplete-target="results"] li {
+  padding: 10px;
+  cursor: pointer;
+}
 
-// [data-autocomplete-target="results"] li:hover {
-//   background-color: #f7f7f7;
-// }
+[data-autocomplete-target="results"] li:hover {
+  background-color: #f7f7f7;
+}
 
-// [data-autocomplete-target="results"].has-results {
-//   border: 1px solid #ccc;
-// }
+[data-autocomplete-target="results"].has-results {
+  border: 1px solid #ccc;
+}
 
 // // Home, show
 // .company-logo-container {
