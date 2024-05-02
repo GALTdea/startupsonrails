@@ -249,11 +249,15 @@ body {
 //   aspect-ratio: 1 / 1;
 // }
 
-// .badge-list {
-//   display: flex;
-//   list-style-type: none;
-//   padding-left: 0;
-// }
+.badge-list {
+  display: flex;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.badge-list li {
+  margin-right: 1em;  /* Adjust as needed */
+}
 
 // .badge {
 //   display: flex;
@@ -272,6 +276,7 @@ body {
 .badge2 {
   background-color: #f8f1ff;
   color: #4039a8;
+  border-radius: 10px;
 }
 
 [data-controller="autocomplete"] {
