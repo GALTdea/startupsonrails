@@ -1,6 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-
+@import 'actiontext.css';
 // 
 // // Additional spacing classes
 // /* Padding */
@@ -128,9 +128,9 @@ body {
 //   background-color: #F7F7F7;
 // }
 
-// .icon-right {
-//   margin-left: auto;
-// }
+.icon-right {
+  margin-left: auto;
+}
 
 // .full-width-section {
 //   width: 100vw;
@@ -314,36 +314,38 @@ body {
 }
 
 // // Home, show
-// .company-logo-container {
-//   display: flex;
-//   align-items: center;
-// }
+.company-logo-container {
+  display: flex;
+  align-items: center;
+}
 
-// .company-logo-container svg {
-// }
+.company-logo-container svg {
+}
 
-// .custom-numbered-list {
-//   counter-reset: list-counter;
-// }
+.custom-numbered-list {
+  counter-reset: list-counter;
+}
 
-// .custom-numbered-list > li:not(:first-child):before {
-//   content: counter(list-counter) ".";
-//   counter-increment: list-counter;
-//   position: absolute;
-//   left: 0.5rem; /* Adjust as necessary */
-//   top: 50%;
-//   transform: translateY(-50%);
-//   color: #00000061;
-// }
+.custom-numbered-list > li:not(:first-child):before {
+  content: counter(list-counter) ".";
+  counter-increment: list-counter;
+  position: absolute;
+  left: 0.5rem; /* Adjust as necessary */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00000061;
+}
 
 // // Companies, index
-// .company-logo-container-large{
-//   width: 3em;
-//   height: 3em;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }@import 'actiontext.css';
+.company-logo-container-large{
+  width: 3em;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 // .rich-text-content {
 //   // Custom styles for your rich text content
