@@ -11,6 +11,15 @@ class HomeController < ApplicationController
       @companies_by_category[category.name] = category.companies
     end
 
+    @top_cities = Category.top_cities
+    # debugger
+    @companies_by_city = {}
+
+    @top_cities.each do |city|
+      # debugger
+      @companies_by_city[city.name] = city.companies
+    end
+
     @tops_categories = Category.tops_categories
     @tops_companies = {}
 
