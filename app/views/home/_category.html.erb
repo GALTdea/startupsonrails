@@ -1,0 +1,12 @@
+<div class="col-md-3 mb-3 mb-sm-3">
+  <ol class="list-group custom-numbered-list">
+    <li class="list-group-item border border-bottom-0 fs-5" style="list-style-type: none;"><%= category_name.titleize %></li>
+    <% companies.take(10).each do |comp| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= generate_svg_with_initials(comp.name, 'ms-3', '24', '24') %>
+        <%= link_to comp.name, company_path(comp), class: "ms-2 flex-grow-1" %>
+        <%= generate_svg_with_initials('>', 'icon-right', '24', '24') %> <!-- Using '>' just for demo purposes -->
+      </li>
+    <% end %>
+  </ol>
+</div>
