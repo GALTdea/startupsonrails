@@ -213,6 +213,23 @@ body {
 //   border-color: #DC2626;
 // }
 
+.company-logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-right {
+  margin-left: auto; /* Ensures the icon aligns to the right */
+}
+
+.company-logo {
+  flex-shrink: 0; /* Prevents the SVG from resizing awkwardly */
+}
+
+
+
+
 .btn-primary:hover, .btn-primary:focus {
   background-color: #990000; /* Darkened ruby red for hover/focus */
   border-color: #990000;
