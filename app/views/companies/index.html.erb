@@ -3,13 +3,15 @@
   <div class="row">
     <!-- Filters Section -->
     <div class="col-md-3">
+      <h3>Filter by:</h3>
+      <hr>
       <!-- Category Filter -->
       <div class="mb-3">
         <turbo-frame id="filter_frame">
           <div data-controller="filter">
             <%= form_with url: companies_path, method: :get, data: { turbo_frame: "companies_list", turbo: "true" }, local: true do |f| %>
               <div class="mb-3">
-                <%= f.label :category_id, "Categories", class: "form-label" %>
+                <%= f.label :category_id, "Category", class: "form-label" %>
                 <% Category.showcased.each do |category| %>
                   <div class="form-check">
                     <%= check_box_tag "categories[]", category.id, false, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } %>
