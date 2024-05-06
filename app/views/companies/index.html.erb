@@ -3,16 +3,21 @@
   <div class="row">
     <!-- Filters Section -->
     <div class="col-md-3">
-      <h5>Filters</h5>
-      <hr>
       <!-- Category Filter -->
       <div class="mb-3">
         <turbo-frame id="filter_frame">
           <div data-controller="filter">
             <%= form_with url: companies_path, method: :get, data: { turbo_frame: "companies_list", turbo: "true" }, local: true do |f| %>
-              <%= f.label :category_id, "Category" %>
-              <%= f.collection_select :category, Category.showcased, :name, :name, {prompt: "Select a category"}, {class: "form-control", data: {action: "change->filter#submit"}} %>
-              <%= f.submit "Submit", class: 'd-none', data:{ filter_target: "submitButton"} %>
+              <div class="mb-3">
+                <%= f.label :category_id, "Categories", class: "form-label" %>
+                <% Category.showcased.each do |category| %>
+                  <div class="form-check">
+                    <%= check_box_tag "categories[]", category.id, false, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } %>
+                    <%= label_tag "category_#{category.id}", category.name, class: "form-check-label" %>
+                  </div>
+                <% end %>
+              </div>
+              <%= f.submit "Submit", class: 'd-none', data: { filter_target: "submitButton"} %>
             <% end %>
           </div>
         </turbo-frame>
