@@ -2,11 +2,14 @@ class CompaniesController < ApplicationController
   include Pagy::Backend
   before_action :set_company, only: [ :show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+
   def index
     if params[:query].present?
       @companies = Company.where("name ILIKE ?", "%#{params[:query]}%")
-    elsif params[:category].present?
-      @pagy, @companies = pagy(Category.find_by(name: params[:category]).companies)
+    elsif params[:categories].present?
+      # Adjust to handle multiple category IDs
+      category_ids = params[:categories].reject(&:blank?) # Ensure no blank IDs are processed
+      @pagy, @companies = pagy(Company.joins(:categories).where(categories: { id: category_ids }).distinct)
     else
       @pagy, @companies = pagy(Company.where(status: :active).order(name: :asc))
     end
@@ -14,15 +17,16 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       format.html
       format.turbo_stream
-      format.json {
+      format.json do
         if params[:query].present?
           render json: @companies.as_json(only: [:id, :name])
         else
-          # You can handle other JSON responses here if needed.
+          # Additional JSON response handling can be done here if needed.
         end
-      }
+      end
     end
   end
+
 
   def show
   end
