@@ -15,7 +15,7 @@
                 <% Category.showcased.each do |category| %>
                   <div class="form-check">
                     <%= check_box_tag "categories[]", category.id, false, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } %>
-                    <%= label_tag "category_#{category.id}", category.name, class: "form-check-label" %>
+                    <%= label_tag "category_#{category.id}", category.name.humanize , class: "form-check-label" %>
                   </div>
                 <% end %>
               </div>
