@@ -5,18 +5,22 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    authorize @category
   end
 
   def show
     @category = Category.find(params[:id])
+    authorize @category
   end
 
   def new
     @category = Category.new
+    authorize @category
   end
 
   def create
    @category = Category.new(category_params)
+  authorize @category
     if @category.save
       redirect_to @category, notice: "Category was successfully created."
     else
@@ -26,9 +30,11 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
+    authorize @category
   end
 
   def update
+    authorize @category
     if @category.update(category_params)
       redirect_to @category, notice: "Category was successfully updated."
     else
