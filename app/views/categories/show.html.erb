@@ -12,6 +12,9 @@
 <% end %>
 
 
-<% @category.companies.each do |company|  %>
-  <%= company.name %> <br>
+<% @category.companies.each do |company| %>
+  <%= company.name %>
+  <%= button_to 'Remove', remove_company_category_path(@category, company_id: company.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
 <% end %>
+
