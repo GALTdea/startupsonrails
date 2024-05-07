@@ -18,9 +18,21 @@ class Category < ApplicationRecord
     # 'New York' => 'New York'
   }.freeze
 
+  CATEGORY_COMPANY_MAP = {
+    # "Technology" => ["Company A", "Company B", "Company C"],
+    # "Healthcare" => ["Company D", "Company E"],
+    # "Finance" => ["Company F", "Company G", "Company H"]
+
+    "top_rails_companies" => ["Shopify", "Airbnb", "GitHub", "Basecamp", "bloomberg", "Heroku", "Zendesk", "Dribbble", "Kickstarter", "SoundCloud", "Twitch", "Trello", "Instacart", "Slack", "Square", "Stripe", "Tinder", "Uber", "Venmo", "WhatsApp", "Zapier", "Zillow", "Zocdoc", "Zynga"],
+    "trening" => ["beehiiv", "GoRails", "GitLab", "Honeybadger", "Hey.com"],
+    "hotwire" => ["Hey.com", "Basecamp", "Shopify"],
+    "tooling" => ["Heroku", "GitHub", "Jumstart"],
+  }.freeze
+
 
 
   scope :showcased, -> { where(name: category_names) }
   scope :tops_categories, -> { where(name: tops_categories) }
   scope :top_cities, -> { where(name: top_cities ) }
 end
+# Assuming you have a category instance called 'category' and a number of companies called 'num_companies'
