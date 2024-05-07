@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 
   def create
    @category = Category.new(category_params)
-    if @category.save 
+    if @category.save
       redirect_to @category, notice: "Category was successfully created."
     else
       render :new
@@ -35,7 +35,20 @@ class CategoriesController < ApplicationController
     end
   end
 
-  private 
+  def remove_company
+    @category = Category.find(params[:id])
+    @company = Company.find(params[:company_id])
+
+    if @category.companies.delete(@company)
+      flash[:notice] = "Company removed successfully."
+    else
+      flash[:alert] = "Failed to remove company."
+    end
+
+    redirect_to category_path(@category)
+  end
+
+  private
   def set_category
     @category = Category.find(params[:id])
   end
