@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # resources :category_companies, only: [:create, :destroy]
 
   resources :categories do
-    resources :companies, only: [:create], controller: 'category_companies'
+    resources :companies, only: [:create], controller: 'category_companies' do
+      delete :remove, on: :collection
+    end
   end
 
   devise_for :users
