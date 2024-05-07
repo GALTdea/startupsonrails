@@ -1,7 +1,6 @@
 <h1>Category: <%= @category.name %></h1>
 
 <%= form_with url: category_companies_path(@category), method: :post do %>
-
   <div class="field">
     <%= label_tag :company_id, "Select a company to add" %>
     <%= select_tag :company_id, options_from_collection_for_select(Company.all, "id", "name") %>
@@ -15,5 +14,4 @@
 
 <% @category.companies.each do |company|  %>
   <%= company.name %> <br>
-
 <% end %>
