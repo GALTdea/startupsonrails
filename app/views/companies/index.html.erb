@@ -1,9 +1,9 @@
 <div class="container mt-4">
   <!-- Search and Filters -->
-  <div class="row">
+  <div class="row fc-555">
     <!-- Filters Section -->
     <div class="col-md-3">
-      <h3>Filter by:</h3>
+      <h3 class="fc-555">Filter by:</h3>
       <hr>
       <!-- Category Filter -->
       <div class="mb-3">
@@ -15,7 +15,7 @@
                 <% Category.showcased.each do |category| %>
                   <div class="form-check">
                     <%= check_box_tag "categories[]", category.id, false, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } %>
-                    <%= label_tag "category_#{category.id}", category.name.humanize , class: "form-check-label" %>
+                    <%= label_tag "category_#{category.id}", category.name.humanize , class: "form-check-label ml-2 fw-100" %>
                   </div>
                 <% end %>
               </div>
@@ -24,6 +24,7 @@
           </div>
         </turbo-frame>
       </div>
+      <hr>
     </div>
 
     <!-- Search and Companies List -->
