@@ -23,10 +23,10 @@ class Category < ApplicationRecord
     # "Healthcare" => ["Company D", "Company E"],
     # "Finance" => ["Company F", "Company G", "Company H"]
 
-    "top_rails_companies" => ["Shopify", "Airbnb", "GitHub", "Basecamp", "bloomberg", "Heroku", "Zendesk", "Dribbble", "Kickstarter", "SoundCloud", "Twitch", "Trello", "Instacart", "Slack", "Square", "Stripe", "Tinder", "Uber", "Venmo", "WhatsApp", "Zapier", "Zillow", "Zocdoc", "Zynga"],
-    "trening" => ["beehiiv", "GoRails", "GitLab", "Honeybadger", "Hey.com"],
-    "hotwire" => ["Hey.com", "Basecamp", "Shopify"],
-    "tooling" => ["Heroku", "GitHub", "Jumstart"],
+    "top_rails_companies" => ["shopify", "airbnb", "gitHub", "basecamp", "bloomberg", "heroku", "zendesk", "dribbble", "kickstarter", "soundcloud", "twitch", "trello", "instacart", "slack", "square", "stripe", "tinder", "uber", "venmo", "whatsapp", "zapier", "zillow", "zocdoc", "zynga"],
+    "trending" => ["beehiiv", "gorails", "gitlab", "honeybadger", "hey.com"],
+    "hotwire" => ["hey.com", "basecamp", "shopify"],
+    "tooling" => ["heroku", "github", "jumpstart"],
   }.freeze
 
 
