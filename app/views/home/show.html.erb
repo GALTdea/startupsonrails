@@ -47,21 +47,30 @@
   <section class="my-5">
     <h2 class="mb-3 fs-3">Recent articles</h2>
     <div class="row">
-      <div class="col-md-4">
-        <div class="card article-card h-100 shadow-sm">
-          <%#= image_tag("sample_image.jpeg", class: "card-img-top rounded-top") %>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title fs-5 fw-bold">How to Build a Ruby on Rails Application</h5>
-            <p class="card-text mb-4">Learn how to create a Ruby on Rails application from scratch with this step-by-step guide.</p>
-            <div class="mt-auto">
-              <small class="text-muted">Published on January 5, 2024 by John Doe</small>
+      <% @featured_blogs.each do |blog| %>
+        <div class="col-md-4">
+          <div class="card article-card h-100 shadow-sm">
+            <%#= image_tag("sample_image.jpeg", class: "card-img-top rounded-top") %>
+            <%= image_tag "https://via.placeholder.com/350x150", class: "card-img-top rounded-top", alt: "Placeholder Image" %>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fs-5 fw-bold"><%= link_to blog.title, blog %></h5>
+              <p class="card-text mb-4"><%= truncate(blog.content.to_plain_text, length: 100) %></p>
+              <div class="mt-auto">
+                <small class="text-muted">Published on January 5, 2024 by John Doe</small>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+              <a href="#" class="btn btn-link ">Read More</a>
+              <% if policy(blog).edit? %>
+                <span class="admin_links">
+                  <%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-link' %>
+                  <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+                </span>
+              <% end %>
             </div>
           </div>
-          <div class="card-footer bg-white border-top-0">
-            <a href="#" class="btn btn-primary stretched-link">Read More</a>
-          </div>
         </div>
-      </div>
+       <% end %>
     </div>
   </section>
 
