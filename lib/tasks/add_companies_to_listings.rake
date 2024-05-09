@@ -26,6 +26,9 @@
 #   end
 # end
 
+
+# to run the task, run the following command:
+# bundle exec rake data_update:associate_companies
 namespace :data_update do
   desc "Associate companies with categories based on normalized names"
   task associate_companies: :environment do
