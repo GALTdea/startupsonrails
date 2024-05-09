@@ -1,15 +1,6 @@
 class BlogPolicy < ApplicationPolicy
-
-  def index?
-    !user.nil?
-  end
-
-  def show?
-    true
-  end
-
   def new?
-    !user.nil?
+    user.admin?
   end
 
   def create?
@@ -17,7 +8,7 @@ class BlogPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin?
+    user.present? && user.admin?
   end
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
