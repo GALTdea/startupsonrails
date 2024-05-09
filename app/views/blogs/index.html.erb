@@ -13,16 +13,16 @@
             </div>
           </div>
           <div class="card-footer bg-white border-top-0">
-            <a href="#" class="btn btn-primary stretched-link">Read More</a>
+            <a href="#" class="btn btn-link ">Read More</a>
+            <% if policy(blog).edit? %>
+              <span class="admin_links">
+                <%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-link' %>
+                <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+              </span>
+            <% end %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
