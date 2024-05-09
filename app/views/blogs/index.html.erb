@@ -1,20 +1,28 @@
-<%# Ensure that the Bootstrap CSS is included in your application layout %>
-
 <div class="container my-5">
   <div class="row">
     <% @blogs.each do |blog| %>
       <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <%= image_tag "https://via.placeholder.com/350x150", class: "card-img-top", alt: "Placeholder Image" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to blog.title, blog %></h5>
-            <p class="card-text"><%= truncate(blog.content.to_plain_text, length: 100) %></p>
+        <div class="card article-card h-100 shadow-sm">
+          <%#= image_tag("sample_image.jpeg", class: "card-img-top rounded-top") %>
+          <%= image_tag "https://via.placeholder.com/350x150", class: "card-img-top rounded-top", alt: "Placeholder Image" %>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fs-5 fw-bold"><%= link_to blog.title, blog %></h5>
+            <p class="card-text mb-4"><%= truncate(blog.content.to_plain_text, length: 100) %></p>
+            <div class="mt-auto">
+              <small class="text-muted">Published on January 5, 2024 by John Doe</small>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">Published <%#= time_ago_in_words(blog.published_at) %> ago</small>
+          <div class="card-footer bg-white border-top-0">
+            <a href="#" class="btn btn-primary stretched-link">Read More</a>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+
+
+
+
+
