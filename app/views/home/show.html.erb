@@ -52,9 +52,9 @@
           <div class="card article-card h-100 shadow-sm">
             <% if blog.image.attached? %>
               <%# image rendered should be about 350x150 %>
-              <%= image_tag(blog.image, class: "card-img-top rounded-top") %>
+              <%= image_tag(blog.image, class: "card-img-top rounded-top", size: "350x150") %>
             <% else %>
-              <%= image_tag("sample_image.jpeg", class: "card-img-top rounded-top", alt: "Placeholder Image" ) %>
+              <%= image_tag("sample_image.jpeg", class: "card-img-top rounded-top", alt: "Placeholder Image" , size: "350x150" ) %>
             <% end %>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title fs-5 fw-bold"><%= link_to blog.title, blog %></h5>
@@ -97,7 +97,6 @@
       </div>
     <% end %>
   </section>
-
 
   <section class="my-5">
   <h2 class="mb-3 fs-3">Popular Categories</h2>
