@@ -51,9 +51,10 @@
         <div class="col-md-4">
           <div class="card article-card h-100 shadow-sm">
             <% if blog.image.attached? %>
-              <%= image_tag("sample_image.jpeg", class: "card-img-top rounded-top") %>
+              <%# image rendered should be about 350x150 %>
+              <%= image_tag(blog.image, class: "card-img-top rounded-top") %>
             <% else %>
-              <%= image_tag "https://via.placeholder.com/350x150", class: "card-img-top rounded-top", alt: "Placeholder Image" %>
+              <%= image_tag("sample_image.jpeg", class: "card-img-top rounded-top", alt: "Placeholder Image" ) %>
             <% end %>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title fs-5 fw-bold"><%= link_to blog.title, blog %></h5>
