@@ -1,14 +1,17 @@
 class BlogsController < ApplicationController
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
-    @blogs = authorize Blog.all
+    @blogs =  Blog.all
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    authorize @blog
   end
 
   def new
-    @blog = authorize Blog.new
+    authorize @blog
   end
 
   def create
@@ -22,7 +25,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    authorize :blog
+    authorize @blog
   end
 
   private
