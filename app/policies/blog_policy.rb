@@ -4,6 +4,10 @@ class BlogPolicy < ApplicationPolicy
     !user.nil?
   end
 
+  def show?
+    true
+  end
+
   def new?
     !user.nil?
   end
