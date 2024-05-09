@@ -28,6 +28,15 @@ class BlogsController < ApplicationController
     authorize @blog
   end
 
+  def update
+    authorize @blog
+    if @blog.update(blog_params)
+      redirect_to @blog, notice: "Blog was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def blog_params
     params.require(:blog).permit(:title, :content, :image)
