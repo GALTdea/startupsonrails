@@ -10,6 +10,10 @@ class BlogPolicy < ApplicationPolicy
   def edit?
     user.present? && user.admin?
   end
+
+  def update?
+    user.admin?
+  end
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
