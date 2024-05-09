@@ -1,0 +1,34 @@
+<%= form_with(model: blog, local: true) do |form| %>
+  <% if blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-label">
+    <%= form.label :title , class: 'form-label'%>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-label">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control' %>
+  </div>
+
+  <div class="form-label">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="submit">
+    <%= form.submit  class:"btn btn-secondary" %>
+  </div>
+
+
+<% end %>
