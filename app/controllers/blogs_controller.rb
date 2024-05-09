@@ -3,11 +3,10 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @blogs =  Blog.all
+    @blogs = Blog.all
   end
 
   def show
-    authorize @blog
   end
 
   def new
