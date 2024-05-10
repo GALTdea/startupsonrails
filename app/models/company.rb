@@ -21,6 +21,8 @@ class Company < ApplicationRecord
   has_many :categories, through: :categorizations
   belongs_to :user, optional: true
 
+  before_save :normalize_name
+
   has_one_attached :logo
 
   extend FriendlyId
@@ -71,5 +73,10 @@ class Company < ApplicationRecord
       error_count: error_count,
       error_messages: error_messages
     }
+  end
+
+  private
+  def normalize_name
+    self.name = name.strip.downcase.titleize
   end
 end
