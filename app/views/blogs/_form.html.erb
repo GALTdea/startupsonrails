@@ -13,13 +13,14 @@
 
   <div class="form-label">
     <%= form.label :status %> <br>
-    <%= form.check_box :status, { multiple: true }, 'draft' %>
+    <%= form.radio_button :status, 'draft' %>
     <%= form.label :status_draft, 'Draft' %>
-    <%= form.check_box :status, { multiple: true }, 'published' %>
+    <%= form.radio_button :status, 'published' %>
     <%= form.label :status_published, 'Published' %>
-    <%= form.check_box :status, { multiple: true }, 'featured' %>
+    <%= form.radio_button :status, 'featured' %>
     <%= form.label :status_featured, 'Featured' %>
   </div>
+
 
   <div class="form-label">
     <%= form.label :title , class: 'form-label'%>
