@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="form-label">
+    <%= form.label :status %> <br>
+    <%= form.check_box :status, { multiple: true }, 'draft' %>
+    <%= form.label :status_draft, 'Draft' %>
+    <%= form.check_box :status, { multiple: true }, 'published' %>
+    <%= form.label :status_published, 'Published' %>
+    <%= form.check_box :status, { multiple: true }, 'featured' %>
+    <%= form.label :status_featured, 'Featured' %>
+  </div>
+
+  <div class="form-label">
     <%= form.label :title , class: 'form-label'%>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
@@ -20,6 +30,11 @@
     <%= form.label :content %>
     <%= form.text_area :content, class: 'form-control' %>
   </div>
+
+  <div class="form-lebel">
+    <%= form.label :status %>
+  </div>
+  
 
   <div class="form-label">
     <%= form.label :image %>
