@@ -14,7 +14,7 @@
   if Company.count == 0
     Company.import_from_csv(admin)
   end
-  puts "Created #{Company.count} companies."
+  puts "Imported #{Company.count} companies."
 
   puts "Creating categories and adding companies to them..."
   CATEGORIZATIONS = {
