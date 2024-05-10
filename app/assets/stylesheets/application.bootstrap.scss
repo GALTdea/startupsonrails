@@ -23,7 +23,7 @@
 // custom font size
 .fs-09 { font-size: 0.9rem !important; }
 // to add a 14px font size class it'll look like this
-.fs-014 { font-size: 1.4rem !important; }
+.fs-014 { font-size:  0.875rem !important; }
 
 // custom font weight
 .fw-100 { font-weight: 100 !important; }
@@ -50,6 +50,10 @@
   text-decoration: none !important;
 }
 
+.article-card {
+  // max-width: 90% ;
+  border: 0
+}
 
 .custom-title {
   font-size: 24px; /* example size */
