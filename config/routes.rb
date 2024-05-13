@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :blogs
+  resources :blogs do
+    member do
+      patch :update_status
+    end
+  end
 
   draw :madmin
   # resources :category_companies, only: [:create, :destroy]
