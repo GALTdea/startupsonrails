@@ -4,8 +4,8 @@ class HomeController < ApplicationController
 
     @featured_companies = Company.where(name: ['airbnb', 'basecamp', 'bloomberg'])
 
-    @featured_blogs = Blog::FEATURED
-
+    @featured_blogs = Blog.featured
+    # debugger
     @top_categories = Category.showcased
     @companies_by_category = {}
 
