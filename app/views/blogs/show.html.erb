@@ -1,12 +1,25 @@
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-
       <% if @blog.image.attached? %>
         <div class="mb-4">
           <%= image_tag url_for(@blog.image) if @blog.image.attached? %>
         </div>
       <% end %>
+
+      <% if user_signed_in? &&  current_user.admin? %>
+        <div class="admin_links">
+          <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-link' %>
+          <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+          <% Blog.statuses.keys.each do |status| %>
+            <% unless @blog.status == status %>
+              <%= form_with url: update_status_blog_path(@blog, status: status), method: :patch, local: true do |form| %>
+                <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class:"btn btn-link" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end  %>
 
       <div class="card">
         <div class="card-body">
