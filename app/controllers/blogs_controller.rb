@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :update_status]
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
@@ -34,6 +34,16 @@ class BlogsController < ApplicationController
       redirect_to @blog, notice: "Blog was successfully updated."
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def update_status
+    new_status = params[:status]
+
+    if Blog.statuses.keys.include?(new_status) && @blog.update(status: new_status)
+      redirect_to @blog, notice: "Blog status was successfully updated to #{new_status}."
+    else
+      redirect_to @blog, alert: 'Failed to update the blog post status.'
     end
   end
 
