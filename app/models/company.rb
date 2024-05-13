@@ -77,6 +77,6 @@ class Company < ApplicationRecord
 
   private
   def normalize_name
-    self.name = name.strip.downcase.titleize
+    self.name = name.strip.downcase
   end
 end
