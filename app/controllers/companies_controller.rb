@@ -65,6 +65,7 @@ class CompaniesController < ApplicationController
   end
 
   def update_status
+    authorize @company
     if @company.update(status: params[:status])
       redirect_to @company, notice: "Company status was successfully updated."
     else
