@@ -27,6 +27,11 @@
 
   puts "Imported #{Company.count} companies."
 
+  puts "Activating all companies in the database..."
+  Company.all.each do |company|
+    company.update!(status: :active)
+  end
+
   puts "Creating categories and adding companies to them..."
   CATEGORIZATIONS = {
     top_rails_companies: [
