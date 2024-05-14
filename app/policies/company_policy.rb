@@ -8,6 +8,10 @@ class CompanyPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def update_status?
+    user.admin?
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
