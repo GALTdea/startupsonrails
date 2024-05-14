@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   include Pagy::Backend
-  before_action :set_company, only: [ :show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :set_company, only: [ :show, :edit, :update, :destroy, :update_status]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :update_status]
 
   def index
     if params[:query].present?
@@ -61,6 +61,14 @@ class CompaniesController < ApplicationController
       redirect_to @company, notice: "Company was successfully updated."
     else
       render :edit
+    end
+  end
+
+  def update_status
+    if @company.update(status: params[:status])
+      redirect_to @company, notice: "Company status was successfully updated."
+    else
+      redirect_to @company, alert: "Company status could not be updated."
     end
   end
 
