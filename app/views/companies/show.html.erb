@@ -169,6 +169,20 @@
     </div>
 
 
-
+    <div class="adimin_links">
+      <% if user_signed_in? && current_user.admin? %>
+        <div class="admin_links">
+          <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-link' %>
+          <%= link_to 'Delete', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+          <% Company.statuses.keys.each do |status| %>
+            <% unless @company.status == status %>
+              <%= form_with url: update_status_company_path(@company, status: status), method: :patch, local: true do |form| %>
+                <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class:"btn btn-link" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end  %>
+    </div>
   </div>
 </section>
