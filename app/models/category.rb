@@ -5,7 +5,7 @@ class Category < ApplicationRecord
   category_names = ["top_rails_companies", "trending", "hotwire", "tooling"]
   tops_categories = ["top_rails_companies", "top_contribuitors", "top_hotwire_use", "top_jr_friendly", "top_tooling", "top_indy"]
 
-  top_cities = ["Los Angeles", "New York", "Austin", "San Francisco"]
+  top_cities = ["Los Angeles", "New York", "Austin", "San Francisco", "London"]
 
   TOPS_CATEGORIES_HASH = {
     # 'top_rails_companies' => '2023 Top Companies',
@@ -27,8 +27,18 @@ class Category < ApplicationRecord
     "trending" => ["beehiiv", "gorails", "gitlab", "honeybadger", "hey.com"],
     "hotwire" => ["hey.com", "basecamp", "shopify"],
     "tooling" => ["heroku", "github", "jumpstart"],
+    "Los Angeles" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
+    "New York" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
+    "Austin" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
+    "San Francisco" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
   }.freeze
 
+  TOP_CITY_HASH = {
+    "Los Angeles" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
+    "New York" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
+    "Austin" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
+    "San Francisco" => ["appsignal", "github", "gitlab", "heroku", "jumpstart"],
+  }.freeze
 
 
   scope :showcased, -> { where(name: category_names) }
