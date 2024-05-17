@@ -10,7 +10,7 @@
               <div card="company-card-header">
                 <div class="row">
                   <div class="col-md-3">
-                    <%= image_tag company.logo, { class:"img-fluid"}  if company.logo.attached? %>
+                    <%= image_tag "/company_logos/#{company.name}_logo.png", { class:"img-fluid"}  if company.logo.attached? %>
                   </div>
                   <div class="col-md-9">
                     <h5 class="card-title fs-5 fw-medium"><%= company.name %> </h5>
@@ -95,7 +95,7 @@
             <% companies.take(10).each do |comp| %>
               <li class="list-group-item company-logo-container" style="position: relative;">
                 <% if comp.logo.attached? %>
-                  <%= image_tag comp.logo, { class:"img-fluid ms-3", style:"max-width: 24px; max-height: 24px;" } %>
+                  <%= image_tag "/company_logos/#{comp.name}_logo.png", { class:"img-fluid ms-3", style:"max-width: 24px; max-height: 24px;" } %>
                 <% else %>
                   <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
                 <% end %>
