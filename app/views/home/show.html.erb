@@ -10,10 +10,7 @@
               <div card="company-card-header">
                 <div class="row">
                   <div class="col-md-3">
-                    <%#= image_tag company.s3_logo_url, { class:"img-fluid"}  if company.logo.attached? %>
-
-                    <%# company.s3_logo_url(classes: "your-classes", height: '24', width: '24') %> %>
-                    <%= @company.logo_service.logo_url_or_svg(self, classes: "your-classes", height: '24', width: '24') %>
+                    <%= image_tag company.logo, { class:"img-fluid "} if company.logo.attached? %>
                   </div>
                   <div class="col-md-9">
                     <h5 class="card-title fs-5 fw-medium"><%= company.name %> </h5>
@@ -71,7 +68,7 @@
               <li class="list-group-item border border-bottom-0 fs-5 text" style="list-style-type: none; position: relative;"><%= city_name.titleize %></li>
               <% companies.take(10).each do |comp| %>
                 <li class="list-group-item company-logo-container" style="position: relative;">
-                  <%= image_tag comp.s3_logo_url %>
+                  <%= image_tag comp.logo, { class:"img-fluid ms-3", style:"max-width: 24px; max-height: 24px;" } if comp.logo.attached? %>
                   <%= link_to comp.name, company_path(comp), class:"ms-2" %>
                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
                     <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
@@ -98,7 +95,7 @@
             <% companies.take(10).each do |comp| %>
               <li class="list-group-item company-logo-container" style="position: relative;">
                 <% if comp.logo.attached? %>
-                  <%= image_tag "/company_logos/#{comp.name}_logo.png", { class:"img-fluid ms-3", style:"max-width: 24px; max-height: 24px;" } %>
+                  <%= image_tag comp.logo, { class:"img-fluid ms-3", style:"max-width: 24px; max-height: 24px;" } %>
                 <% else %>
                   <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
                 <% end %>
