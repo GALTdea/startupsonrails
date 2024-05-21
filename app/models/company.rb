@@ -24,6 +24,7 @@ class Company < ApplicationRecord
   before_save :normalize_name
 
   has_one_attached :logo
+  include ApplicationHelper
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -75,8 +76,62 @@ class Company < ApplicationRecord
     }
   end
 
+
+  # def s3_logo_url
+  #   return unless logo.attached?
+
+  #   object_key = "/company_logos/#{name.downcase.gsub(/\s+/, '_')}_logo.png"
+  #   s3_service.presigned_url(object_key)
+  # end
+
+  # def s3_logo_url(classes: "", height: '24', width: '24')
+  #   object_key = "/company_logos/#{name.downcase.gsub(/\s+/, '_')}_logo.png"
+  #   s3_service = S3Service.new
+
+  #   if s3_service.object_key_exists?(object_key)
+  #     s3_service.presigned_url(object_key)
+  #   else
+  #     generate_svg_with_initials(name, classes, height, width)
+  #   end
+  # end
+
+  # This method is used to get the S3Service instance, to be used in the view.
+  # this is how we can call the service from the view:
+  # <%= company.s3_logo_url %>  if using image_tag
+  # <%= image_tag company.s3_logo_url %> if using image_tag
+
+
+
+  def logo_service
+    @logo_service ||= LogoService.new(self)
+  end
+
   private
   def normalize_name
     self.name = name.strip.downcase
   end
+
+  def s3_service
+    @s3_client = Aws::S3::Client.new(
+      region: 'us-west-2',
+      access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
+      secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
+    )
+  end
+
+  # def self.object_key_exists?(object_key)
+  #   s3_client = Aws::S3::Client.new(
+  #     region: 'us-west-2',
+  #     access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
+  #     secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
+  #   )
+
+  #   begin
+  #     s3_client.head_object(bucket: 'startupsonrails-bucket-development', key: object_key)
+  #     true
+  #   rescue Aws::S3::Errors::NotFound
+  #     false
+  #   end
+  # end
+
 end
