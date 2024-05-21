@@ -28,4 +28,10 @@ class HomeController < ApplicationController
       @tops_companies[name] = cat.companies
     end
   end
+
+    private
+
+  def s3_service
+    @s3_service ||= S3Service.new
+  end
 end
