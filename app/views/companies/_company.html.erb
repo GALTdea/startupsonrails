@@ -2,7 +2,13 @@
   <div class="row g-0 p-2">
     <!-- Company Logo/Icon -->
     <div class="col-1 col-md-1 d-none d-sm-flex pt-2 company-logo-container-large">
-      <%= generate_svg_with_initials(company.name, height="45", width="45") %>
+      <% if company.logo.attached? %>
+        <%= image_tag company.logo, { class:"img-fluid company-logo" } %>
+      <% else %>
+        <%= raw generate_svg_with_initials(company.name, classes="ms-3", height='24', width='24') %>
+      <% end %>
+
+
       <!-- or Company Logo -->
       <!-- <img src="<%#= company.logo_url %>" alt="<%= company.name %> Logo" class="img-fluid"> -->
     </div>
