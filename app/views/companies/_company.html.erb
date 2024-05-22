@@ -5,12 +5,8 @@
       <% if company.logo.attached? %>
         <%= image_tag company.logo, { class:"img-fluid company-logo" } %>
       <% else %>
-        <%= raw generate_svg_with_initials(company.name, classes="ms-3", height='24', width='24') %>
+        <%= raw generate_svg_with_initials(company.name, classes="img-fluid") %>
       <% end %>
-
-
-      <!-- or Company Logo -->
-      <!-- <img src="<%#= company.logo_url %>" alt="<%= company.name %> Logo" class="img-fluid"> -->
     </div>
     <!-- Company Details -->
     <div class="col-10 col-md-11 px-2">
