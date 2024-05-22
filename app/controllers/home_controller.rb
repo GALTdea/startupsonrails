@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @featured_companies = Company.where(name: ['airbnb', 'basecamp', 'bloomberg'])
 
     @featured_blogs = Blog.featured
-    # debugger
+
     @top_categories = Category.showcased
     @companies_by_category = {}
 
@@ -27,11 +27,5 @@ class HomeController < ApplicationController
       cat = Category.find_by(name: category)
       @tops_companies[name] = cat.companies
     end
-  end
-
-    private
-
-  def s3_service
-    @s3_service ||= S3Service.new
   end
 end
