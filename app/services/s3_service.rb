@@ -24,8 +24,3 @@ class S3Service
     end
   end
 end
-
-
-# Call the service from the Rails console:
-# s3_service = S3Service.new
-# s3_service.presigned_url('company_logos/airbnb_logo.png')
