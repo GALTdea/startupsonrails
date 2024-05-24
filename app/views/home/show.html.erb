@@ -40,7 +40,6 @@
     </div>
   </section>
 
-
   <!-- Featured Blogs -->
   <section class="my-5">
     <div class="container">
@@ -48,7 +47,7 @@
         <h2 class="mb-3 fs-3">Recent Articles</h2>
         <%= link_to "More Articles", "#", class:"btn btn-link mt-1 fs-6" %> 
       </div>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 articles-row"> <%# Responsive column classes %>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 articles-row">
         <% @featured_blogs.each do |blog| %>
           <div class="col"> <%# Column for each article %>
             <%= render partial: "shared/article_card", locals: { blog: blog } %>
@@ -57,7 +56,6 @@
       </div>
     </div>
   </section>
-
 
   <!-- Popular Cities -->
   <section class="my-5">
