@@ -1,7 +1,7 @@
 <section style="">
   <div class="container py-5">
     <div class="row">
-      <%# first col image, social links %>
+       <!--  first col image, social links -->
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
@@ -20,6 +20,7 @@
             </div>
           </div>
         </div>
+        
         <div class="card mb-4 mb-lg-0">
           <div class="card-body p-0">
             <ul class="list-group list-group-flush rounded-3">
@@ -47,128 +48,140 @@
           </div>
         </div>
       </div>
-      <%# second col, company info %>
+       <!-- second col, company info -->
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"><%= @company.email %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"><%= @company.url %></p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">(097) 234-5678</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Mobile</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">(098) 765-4321</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <%# stats %>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                </p>
-                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                <div class="progress rounded mb-2" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                </p>
-                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                <div class="progress rounded mb-2" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <h5 class="card-title">Company Snapshot</h5>
+            <p class="text-muted mb-3"><%= @company.about %></p>
 
-        <%# open source %>
-                <!-- New section for showcasing open-source software -->
+            <ul class="list-unstyled">
+              <li class="d-flex align-items-center">
+                <div class="me-3"> <i class="fas fa-map-marker-alt  text-dark-emphasis"></i> </div>
+                <div>
+                  <%= @company.location if @company.location %>
+                </div>
+              </li>
+
+              <li class="mt-2 d-flex align-items-center">
+                <div class="me-3"><i class="fas fa-users text-dark-emphasis"></i> </div>
+                <div>
+                  <%#= @company.size %>
+                </div>
+              </li>
+
+              <li class="mt-2 d-flex align-items-center">
+                <div class="me-3"><i class="fas fa-industry text-dark-emphasis"></i> </div>
+                <div>
+                  <%#= @company.industry %>
+                </div>
+              </li>
+
+              <li class="mt-2 d-flex align-items-center">
+                <div class="me-3"><i class="fas fa-sitemap text-dark-emphasis"></i> </div>
+                <div>
+                  <%#= @company.company_type %>
+                </div>
+              </li>
+
+              <li class="mt-2 d-flex align-items-center">
+                <div class="me-3"><i class="fas fa-calendar-alt text-dark-emphasis"></i> </div>
+                <div>
+                  <%#= @company.founded %>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- New section for showcasing the tech stack -->
+        <div class="card mt-4">
+          <div class="card-body">
+            <h5 class="mb-4">Tech Stack</h5>
+            <div class="row">
+              <!-- Dummy example for Ruby on Rails -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <%= image_tag '/assets/rubyonrails_icon.png', alt: 'Ruby on Rails Icon', class: 'img-fluid mb-3 round', style: 'width: 45px;' %>
+                    <h6 class="card-title">Ruby on Rails</h6>
+                    <%# <p class="card-text">Our primary framework for building scalable web applications.</p> %>
+                  </div>
+                </div>
+              </div>
+              <!-- Dummy example for JavaScript -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <i class="fab fa-js-square fa-3x text-warning mb-3"></i>
+                    <h6 class="card-title">JavaScript</h6>
+                    <%# <p class="card-text">Used for dynamic and interactive user interfaces.</p> %>
+                  </div>
+                </div>
+              </div>
+              <!-- Dummy example for PostgreSQL -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <i class="fas fa-database fa-3x text-info mb-3"></i>
+                    <h6 class="card-title">PostgreSQL</h6>
+                    <%# <p class="card-text">Our choice for robust and scalable database management.</p> %>
+                  </div>
+                </div>
+              </div>
+              <!-- Dummy example for Redis -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <i class="fas fa-memory fa-3x text-success mb-3"></i>
+                    <h6 class="card-title">Redis</h6>
+                    <%# <p class="card-text">Used for caching and real-time data processing.</p> %>
+                  </div>
+                </div>
+              </div>
+              <!-- Dummy example for Bootstrap -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <i class="fab fa-bootstrap fa-3x text-primary mb-3"></i>
+                    <h6 class="card-title">Bootstrap</h6>
+                    <%# <p class="card-text">For creating responsive and mobile-first web pages.</p> %>
+                  </div>
+                </div>
+              </div>
+              <!-- Dummy example for Heroku -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <i class="fas fa-cloud fa-3x text-purple mb-3"></i>
+                    <h6 class="card-title">Heroku</h6>
+                    <%# <p class="card-text">Platform for deploying, managing, and scaling applications.</p> %>
+                  </div>
+                </div>
+              </div>
+              <!-- Dummy example for GitHub -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <i class="fab fa-github fa-3x text-dark mb-3"></i>
+                    <h6 class="card-title">GitHub</h6>
+                    <%# <p class="card-text">For version control and collaborative development.</p> %>
+                  </div>
+                </div>
+              </div>
+              <!-- Dummy example for Docker -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <i class="fab fa-docker fa-3x text-blue mb-3"></i>
+                    <h6 class="card-title">Docker</h6>
+                    <%# <p class="card-text">Used for containerizing applications to ensure consistency across environments.</p> %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- New section for showcasing open-source software -->
         <div class=" mt-4">
           <div class="card-body">
             <h5 class="mb-4">Open Source Software Used</h5>
