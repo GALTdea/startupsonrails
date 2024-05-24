@@ -46,19 +46,22 @@
   </section> 
 
   <!-- Featured Blogs -->
-  <section class="my-5">
-    <div class="container">
-      <h2 class="mb-3 fs-3">Recent articles</h2>
-      <div class="row g-4 articles-row">
-        <% @featured_blogs.each do |blog| %>
-          <div class="col-md-4">
-            <%= render partial: "shared/article_card", locals: { blog: blog } %>
-          </div>
-        <% end %>
-      </div>
-      <%= link_to "More Articles", "#", class:"btn btn-link mt-3 fs-6 float-end " %>
+<section class="my-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="mb-3 fs-3">Recent Articles</h2>
+      <%= link_to "More Articles", "#", class:"btn btn-outline-primary mt-1 fs-6" %> 
     </div>
-  </section>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 articles-row"> <%# Responsive column classes %>
+      <% @featured_blogs.each do |blog| %>
+        <div class="col"> <%# Column for each article %>
+          <%= render partial: "shared/article_card", locals: { blog: blog } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
 
   <!-- Popular Cities -->
   <section class="my-5">
