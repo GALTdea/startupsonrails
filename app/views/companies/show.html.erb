@@ -183,42 +183,57 @@
         </div>
         <!-- New section for showcasing open-source software -->
         <div class=" mt-4">
-          <div class="card-body">
-            <h5 class="mb-4">Open Source Software Used</h5>
-            <div class="row">
-              <!-- Dummy example for open-source software 1 -->
-              <div class="col-md-6 mb-4">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">
-                      <a href="https://github.com/dummy-repo1" target="_blank">Open Source Project 1</a>
-                    </h6>
-                    <p class="card-text">Description of the first open-source project used by the company.</p>
-                    <p class="card-text"><small class="text-muted">Stars: 150</small></p>
-                    <p class="card-text"><small class="text-muted">Forks: 30</small></p>
-                    <p class="card-text"><small class="text-muted">Language: Ruby</small></p>
-                    <p class="card-text">Usage: Used for backend API development.</p>
+
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Open Source We Sponsor</h5>
+              <p class="text-muted mb-4">We believe in giving back to the open source community. These are some of the projects we proudly support and use:</p>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="bordered-card h-100"> <%= link_to "https://github.com/ruby/ruby", target: "_blank", class: "card-link" do %>
+                      <div class="card-body d-flex flex-column align-items-start">
+                        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png", alt: "Ruby Logo", class: "img-fluid mb-3 rounded", style: "width: 50px;" %>
+                        <h6 class="card-title">Ruby</h6>
+                        <p class="card-text text-muted">A dynamic, open source programming language with a focus on simplicity and productivity.</p>
+                        <div class="mt-auto">
+                          <span class="badge bg-light text-dark me-2">
+                            <i class="fab fa-github"></i> <%= number_with_delimiter(18900) %> Stars 
+                          </span>
+                          <span class="badge bg-light text-dark">
+                            <i class="fas fa-code-branch"></i> <%= number_with_delimiter(2600) %> Forks
+                          </span>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="bordered-card h-100"> <%= link_to "https://github.com/rails/rails", target: "_blank", class: "card-link" do %>
+                      <div class="card-body d-flex flex-column align-items-start">
+                        <%= image_tag "https://avatars.githubusercontent.com/u/4223?s=280&v=4", alt: "Ruby on Rails Logo", class: "img-fluid mb-3 rounded", style: "width: 50px;" %>
+                        <h6 class="card-title">Ruby on Rails</h6>
+                        <p class="card-text text-muted">A web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern.</p>
+                        <div class="mt-auto">
+                          <span class="badge bg-light text-dark me-2">
+                            <i class="fab fa-github"></i> <%= number_with_delimiter(52700) %> Stars 
+                          </span>
+                          <span class="badge bg-light text-dark">
+                            <i class="fas fa-code-branch"></i> <%= number_with_delimiter(20900) %> Forks
+                          </span>
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
-              <!-- Dummy example for open-source software 2 -->
-              <div class="col-md-6 mb-4">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">
-                      <a href="https://github.com/dummy-repo2" target="_blank">Open Source Project 2</a>
-                    </h6>
-                    <p class="card-text">Description of the second open-source project used by the company.</p>
-                    <p class="card-text"><small class="text-muted">Stars: 250</small></p>
-                    <p class="card-text"><small class="text-muted">Forks: 45</small></p>
-                    <p class="card-text"><small class="text-muted">Language: JavaScript</small></p>
-                    <p class="card-text">Usage: Used for front-end development.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Add more open-source software cards as needed -->
             </div>
           </div>
+
+
+
+          
         </div>
       </div>
     </div>
