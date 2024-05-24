@@ -1,0 +1,17 @@
+<div class="card mt-4">
+  <div class="card-body">
+    <h5 class="mb-4">Tech Stack</h5>
+    <div class="row">
+      <% company.tech_stack.each do |tech| %>
+        <div class="col-md-3 mb-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <%= image_tag tech[:icon], alt: "#{tech[:name]} Icon", class: 'img-fluid mb-3 round', style: 'width: 45px;' %>
+              <h6 class="card-title"><%= tech[:name] %></h6>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

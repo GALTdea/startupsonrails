@@ -1,0 +1,22 @@
+<div class="card mt-4">
+  <div class="card-body">
+    <h5 class="mb-4">Open Source Software Used</h5>
+    <div class="row">
+      <% company.open_source_projects.each do |project| %>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title">
+                <a href="<%= project[:url] %>" target="_blank"><%= project[:name] %></a>
+              </h6>
+              <p class="card-text"><%= project[:description] %></p>
+              <p class="card-text"><small class="text-muted">Stars: <%= project[:stars] %></small></p>
+              <p class="card-text"><small class="text-muted">Forks: <%= project[:forks] %></small></p>
+              <p class="card-text"><small class="text-muted">Language: <%= project[:language] %></small></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

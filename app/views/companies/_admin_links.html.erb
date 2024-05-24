@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-start"> 
+  <%= link_to 'Edit', edit_company_path(company), class: 'btn btn-secondary me-2' %>
+  <%= link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger me-2' %>
+
+  <% Company.statuses.keys.each do |status| %>
+    <% unless company.status == status %>
+      <%= button_to "Set as #{status.titleize}", update_status_company_path(company, status: status), method: :patch, data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class: "btn btn-outline-secondary me-2" %>
+    <% end %>
+  <% end %>
+</div>
