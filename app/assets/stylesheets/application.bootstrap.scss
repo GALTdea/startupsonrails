@@ -117,9 +117,12 @@ body {
   border: none;
 }
 
-
-
-
+.bordered-card {
+  /* Inherit from the base card class */
+  @extend .card;  
+  /* Override the border property */
+  border: 1px solid #121314; /* Or your preferred border color */
+}
 
 
 // // link classes
