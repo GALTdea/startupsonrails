@@ -14,6 +14,7 @@
       </div>
     </div>
     <div class="card-body">
+      <h5 class="card-title text-black fw-medium fs-5"><%= blog.title %></h5>
       <p class="card-text fs-014 card-font text-muted"><%= truncate(blog.content.to_plain_text, length: 120) %></p>
     </div>
     <div class="card-footer bg-white border-top-0">
