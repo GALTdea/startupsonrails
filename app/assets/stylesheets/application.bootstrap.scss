@@ -82,6 +82,29 @@
   margin: 10px !important;
 }
 
+.company-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure the card takes full height */
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Or set to a specific height if desired */
+}
+
+.company-card {
+  display: flex;
+  flex-direction: column;
+  height: 350px; /* Ensure all cards have the same height */
+}
+
+.card-body {
+  flex-grow: 1; /* Allows the card body to expand and push the footer down */
+}
+
+
 
 // blue theme
 :root {
