@@ -8,12 +8,12 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"> 
         <% @featured_companies.each do |company| %>
           <div class="col">
-            <div class="company-card card h-100 shadow-sm"> 
+            <div class="company-card card shadow-sm"> 
               <%= link_to company_path(company), class: "text-decoration-none" do %>
                 <div class="card-body d-flex flex-column"> 
                   <div class="d-flex align-items-center mb-3">
                     <% if company.logo.attached? %>
-                      <%= image_tag company.logo, class: "rounded-circle me-3", style: "width: 50px; height: 50px; object-fit: cover;" %>
+                      <%= image_tag company.logo, class: "rounded-circle me-3", style: "width: 75px; height: 75px; object-fit: cover;" %>
                     <% else %>
                       <i class="fas fa-building fa-2x me-3 text-primary"></i> 
                     <% end %>
