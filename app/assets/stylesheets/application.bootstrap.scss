@@ -106,6 +106,24 @@
 
 
 
+
+
+.rich-text-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+
 // blue theme
 :root {
   --primary-color: #2a6f97; /* Dark blue */
