@@ -1,35 +1,34 @@
 <div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-lg-8 col-md-10">
       <% if @blog.image.attached? %>
-        <div class="mb-4">
-          <%= image_tag url_for(@blog.image) if @blog.image.attached? %>
+        <div class="text-center mb-4">
+          <%= image_tag url_for(@blog.image), alt: @blog.title, class: 'img-fluid rounded' %>
         </div>
       <% end %>
 
-      <% if user_signed_in? &&  current_user.admin? %>
-        <div class="admin_links">
-          <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-link' %>
-          <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+      <div class="text-center mb-4">
+        <h1 class="display-4"><%= @blog.title %></h1>
+        <p class="text-muted">Published on <%#= @blog.published_at.strftime("%B %d, %Y") %></p>
+      </div>
+
+      <div class="rich-text-content">
+        <%= @blog.content %>
+      </div>
+
+      <% if user_signed_in? && current_user.admin? %>
+        <div class="admin-links mt-5 text-center">
+          <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-outline-primary me-2' %>
+          <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger me-2' %>
           <% Blog.statuses.keys.each do |status| %>
             <% unless @blog.status == status %>
-              <%= form_with url: update_status_blog_path(@blog, status: status), method: :patch, local: true do |form| %>
-                <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class:"btn btn-link" %>
+              <%= form_with url: update_status_blog_path(@blog, status: status), method: :patch, local: true, class: 'd-inline' do |form| %>
+                <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class: "btn btn-outline-secondary me-2" %>
               <% end %>
             <% end %>
           <% end %>
         </div>
-      <% end  %>
-
-      <div class="card">
-        <div class="card-body">
-          <h1 class="card-title"><%= @blog.title %></h1>
-          <p class="text-muted">Published: <%#= @blog.published_at.strftime("%B %d, %Y") %></p>
-          <div class="rich-text-content">
-            <%= @blog.content %>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
