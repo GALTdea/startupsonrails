@@ -2,33 +2,39 @@
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10">
       <% if @blog.image.attached? %>
-        <div class="text-center mb-4">
-          <%= image_tag url_for(@blog.image), alt: @blog.title, class: 'img-fluid rounded' %>
+        <div class="hero-section text-center mb-4">
+          <%= image_tag url_for(@blog.image), alt: @blog.title, class: 'img-fluid rounded shadow-sm' %>
         </div>
       <% end %>
 
       <div class="text-center mb-4">
-        <h1 class="display-4"><%= @blog.title %></h1>
-        <p class="text-muted">Published on <%#= @blog.published_at.strftime("%B %d, %Y") %></p>
+        <h1 class="display-4 fw-bold"><%= @blog.title %></h1>
+        <p class="text-muted fst-italic">Published on <%#= @blog.published_at.strftime("%B %d, %Y") %></p>
       </div>
 
-      <div class="rich-text-content">
-        <%= @blog.content %>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body rich-text-content">
+          <%= @blog.content %>
+        </div>
       </div>
 
       <% if user_signed_in? && current_user.admin? %>
         <div class="admin-links mt-5 text-center">
-          <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-outline-primary me-2' %>
-          <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger me-2' %>
+          <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary me-2 mb-2' %>
+          <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger me-2 mb-2' %>
           <% Blog.statuses.keys.each do |status| %>
             <% unless @blog.status == status %>
               <%= form_with url: update_status_blog_path(@blog, status: status), method: :patch, local: true, class: 'd-inline' do |form| %>
-                <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class: "btn btn-outline-secondary me-2" %>
+                <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class: "btn btn-secondary me-2 mb-2" %>
               <% end %>
             <% end %>
           <% end %>
         </div>
       <% end %>
+
+      <div class="footer mt-5 text-center">
+        <p class="text-muted">&copy; <%= Time.current.year %> Your Company Name. All rights reserved.</p>
+      </div>
     </div>
   </div>
 </div>
