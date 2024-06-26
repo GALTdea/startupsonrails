@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",e=>{var t=document.getElementById("collapseReview");const n=document.getElementById("loadMoreButton");t.addEventListener("shown.bs.collapse",()=>{n.style.display="none"})});
