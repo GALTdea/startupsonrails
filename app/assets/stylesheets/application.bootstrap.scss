@@ -3,173 +3,179 @@
 @import 'actiontext.css';
 // line below imports the theme.min.css file from the theme folder located in the same directory as the application.scss file.
 @import "theme.min.css";
+
+
+.bg-info-soft {
+  background-color: rgba(14, 165, 233, .1);
+  color: #0ea5e9 !important;
+}
 // 
 // // Additional spacing classes
 // /* Padding */
-.pt-6 { padding-top: 6rem !important; }
-.pr-6 { padding-right: 6rem !important; }
-.pb-6 { padding-bottom: 6rem !important; }
-.pl-6 { padding-left: 6rem !important; }
-.px-6 { padding-right: 6rem !important; padding-left: 6rem !important; }
-.py-6 { padding-top: 6rem !important; padding-bottom: 6rem !important; }
+// .pt-6 { padding-top: 6rem !important; }
+// .pr-6 { padding-right: 6rem !important; }
+// .pb-6 { padding-bottom: 6rem !important; }
+// .pl-6 { padding-left: 6rem !important; }
+// .px-6 { padding-right: 6rem !important; padding-left: 6rem !important; }
+// .py-6 { padding-top: 6rem !important; padding-bottom: 6rem !important; }
 
-// /* Margin */
-.mt-6 { margin-top: 6rem !important; }
-.mr-6 { margin-right: 6rem !important; }
-.mb-6 { margin-bottom: 6rem !important; }
-.ml-6 { margin-left: 6rem !important; }
-.mx-6 { margin-right: 6rem !important; margin-left: 6rem !important; }
-.my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
-// /* And so on for .mt-7, .mt-8, etc. if you need them */
+// // /* Margin */
+// .mt-6 { margin-top: 6rem !important; }
+// .mr-6 { margin-right: 6rem !important; }
+// .mb-6 { margin-bottom: 6rem !important; }
+// .ml-6 { margin-left: 6rem !important; }
+// .mx-6 { margin-right: 6rem !important; margin-left: 6rem !important; }
+// .my-6 { margin-top: 6rem !important; margin-bottom: 6rem !important; }
+// // /* And so on for .mt-7, .mt-8, etc. if you need them */
 
-// custom font size
-.fs-09 { font-size: 0.9rem !important; }
-// to add a 14px font size class it'll look like this
-.fs-014 { font-size:  0.875rem !important; }
+// // custom font size
+// .fs-09 { font-size: 0.9rem !important; }
+// // to add a 14px font size class it'll look like this
+// .fs-014 { font-size:  0.875rem !important; }
 
-// custom font weight
-.fw-100 { font-weight: 100 !important; }
-.fw-200 { font-weight: 200 !important; }
-.fw-300 { font-weight: 300 !important; }
-.fw-80 { font-weight: 800 !important; }
+// // custom font weight
+// .fw-100 { font-weight: 100 !important; }
+// .fw-200 { font-weight: 200 !important; }
+// .fw-300 { font-weight: 300 !important; }
+// .fw-80 { font-weight: 800 !important; }
 
 // custom text color
-.fc-555 { color: #555 !important; }
+// .fc-555 { color: #555 !important; }
 
-.card-font {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  color: #6d6d6d;
-}
+// .card-font {
+//   font-size: 14px !important;
+//   font-weight: 400 !important;
+//   color: #6d6d6d;
+// }
   
 
-.tags-list ul li a {
-  border: 1px solid #d1d1d6 !important;
-  box-sizing: border-box !important;
-  border-radius: 8px !important;
-  color: #555 !important;
-  padding: 2px 10px 3px 10px !important;
-  font-size: 12px !important;
-  margin-right: 8px !important;
-}
+// .tags-list ul li a {
+//   border: 1px solid #d1d1d6 !important;
+//   box-sizing: border-box !important;
+//   border-radius: 8px !important;
+//   color: #555 !important;
+//   padding: 2px 10px 3px 10px !important;
+//   font-size: 12px !important;
+//   margin-right: 8px !important;
+// }
 
-.custum-link {
-  color: #555 !important;
-  text-decoration: none !important;
-}
+// .custum-link {
+//   color: #555 !important;
+//   text-decoration: none !important;
+// }
 
-.article-card {
-  // max-width: 90% ;
-  border: 0
-}
+// .article-card {
+//   // max-width: 90% ;
+//   border: 0
+// }
 
-.custom-title {
-  font-size: 24px; /* example size */
-  font-weight: 700; /* bold */
-}
+// .custom-title {
+//   font-size: 24px; /* example size */
+//   font-weight: 700; /* bold */
+// }
 
-.custom-text {
-  font-size: 34px; /* example size */
-  font-weight: 100; /* lighter */
-}
+// .custom-text {
+//   font-size: 34px; /* example size */
+//   font-weight: 100; /* lighter */
+// }
 
-.inner-card {
-  // border: 1px solid #d1d1d6 !important;
-  box-sizing: border-box !important;
-  border-radius: 8px !important;
-  padding: 10px !important;
-}
-.card-img-overlay {
-  padding: 10px !important;
-  margin: 10px !important;
-}
+// .inner-card {
+//   // border: 1px solid #d1d1d6 !important;
+//   box-sizing: border-box !important;
+//   border-radius: 8px !important;
+//   padding: 10px !important;
+// }
+// .card-img-overlay {
+//   padding: 10px !important;
+//   margin: 10px !important;
+// }
 
-.company-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Ensure the card takes full height */
-}
+// .company-card {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%; /* Ensure the card takes full height */
+// }
 
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Or set to a specific height if desired */
-}
+// .cards-container {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh; /* Or set to a specific height if desired */
+// }
 
-.company-card {
-  display: flex;
-  flex-direction: column;
-  height: 350px; /* Ensure all cards have the same height */
-}
+// .company-card {
+//   display: flex;
+//   flex-direction: column;
+//   height: 350px; /* Ensure all cards have the same height */
+// }
 
-.card-body {
-  flex-grow: 1; /* Allows the card body to expand and push the footer down */
-}
-
-
+// .card-body {
+//   flex-grow: 1; /* Allows the card body to expand and push the footer down */
+// }
 
 
 
-.rich-text-content {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.btn {
-  margin-top: 10px;
-}
 
 
-// blue theme
-:root {
-  --primary-color: #2a6f97; /* Dark blue */
-  --secondary-color: #4c8da7; /* Lighter blue */
-  --background-color: #f0f8ff; /* Very light blue */
-  --button-color: #03506f; /* Deep blue */
-  --button-hover-color: #023e58; /* Even deeper blue */
-  --feature-background: #e7eff6; /* Soft light blue */
-}
+// .rich-text-content {
+//   font-size: 1.1rem;
+//   line-height: 1.6;
+//   color: #333;
+// }
 
-body {
-  font-family: 'Arial', sans-serif;
-  color: var(--primary-color);
-  background-color: var(--background-color);
-}
+// img {
+//   max-width: 100%;
+//   height: auto;
+// }
 
-.btn-warm {
-  background-color: var(--button-color);
-  border: none;
-  color: white;
-}
+// .btn {
+//   margin-top: 10px;
+// }
 
-.btn-warm:hover {
-  background-color: var(--button-hover-color);
-  color: white;
-}
 
-.feature-bg {
-  background-color: var(--feature-background);
-  padding: 20px;
-  border-radius: 8px;
-}
+// // blue theme
+// :root {
+//   --primary-color: #2a6f97; /* Dark blue */
+//   --secondary-color: #4c8da7; /* Lighter blue */
+//   --background-color: #f0f8ff; /* Very light blue */
+//   --button-color: #03506f; /* Deep blue */
+//   --button-hover-color: #023e58; /* Even deeper blue */
+//   --feature-background: #e7eff6; /* Soft light blue */
+// }
 
-.card {
-  background-color: #fff;
-  border: none;
-}
+// body {
+//   font-family: 'Arial', sans-serif;
+//   color: var(--primary-color);
+//   background-color: var(--background-color);
+// }
 
-.bordered-card {
-  /* Inherit from the base card class */
-  @extend .card;  
-  /* Override the border property */
-  border: 1px solid #121314; /* Or your preferred border color */
-}
+// .btn-warm {
+//   background-color: var(--button-color);
+//   border: none;
+//   color: white;
+// }
+
+// .btn-warm:hover {
+//   background-color: var(--button-hover-color);
+//   color: white;
+// }
+
+// .feature-bg {
+//   background-color: var(--feature-background);
+//   padding: 20px;
+//   border-radius: 8px;
+// }
+
+// .card {
+//   background-color: #fff;
+//   border: none;
+// }
+
+// .bordered-card {
+//   /* Inherit from the base card class */
+//   @extend .card;  
+//   /* Override the border property */
+//   border: 1px solid #121314; /* Or your preferred border color */
+// }
 
 
 // // link classes
@@ -202,9 +208,9 @@ body {
 //   background-color: #F7F7F7;
 // }
 
-.icon-right {
-  margin-left: auto;
-}
+// .icon-right {
+//   margin-left: auto;
+// }
 
 // .full-width-section {
 //   width: 100vw;
@@ -287,47 +293,22 @@ body {
 //   border-color: #DC2626;
 // }
 
-.company-logo-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+// .company-logo-container {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
-.icon-right {
-  margin-left: auto; /* Ensures the icon aligns to the right */
-}
+// .icon-right {
+//   margin-left: auto; /* Ensures the icon aligns to the right */
+// }
 
-.company-logo {
-  flex-shrink: 0; /* Prevents the SVG from resizing awkwardly */
-}
-
-
+// .company-logo {
+//   flex-shrink: 0; /* Prevents the SVG from resizing awkwardly */
+// }
 
 
-.btn-primary:hover, .btn-primary:focus {
-  background-color: #990000; /* Darkened ruby red for hover/focus */
-  border-color: #990000;
-}
 
-.company-logo {
-  // border-radius: 50%;
-  // overflow: hidden;
-  color: rgb(214,68,46) !important;
-}
-
-.company-logo rect {
-  fill: rgb(224,90,65) !important;
-}
-
-.company-logo text {
-  fill: white;
-}
-
-.company-card {
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  min-height: 10em;
-}
 
 // .company-card-body{
 //   padding: .5em;
@@ -340,15 +321,15 @@ body {
 //   aspect-ratio: 1 / 1;
 // }
 
-.badge-list {
-  display: flex;
-  list-style-type: none;
-  padding-left: 0;
-}
+// .badge-list {
+//   display: flex;
+//   list-style-type: none;
+//   padding-left: 0;
+// }
 
-.badge-list li {
-  margin-right: 1em;  /* Adjust as needed */
-}
+// .badge-list li {
+//   margin-right: 1em;  /* Adjust as needed */
+// }
 
 // .badge {
 //   display: flex;
@@ -364,77 +345,77 @@ body {
 // }
 
 // style for search dropdown , needs to be updated
-.badge2 {
-  background-color: #f8f1ff;
-  color: #4039a8;
-  border-radius: 10px;
-}
+// .badge2 {
+//   background-color: #f8f1ff;
+//   color: #4039a8;
+//   border-radius: 10px;
+// }
 
-[data-controller="autocomplete"] {
-  position: relative;
-}
+// [data-controller="autocomplete"] {
+//   position: relative;
+// }
 
-[data-autocomplete-target="results"] {
-  position: absolute;
-  top: 100%;   /* Align it right below the input field */
-  left: 0;     /* Align it to the left of the container */
-  width: 100%; /* Make it as wide as the container */
-  z-index: 10; /* Ensure it's on top of other content */
-  list-style-type: none;
-  padding-left: 0; /* to remove any default padding browsers might add */
-  /*  add some basic styling for the dropdown: */
-  background-color: #fff;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  max-height: 300px;  /* or whatever height you prefer */
-  overflow-y: auto;
-}
+// [data-autocomplete-target="results"] {
+//   position: absolute;
+//   top: 100%;   /* Align it right below the input field */
+//   left: 0;     /* Align it to the left of the container */
+//   width: 100%; /* Make it as wide as the container */
+//   z-index: 10; /* Ensure it's on top of other content */
+//   list-style-type: none;
+//   padding-left: 0; /* to remove any default padding browsers might add */
+//   /*  add some basic styling for the dropdown: */
+//   background-color: #fff;
+//   border: none;
+//   border-radius: 4px;
+//   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+//   max-height: 300px;  /* or whatever height you prefer */
+//   overflow-y: auto;
+// // }
 
-[data-autocomplete-target="results"] li {
-  padding: 10px;
-  cursor: pointer;
-}
+// [data-autocomplete-target="results"] li {
+//   padding: 10px;
+//   cursor: pointer;
+// }
 
-[data-autocomplete-target="results"] li:hover {
-  background-color: #f7f7f7;
-}
+// [data-autocomplete-target="results"] li:hover {
+//   background-color: #f7f7f7;
+// }
 
-[data-autocomplete-target="results"].has-results {
-  border: 1px solid #ccc;
-}
+// [data-autocomplete-target="results"].has-results {
+//   border: 1px solid #ccc;
+// }
 
-// // Home, show
-.company-logo-container {
-  display: flex;
-  align-items: center;
-}
+// // // Home, show
+// .company-logo-container {
+//   display: flex;
+//   align-items: center;
+// }
 
-.company-logo-container svg {
-}
+// .company-logo-container svg {
+// }
 
-.custom-numbered-list {
-  counter-reset: list-counter;
-}
+// .custom-numbered-list {
+//   counter-reset: list-counter;
+// }
 
-.custom-numbered-list > li:not(:first-child):before {
-  content: counter(list-counter) ".";
-  counter-increment: list-counter;
-  position: absolute;
-  left: 0.5rem; /* Adjust as necessary */
-  top: 50%;
-  transform: translateY(-50%);
-  color: #00000061;
-}
+// .custom-numbered-list > li:not(:first-child):before {
+//   content: counter(list-counter) ".";
+//   counter-increment: list-counter;
+//   position: absolute;
+//   left: 0.5rem; /* Adjust as necessary */
+//   top: 50%;
+//   transform: translateY(-50%);
+//   color: #00000061;
+// }
 
-// // Companies, index
-.company-logo-container-large{
-  width: 3em;
-  height: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// // // Companies, index
+// .company-logo-container-large{
+//   width: 3em;
+//   height: 3em;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
 
 
