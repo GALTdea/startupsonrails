@@ -1,10 +1,43 @@
-<div class="row justify-content-center align-items-center py-lg-5 text-center bg-header">
-  <div class="col-md-6">
-    <h1 class="red-ruby-text fw-light mb-1">StartupsOnRails</h1>
-    <p class="lead text-body-secondary fw-bold mb-1">The framework for entrepreneurs by entrepreneurs</p>
-    <p class="lead mb-4">Find out which companies are built on Rails and support its thriving community.</p>
-    <div class="d-flex justify-content-center">
-      <%= link_to "Search", companies_path, class:"btn btn-primary" %>
-    </div>
-  </div>
-</div>
+  <section class="py-lg-8 py-5">
+      <!-- container -->
+      <div class="container my-lg-8">
+          <!-- row -->
+          <div class="row align-items-center">
+              <!-- col -->
+              <div class="col-lg-6 mb-6 mb-lg-0">
+                  <div>
+                      <!-- heading -->
+                      <h5 class="text-dark mb-4">
+                          <i class="fe fe-check icon-xxs icon-shape bg-light-success text-success rounded-circle me-2"></i>
+                          Most trusted education platform
+                      </h5>
+                      <!-- heading -->
+                      <h1 class="display-3 fw-bold mb-3">Grow your skills and advance career</h1>
+                      <!-- para -->
+                      <p class="pe-lg-10 mb-5">
+                          Start, switch, or advance your career with more than 5,000 courses, Professional Certificates, and degrees from world-class universities and companies.
+                      </p>
+                      <!-- btn -->
+                      <a href="#" class="btn btn-primary">Join Free Now</a>
+                      <a href="https://www.youtube.com/watch?v=Nfzi7034Kbg" class="glightbox fs-4 text-inherit ms-3">
+                          <%= image_tag("theme-images/svg/play-btn.svg", alt: "play", class: "me-2") %>
+                          Watch Demo
+                      </a>
+                  </div>
+              </div>
+              <!-- col -->
+              <div class="col-lg-6 d-flex justify-content-center">
+                  <!-- images -->
+                  <div class="position-relative">
+                    <%= image_tag("theme-images/background/acedamy-img/bg-thumb.svg", alt: "img") %>
+                    <%= image_tag("theme-images/background/acedamy-img/girl-image.png", alt: "girl", class: "w-100 w-md-auto position-absolute end-0 bottom-0") %>
+                    <%= image_tag("theme-images/background/acedamy-img/frame-1.svg", alt: "frame", class: "position-absolute top-0 ms-n8 d-none d-md-inline-block") %>
+                    <%= image_tag("theme-images/background/acedamy-img/frame-2.svg", alt: "frame", class: "position-absolute bottom-0 start-0 ms-lg-n8 ms-n6 mb-n7 d-none d-md-inline-block") %>
+                    <%= image_tag("theme-images/background/acedamy-img/target.svg", alt: "target", class: "position-absolute bottom-0 mb-8 ms-n8 ms-lg-n1 d-none d-md-inline-block") %>
+                    <%= image_tag("theme-images/background/acedamy-img/sound.svg", alt: "sound", class: "position-absolute top-50 mt-n8 ms-n8 d-none d-md-inline-block", style: "left: -100px") %>
+                    <%= image_tag("theme-images/background/acedamy-img/trophy.svg", alt: "trophy", class: "position-absolute top-0 start-0 ms-n8 d-none d-md-inline-block") %>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
