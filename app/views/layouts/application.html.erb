@@ -7,14 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
-    
+    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
-
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     
    <script src="https://kit.fontawesome.com/c211385aec.js" crossorigin="anonymous"></script>
 
-    <!-- Google tag (gtag.js) -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E8S63YKX4C"></script>
     <script>
@@ -28,7 +26,7 @@
   </head>
 
   <body class="">
-    <div class="container">
+    <%# <div class="container"> %>
       <% if user_signed_in? && current_user.admin? %>
         <%= render 'shared/admin_navbar' %>
       <% else %>
@@ -37,16 +35,16 @@
        <span class="notice"><%= notice %></span>
        <span class="alert"><%= alert %></span>
 
-    </div>
+    <%# </div> %>
     <% if controller_name == 'home' && action_name == 'show' %>
       <div class="container-fluid">
-        <%= render 'shared/welcome_header' %>
+        <%#= render 'shared/welcome_header' %>
       </div>
     <% end %>
 
-    <div class="container-sm">
+    <%# <div class="container-sm"> %>
       <%= yield %>
-      <%= render 'shared/footer' %>
-    </div>
+      <%#= render 'shared/footer' %>
+    <%# </div> %>
   </body>
 </html>
