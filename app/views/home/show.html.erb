@@ -1,117 +1,228 @@
-<div class="container py-5">
-  <!-- Feature Companies -->
-  <section class="featured-companies my-5 p-4 rounded">
-    <div class="container">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="fs-3">Featured Companies</h2>
-      </div>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"> 
-        <% @featured_companies.each do |company| %>
-          <div class="col">
-            <div class="company-card card shadow-sm"> 
-              <%= link_to company_path(company), class: "text-decoration-none" do %>
-                <div class="card-body d-flex flex-column"> 
-                  <div class="d-flex align-items-center mb-3">
-                    <% if company.logo.attached? %>
-                      <%= image_tag company.logo, class: "rounded-circle me-3", style: "width: 75px; height: 75px; object-fit: cover;" %>
-                    <% else %>
-                      <i class="fas fa-building fa-2x me-3 text-primary"></i> 
-                    <% end %>
-                    <h5 class="card-title fs-5 fw-medium mb-0"><%= company.name %></h5>
-                  </div>
-                  <p class="card-text text-muted"><%= truncate(company.about, length: 120) %></p> 
+    <!-- container -->
+    <section class="pb-8">
+        <div class="container mb-lg-8">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6 col-lg-3 border-top-md border-bottom border-end-md">
+                    <!-- text -->
+                    <div class="py-7 text-center">
+                        <div class="mb-3">
+                            <i class="fe fe-award fs-2 text-info"></i>
+                        </div>
+                        <div class="lh-1">
+                            <h2 class="mb-1">316,000+</h2>
+                            <span>Qualified Instructor</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer bg-white border-top-0">
-                  <div class="tags-list">
-                    <ul class="list-inline mb-0">
-                      <% 3.times do |i| %>
-                        <li class="list-inline-item">
-                          <span class="badge bg-light text-dark">#Tag<%= i + 1 %></span>
-                        </li>
-                      <% end %>
-                    </ul>
-                  </div>
-                </div> 
-              <% end %>
+                <div class="col-md-6 col-lg-3 border-top-md border-bottom border-end-lg">
+                    <!-- icon -->
+                    <div class="py-7 text-center">
+                        <div class="mb-3">
+                            <i class="fe fe-users fs-2 text-warning"></i>
+                        </div>
+                        <!-- text -->
+                        <div class="lh-1">
+                            <h2 class="mb-1">1.8 Billion+</h2>
+                            <span>Course enrolments</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 border-top-lg border-bottom border-end-md">
+                    <!-- icon -->
+                    <div class="py-7 text-center">
+                        <div class="mb-3">
+                            <i class="fe fe-tv fs-2 text-primary"></i>
+                        </div>
+                        <!-- text -->
+                        <div class="lh-1">
+                            <h2 class="mb-1">41,000+</h2>
+                            <span>Courses in 42 languages</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 border-top-lg border-bottom">
+                    <!-- icon -->
+                    <div class="py-7 text-center">
+                        <div class="mb-3">
+                            <i class="fe fe-film fs-2 text-success"></i>
+                        </div>
+                        <!-- text -->
+                        <div class="lh-1">
+                            <h2 class="mb-1">179,000+</h2>
+                            <span>Online Videos</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </section>
+        </div>
+    </section>
+    
+    <section>
+        <!-- row -->
+        <div class="container mb-lg-8">
+            <div class="row">
+                <!-- col -->
+                <div class="col-12">
+                    <div class="mb-6">
+                        <h2 class="mb-1 h1">Most Popular Courses</h2>
+                        <p>These are the most popular courses among Geeks Courses learners worldwide in year 2022</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Nav tab -->
+                    <ul class="nav nav-lb-tab mb-6 bg-gray-200 px-5 rounded-3" id="pills-tab" role="tablist">
+                        <!-- nav item -->
+                        <li class="nav-item ms-0" role="presentation">
+                            <a
+                                class="nav-link active"
+                                id="pills-development-tab"
+                                data-bs-toggle="pill"
+                                href="#pills-development"
+                                role="tab"
+                                aria-controls="pills-development"
+                                aria-selected="true">
+                                Development
+                            </a>
+                        </li>
+                        <!-- nav item -->
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-design-tab" data-bs-toggle="pill" href="#pills-design" role="tab" aria-controls="pills-design" aria-selected="false">Design</a>
+                        </li>
+                        <!-- nav item -->
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-marketing-tab" data-bs-toggle="pill" href="#pills-marketing" role="tab" aria-controls="pills-marketing" aria-selected="false">
+                                Marketing
+                            </a>
+                        </li>
+                        <!-- nav item -->
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-business-tab" data-bs-toggle="pill" href="#pills-business" role="tab" aria-controls="pills-business" aria-selected="false">
+                                Business
+                            </a>
+                        </li>
+                        <!-- nav item -->
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-health-tab" data-bs-toggle="pill" href="#pills-health" role="tab" aria-controls="pills-health" aria-selected="false">Health</a>
+                        </li>
+                    </ul>
+                    <!-- Tab content -->
+                    <div class="tab-content" id="pills-tabContent">
+                        <!-- tab pane 1 -->
+                        <div class="tab-pane fade show active" id="pills-development" role="tabpanel" aria-labelledby="pills-development-tab">
+                            <!-- row -->
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                <% @featured_companies.each do |company| %>
+                                  <div class="col">
+                                      <!-- Card -->
+                                      <div class="card card-hover">
+                                          <%= image_tag('theme-images/course/course-javascript.jpg', alt: 'course', class: 'card-img-top') %>
+                                          <!-- Card Body -->
+                                          <div class="card-body">
+                                              <div class="d-flex justify-content-between align-items-center mb-3">
+                                                  <span class="badge bg-info-soft">Intermediate</span>
+                                                  <a href="#" class="fs-5"><i class="fe fe-heart align-middle"></i></a>
+                                              </div>
+                                              <h4 class="mb-2 text-truncate-line-2"><a href="../course-single.html" class="text-inherit">How to easily create a website with JavaScript</a></h4>
 
-  <!-- Featured Blogs -->
-  <section class="my-5">
-    <div class="container">
-      <div class="d-flex justify-content-between align-items-center">
-        <h2 class="mb-3 fs-3">Recent Articles</h2>
-        <%= link_to "More Articles", "#", class:"btn btn-link mt-1 fs-6" %> 
-      </div>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 articles-row">
-        <% @featured_blogs.each do |blog| %>
-          <div class="col"> <%# Column for each article %>
-            <%= render partial: "shared/article_card", locals: { blog: blog } %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </section>
+                                              <small>By: Claire Evans</small>
+                                              <div class="lh-1 mt-3">
+                                                  <span class="align-text-top">
+                                                      <span class="fs-6">
+                                                          <svg
+                                                              xmlns="http://www.w3.org/2000/svg"
+                                                              width="12"
+                                                              height="12"
+                                                              fill="currentColor"
+                                                              class="bi bi-star-fill text-warning"
+                                                              viewBox="0 0 16 16">
+                                                              <path
+                                                                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                          </svg>
+                                                          <svg
+                                                              xmlns="http://www.w3.org/2000/svg"
+                                                              width="12"
+                                                              height="12"
+                                                              fill="currentColor"
+                                                              class="bi bi-star-fill text-warning"
+                                                              viewBox="0 0 16 16">
+                                                              <path
+                                                                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                          </svg>
+                                                          <svg
+                                                              xmlns="http://www.w3.org/2000/svg"
+                                                              width="12"
+                                                              height="12"
+                                                              fill="currentColor"
+                                                              class="bi bi-star-fill text-warning"
+                                                              viewBox="0 0 16 16">
+                                                              <path
+                                                                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                          </svg>
+                                                          <svg
+                                                              xmlns="http://www.w3.org/2000/svg"
+                                                              width="12"
+                                                              height="12"
+                                                              fill="currentColor"
+                                                              class="bi bi-star-fill text-warning"
+                                                              viewBox="0 0 16 16">
+                                                              <path
+                                                                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                          </svg>
+                                                          <svg
+                                                              xmlns="http://www.w3.org/2000/svg"
+                                                              width="12"
+                                                              height="12"
+                                                              fill="currentColor"
+                                                              class="bi bi-star-fill text-warning"
+                                                              viewBox="0 0 16 16">
+                                                              <path
+                                                                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                          </svg>
+                                                      </span>
+                                                  </span>
+                                                  <span class="text-warning">4.5</span>
+                                                  <span class="fs-6">(9,300)</span>
+                                              </div>
+                                          </div>
+                                          <!-- Card Footer -->
+                                          <div class="card-footer">
+                                              <div class="row align-items-center g-0">
+                                                  <div class="col">
+                                                      <h5 class="mb-0">$39.00</h5>
+                                                  </div>
 
-  <!-- Popular Cities -->
-  <section class="my-5">
-    <h2 class="mb-3 fs-3">Popular Cities</h2>
-    <% @companies_by_city.each_slice(4).with_index do |city_slice, index| %>
-      <div class="row">
-        <% city_slice.each do |city_name, companies| %>
-          <div class="col-md-3 mb-3 mb-sm-3">
-            <ol class="list-group custom-numbered-list">
-              <!-- Special first item without number -->
-              <li class="list-group-item border border-bottom-0 fs-5 text" style="list-style-type: none; position: relative;"><%= city_name.titleize %></li>
-              <% companies.take(10).each do |comp| %>
-                <li class="list-group-item company-logo-container" style="position: relative;">
-                  <%= image_tag comp.logo, { class:"img-fluid ms-3", style:"max-width: 24px; max-height: 24px;" } if comp.logo.attached? %>
-                  <%= link_to comp.name, company_path(comp), class:"ms-2" %>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
-                    <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
-                    <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
-                  </svg>
-                </li>
-              <% end %>
-            </ol>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
+                                                  <div class="col-auto">
+                                                      <a href="#" class="text-inherit">
+                                                          <i class="fe fe-shopping-cart text-primary align-middle me-2"></i>
+                                                          Get Enrolled
+                                                      </a>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                <% end %>
+                            </div>
+                        </div>
+                        <!-- tab pane 2 -->
+                        <div class="tab-pane fade" id="pills-design" role="tabpanel" aria-labelledby="pills-design-tab">
+                        </div>
+                        <!-- tab pane 3 -->
+                        <div class="tab-pane fade" id="pills-marketing" role="tabpanel" aria-labelledby="pills-marketing-tab">
+                        </div>
+                        <!-- tab pane 4 -->
+                        <div class="tab-pane fade" id="pills-business" role="tabpanel" aria-labelledby="pills-business-tab">
+                        </div>
+                        <!-- tab pane 5 -->
+                        <div class="tab-pane fade" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Popular Categories -->
-  <section class="my-5">
-    <h2 class="mb-3 fs-3">Popular Categories</h2>
-    <% @companies_by_category.each_slice(4).with_index do |category_slice, index| %>
-      <div class="row">
-        <% category_slice.each do |category_name, companies| %>
-          <div class="col-md-3 mb-3 mb-sm-3">
-            <ol class="list-group custom-numbered-list">
-              <!-- Special first item without number -->
-              <li class="list-group-item border border-bottom-0 fs-5 text" style="list-style-type: none; position: relative;"><%= category_name.titleize %></li>
-              <% companies.take(10).each do |comp| %>
-                <li class="list-group-item company-logo-container" style="position: relative;">
-                  <% if comp.logo.attached? %>
-                    <%= image_tag comp.logo, { class:"img-fluid ms-3", style:"max-width: 24px; max-height: 24px;" } %>
-                  <% else %>
-                    <%= raw generate_svg_with_initials(comp.name, classes="ms-3", height='24', width='24') %>
-                  <% end %>
-                  <%= link_to comp.name, company_path(comp), class:"ms-2" %>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="icon-right">
-                    <circle cx="256" cy="256" r="240" stroke="black" fill="none" stroke-width="32"/>
-                    <path d="M232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" fill="black"/>
-                  </svg>
-                </li>
-              <% end %>
-            </ol>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
-</div>
+
