@@ -59,7 +59,6 @@
     </section>
     
     <section>
-        <!-- row -->
         <div class="container mb-lg-8">
             <div class="row">
                 <!-- col -->
@@ -74,7 +73,7 @@
                 <div class="col-md-12">
                     <!-- Nav tab -->
                     <ul class="nav nav-lb-tab mb-6 bg-gray-200 px-5 rounded-3" id="pills-tab" role="tablist">
-                        <!-- nav item -->
+                        <!-- nav items -->
                         <li class="nav-item ms-0" role="presentation">
                             <a
                                 class="nav-link active"
@@ -87,23 +86,19 @@
                                 Development
                             </a>
                         </li>
-                        <!-- nav item -->
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-design-tab" data-bs-toggle="pill" href="#pills-design" role="tab" aria-controls="pills-design" aria-selected="false">Design</a>
+                          <a class="nav-link" id="pills-design-tab" data-bs-toggle="pill" href="#pills-design" role="tab" aria-controls="pills-design" aria-selected="false">Design</a>
                         </li>
-                        <!-- nav item -->
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="pills-marketing-tab" data-bs-toggle="pill" href="#pills-marketing" role="tab" aria-controls="pills-marketing" aria-selected="false">
                                 Marketing
                             </a>
                         </li>
-                        <!-- nav item -->
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="pills-business-tab" data-bs-toggle="pill" href="#pills-business" role="tab" aria-controls="pills-business" aria-selected="false">
                                 Business
                             </a>
                         </li>
-                        <!-- nav item -->
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="pills-health-tab" data-bs-toggle="pill" href="#pills-health" role="tab" aria-controls="pills-health" aria-selected="false">Health</a>
                         </li>
@@ -225,4 +220,88 @@
         </div>
     </section>
 
-
+<section>
+    <div class="container mb-lg-8">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-4">
+                    <h2 class="mb-1 h1">Popular Companies </h2>
+                    <%# <p>These are the most popular courses among Geeks Courses learners worldwide in year 2022</p> %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Nav tab -->
+                <ul class="nav nav-lb-tab mb-6 bg-gray-200 px-5 rounded-3" id="pills-tab" role="tablist">
+                    <!-- nav items -->
+                    <li class="nav-item ms-0" role="presentation">
+                        <a
+                            class="nav-link active"
+                            id="pills-development-tab"
+                            data-bs-toggle="pill"
+                            href="#pills-development"
+                            role="tab"
+                            aria-controls="pills-development"
+                            aria-selected="true">
+                            Development
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-design-tab" data-bs-toggle="pill" href="#pills-design" role="tab" aria-controls="pills-design" aria-selected="false">Design</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-marketing-tab" data-bs-toggle="pill" href="#pills-marketing" role="tab" aria-controls="pills-marketing" aria-selected="false">
+                            Marketing
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-business-tab" data-bs-toggle="pill" href="#pills-business" role="tab" aria-controls="pills-business" aria-selected="false">
+                            Business
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-health-tab" data-bs-toggle="pill" href="#pills-health" role="tab" aria-controls="pills-health" aria-selected="false">Health</a>
+                    </li>
+                </ul>
+                <!-- Tab content -->
+                <div class="tab-content" id="pills-tabContent">
+                    <!-- tab pane 1 -->
+                    <div class="tab-pane fade show active" id="pills-development" role="tabpanel" aria-labelledby="pills-development-tab">
+                        <!-- row -->
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                            <% @featured_companies.each do |company| %>
+                            <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                                <!-- card card-borderd  -->
+                                <div class="card h-100">
+                                    <!-- card body  -->
+                                    <div class="card-body">
+                                        <% if company.logo.present? %>
+                                            <%= image_tag company.logo, alt: "dropbox", class: "icon-lg mb-3" %>
+                                        <% end %>
+                                        <h3><%= company.name %></h3>
+                                        <p class="mb-0">Full platform of marketing,sales, other service.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <!-- tab pane 2 -->
+                    <div class="tab-pane fade" id="pills-design" role="tabpanel" aria-labelledby="pills-design-tab">
+                    </div>
+                    <!-- tab pane 3 -->
+                    <div class="tab-pane fade" id="pills-marketing" role="tabpanel" aria-labelledby="pills-marketing-tab">
+                    </div>
+                    <!-- tab pane 4 -->
+                    <div class="tab-pane fade" id="pills-business" role="tabpanel" aria-labelledby="pills-business-tab">
+                    </div>
+                    <!-- tab pane 5 -->
+                    <div class="tab-pane fade" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
