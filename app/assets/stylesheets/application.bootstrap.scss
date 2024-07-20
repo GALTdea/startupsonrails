@@ -9,6 +9,23 @@
   background-color: rgba(14, 165, 233, .1);
   color: #0ea5e9 !important;
 }
+
+.hero-graphics-fullscreen {
+  background: radial-gradient(circle, #e2e6ea, #e2e6ea 50%, rgba(248, 249, 250, 0) 100%);
+  min-height: 100vh;
+  /* Full viewport height */
+  margin: 0;
+  /* Remove default margin */
+  padding: 0;
+  /* Remove default padding */
+}
+
+.head-title {
+  font-size: 1.75rem !important;
+  font-weight: 200 !important;
+  // color: #333;
+}
+
 // 
 // // Additional spacing classes
 // /* Padding */
@@ -47,7 +64,7 @@
 //   font-weight: 400 !important;
 //   color: #6d6d6d;
 // }
-  
+
 
 // .tags-list ul li a {
 //   border: 1px solid #d1d1d6 !important;
@@ -188,7 +205,7 @@
 //   font-weight: 200;
 //   margin-top: 8px;
 //   color: #282828;
-  
+
 // }
 
 // // theme colors
