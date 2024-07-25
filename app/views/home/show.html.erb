@@ -178,20 +178,20 @@
                         <!-- row -->
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                             <% @featured_companies.each do |company| %>
-                            <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
-                                <!-- card card-borderd  -->
-                                <div class="card h-100">
-                                    <!-- card body  -->
-                                    <div class="card-body">
-                                        <% if company.logo.present? %>
-                                            <%= image_tag company.logo, alt: "dropbox", class: "icon-lg mb-3" %>
-                                            <!-- the image_tag helper looks for the asset provided -->
-                                        <% end %>
-                                        <h3><%= company.name %></h3>
-                                        <p class="mb-0">Full platform of marketing,sales, other service.</p>
-                                    </div>
+                            
+                                <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                                    <!-- card card-borderd  -->
+                                    <%= link_to company_path(company), class: "card h-100" do %>
+                                        <!-- card body  -->
+                                        <div class="card-body">
+                                            <% if company.logo.present? %>
+                                                <%= image_tag company.logo, alt: "dropbox", class: "icon-lg mb-3" %>
+                                            <% end %>
+                                            <h3><%= company.name %></h3>
+                                            <p class="mb-0">Full platform of marketing, sales, other service.</p>
+                                        </div>
+                                    <% end %>
                                 </div>
-                            </div>
                             <% end %>
                         </div>
                     </div>
