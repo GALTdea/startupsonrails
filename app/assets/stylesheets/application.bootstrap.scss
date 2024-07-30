@@ -5,6 +5,52 @@
 @import "theme.min.css";
 
 
+.card-lift {
+  overflow: hidden;
+}
+
+.article-card {
+  position: relative;
+  overflow: hidden;
+  // background: linear-gradient(to bottom right, #3b82f6, #06b6d4);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.article-card h3 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 0;
+}
+
+.article-card p {
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.gradient-bg-1 {
+  background: linear-gradient(to bottom right, #3b82f6, #06b6d4);
+}
+
+.gradient-bg-2 {
+  background: linear-gradient(to bottom right, #f97316, #f43f5e);
+}
+
+.gradient-bg-3 {
+  background: linear-gradient(to bottom right, #4ade80, #10b981);
+}
+
+.gradient-bg-4 {
+  background: linear-gradient(to bottom right, #8b5cf6, #ec4899);
+}
+
 .bg-info-soft {
   background-color: rgba(14, 165, 233, .1);
   color: #0ea5e9 !important;
