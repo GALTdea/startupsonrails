@@ -62,7 +62,11 @@
                       <div>
                         <div class="d-lg-flex">
                           <div class="mb-3 mb-lg-0">
-                            <%= image_tag company.logo, alt: company.name, class: "icon-shape border rounded-3 icon-xxl" %>
+                            <% if company.logo.attached?  %>
+                              <%= image_tag company.logo, alt: company.name, class: "icon-shape border rounded-3 icon-xxl" %>
+                            <% else %>
+                              <img src="https://via.placeholder.com/150" alt="Image placeholder" class="icon-shape border rounded-3 icon-xxl">
+                            <% end %>
                           </div>
                           <!-- text -->
                           <div class="w-100 ms-lg-4">
