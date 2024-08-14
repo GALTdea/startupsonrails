@@ -1,0 +1,95 @@
+<div class="col-md-4 mt-4 mt-md-0">
+    <div class="card border mb-6 mb-md-0 shadow-none">
+        <div class="card-header">
+            <h4 class="mb-0 fs-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter me-2" viewBox="0 0 16 16">
+                    <path
+                        d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                </svg>
+                All Filters
+            </h4>
+        </div>
+        <div class="card-body py-3">
+            <a class="fs-5 text-dark fw-semibold" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Categories
+                <span class="float-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </span>
+            </a>
+            <div class="collapse show" id="collapseExample">
+                <div class="mt-3">
+                    <%= form_with url: companies_path, method: :get, data: { turbo_frame: "companies_list", turbo: "true" }, local: true do |f| %>
+                        <%#= f.label :category_id, "Category", class: "form-label" %>
+                        <% Category.showcased.each do |category| %>
+                            <div class="form-check mb-2">
+                                <%#= f.check_box :category_ids, { multiple: true }, category.id, nil, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } %>
+                                <%= f.label "category_#{category.id}", category.name.humanize, class: "form-check-label ml-2 fw-100" %>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body border-top py-3">
+            <a
+                class="fs-5 text-dark fw-semibold"
+                data-bs-toggle="collapse"
+                href="#collapseExampleFourth"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExampleFourth">
+                Company Type
+                <span class="float-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </span>
+            </a>
+            <div class="collapse show" id="collapseExampleFourth">
+                <div class="mt-3">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCompanyFive">
+                        <label class="form-check-label" for="flexCheckCompanyFive">
+                            Startup
+                            <span>(4,532)</span>
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCompanySix " checked>
+                        <label class="form-check-label" for="flexCheckCompanySix ">
+                            Public
+                            <span>(532)</span>
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCompanySeven ">
+                        <label class="form-check-label" for="flexCheckCompanySeven ">
+                            Government
+                            <span>(312)</span>
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCompanyEight ">
+                        <label class="form-check-label" for="flexCheckCompanyEight ">
+                            Conglomerate
+                            <span>(670)</span>
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCompanyNine " />
+                        <label class="form-check-label" for="flexCheckCompanyNine ">
+                            Unicorn
+                            <span>(88)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body py-3 d-grid">
+            <a href="#" class="btn btn-outline-secondary">Clear Data</a>
+        </div>
+    </div>
+</div>
