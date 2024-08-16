@@ -125,76 +125,48 @@
             <div class="col-md-12">
                 <!-- Nav tab -->
                 <ul class="nav nav-lb-tab mb-6 bg-gray-200 px-5 rounded-3" id="pills-tab" role="tablist">
-                    <!-- nav items -->
-                    <li class="nav-item ms-0" role="presentation">
-                        <a
-                            class="nav-link active"
-                            id="pills-development-tab"
+                    <% @featured_categories.each_with_index do |(category, _), index| %>
+                        <li class="nav-item <%= 'ms-0' if index.zero? %>" role="presentation">
+                        <a class="nav-link <%= 'active' if index.zero? %>"
+                            id="pills-<%= category.name.parameterize %>-tab"
                             data-bs-toggle="pill"
-                            href="#pills-development"
+                            href="#pills-<%= category.name.parameterize %>"
                             role="tab"
-                            aria-controls="pills-development"
-                            aria-selected="true">
-                            Categories 1
+                            aria-controls="pills-<%= category.name.parameterize %>"
+                            aria-selected="<%= index.zero? %>">
+                            <%= category.name.titleize %>
                         </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="pills-design-tab" data-bs-toggle="pill" href="#pills-design" role="tab" aria-controls="pills-design" aria-selected="false">
-                            Categories 2
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="pills-marketing-tab" data-bs-toggle="pill" href="#pills-marketing" role="tab" aria-controls="pills-marketing" aria-selected="false">
-                            Categories 3
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="pills-business-tab" data-bs-toggle="pill" href="#pills-business" role="tab" aria-controls="pills-business" aria-selected="false">
-                            Categories 4
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="pills-health-tab" data-bs-toggle="pill" href="#pills-health" role="tab" aria-controls="pills-health" aria-selected="false">
-                            Categories 5
-                        </a>
-                    </li>
+                        </li>
+                    <% end %>
                 </ul>
+                
                 <!-- Tab content -->
                 <div class="tab-content" id="pills-tabContent">
-                    <!-- tab pane 1 -->
-                    <div class="tab-pane fade show active" id="pills-development" role="tabpanel" aria-labelledby="pills-development-tab">
+                    <% @featured_categories.each_with_index do |(category, companies), index| %>
+                        <div class="tab-pane fade <%= 'show active' if index.zero? %>"
+                            id="pills-<%= category.name.parameterize %>"
+                            role="tabpanel"
+                            aria-labelledby="pills-<%= category.name.parameterize %>-tab">
                         <!-- row -->
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                            <% @featured_companies.each do |company| %>
-                            
-                                <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
-                                    <!-- card card-borderd  -->
-                                    <%= link_to company_path(company), class: "card h-100" do %>
-                                        <!-- card body  -->
-                                        <div class="card-body">
-                                            <% if company.logo.present? %>
-                                                <%= image_tag company.logo, alt: "dropbox", class: "icon-lg mb-3" %>
-                                            <% end %>
-                                            <h3><%= company.name %></h3>
-                                            <p class="mb-0">Full platform of marketing, sales, other service.</p>
-                                        </div>
+                            <% companies.each do |company| %>
+                            <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                                <!-- card card-borderd  -->
+                                <%= link_to company_path(company), class: "card h-100" do %>
+                                <!-- card body  -->
+                                <div class="card-body">
+                                    <% if company.logo.present? %>
+                                    <%= image_tag company.logo, alt: company.name, class: "icon-lg mb-3" %>
                                     <% end %>
+                                    <h3><%= company.name %></h3>
+                                    <p class="mb-0">Full platform of marketing, sales, other service.</p>
                                 </div>
+                                <% end %>
+                            </div>
                             <% end %>
                         </div>
-                    </div>
-                    <!-- tab pane 2 -->
-                    <div class="tab-pane fade" id="pills-design" role="tabpanel" aria-labelledby="pills-design-tab">
-                    </div>
-                    <!-- tab pane 3 -->
-                    <div class="tab-pane fade" id="pills-marketing" role="tabpanel" aria-labelledby="pills-marketing-tab">
-                    </div>
-                    <!-- tab pane 4 -->
-                    <div class="tab-pane fade" id="pills-business" role="tabpanel" aria-labelledby="pills-business-tab">
-                    </div>
-                    <!-- tab pane 5 -->
-                    <div class="tab-pane fade" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
-                    </div>
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
