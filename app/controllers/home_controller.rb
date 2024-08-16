@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
   def show
-    ahoy.track "My first event", language: "Ruby"
+    ahoy.track 'My first event', language: 'Ruby'
 
-    @featured_companies = Company.where(name: ['airbnb', 'basecamp', 'bloomberg', 'dropbox', 'etsy', 'facebook', 'github', 'google', 'groupon', 'heroku', 'instagram', 'linkedin', 'netflix', 'pinterest', 'reddit', 'shopify', 'slack', 'spotify', 'stripe', 'twitter', 'uber', 'yelp', 'zendesk', 'zillow'])
-
+    @featured_categories = Category.featured_with_companies
     @featured_blogs = Blog.featured
 
     @top_categories = Category.showcased
