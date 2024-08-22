@@ -5,6 +5,137 @@
 @import "theme.min.css";
 
 
+
+.logos-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* Prevent overflow */
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  /* Responsive grid layout */
+  gap: 30px;
+  max-width: 100%;
+  opacity: 0.15;
+  // the opacity is 15%. 
+  // filter: blur(3px);
+}
+
+.logo {
+  transform: scale(0.55);
+  /* Scale the logo size to 75% of the original */
+  max-width: 100px;
+  /* Adjust max width of logos */
+  height: auto;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    max-width: 120px;
+    /* Slightly larger logos for larger screens */
+  }
+}
+
+
+
+
+// .hero-section {
+//   min-height: 100vh;
+// }
+
+
+// /* Container for logos */
+// .logos-container {
+//   top: 0;
+//   left: 0;
+//   z-index: -1;
+//   /* Make sure logos are behind text */
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   overflow: hidden;
+//   /* Ensure logos don't overflow */
+// }
+
+// /* Staggered grid layout */
+// .logos-grid {
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   /* Create 3 columns for the staggered look */
+//   gap: 50px;
+//   width: 100%;
+//   height: 100%;
+//   opacity: 0.1;
+//   /* Lower opacity for subtle background effect */
+//   filter: blur(5px);
+//   /* Apply blur effect */
+//   pointer-events: none;
+//   /* Make sure logos don't interfere with clicks on text */
+// }
+
+// /* Individual logo styles */
+// .logo {
+//   max-width: 80px;
+//   height: auto;
+// }
+
+// @media (min-width: 768px) {
+//   .logo {
+//     max-width: 100px;
+//     /* Increase size for larger screens */
+//   }
+// }
+
+
+
+// .hero-section {
+//   position: relative;
+//   min-height: 60vh;
+//   overflow: hidden;
+// }
+
+// .hero-content {
+//   position: relative;
+//   z-index: 2;
+// }
+
+// .logos-container {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 1;
+// }
+
+// .logo {
+//   position: absolute;
+//   width: 50px;
+//   height: auto;
+//   opacity: 0.5;
+//   transition: opacity 0.3s ease;
+// }
+
+// .logo:hover {
+//   opacity: 1;
+// }
+
+// @media (min-width: 768px) {
+//   .logo {
+//     width: 80px;
+//   }
+// }
+
+
+
 .card-lift {
   overflow: hidden;
 }

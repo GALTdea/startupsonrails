@@ -43,9 +43,9 @@
     <% end %>
 
     <% if controller_name == 'home' && action_name == 'show' %>
-      <div class="container-fluid">
+      <%# <div class="container"> %>
         <%= render 'shared/welcome_header' %>
-      </div>
+      <%# </div> %>
     <% end %>
 
       <%= yield %>
