@@ -11,19 +11,19 @@
                 <h2>Related Post</h2>
             </div>
         </div>
-        
+        <% @featured_blogs.each do |blog| %>
         <div class="col-xl-4 col-lg-4 col-md-6 col-12">
             <!-- Card -->
             <div class="card mb-4 shadow-lg card-lift">
                 <div class="article-card p-3 m-1 gradient-bg-1">
-                    <h3 class="card-title mb-3">Running Untrusted JavaScript Code</h3>
-                    <p class="text-muted mb-1">Author: ezzabuzaid</p>
-                    <p class="text-muted">Published: Jul 21</p>
+                    <h3 class="card-title mb-3"><%= blog.title %></h3>
+                    <p class="text-muted mb-1">Author:</p>
+                    <p class="text-muted">Published: <%= blog.created_at.strftime("%b %d") %></p>
                 </div>
                 <!-- Card body -->
                 <div class="card-body">
-                    <p>Inventore pariatur veritatis maxime fugiat sint dolorem officiis nemo quis!</p>
-                    <!-- Media content -->
+                    <p><%= sanitize(blog.content.to_s.truncate(100)) %></p>
+                        <!-- Media content -->
                     <div class="row align-items-center g-0 mt-4">
                         <div class="col-auto">
                             <p class="fs-6 mb-0">12 Min Read</p>
@@ -32,6 +32,7 @@
                 </div>
             </div>
         </div>
+        <% end %>
     </div>
 </div>
 
