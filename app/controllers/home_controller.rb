@@ -15,6 +15,8 @@ class HomeController < ApplicationController
     @top_cities = Category.top_cities
     @companies_by_city = {}
 
+    @featured_blogs = Blog.featured
+
     @top_cities.each do |city|
       @companies_by_city[city.name] = city.companies
     end
