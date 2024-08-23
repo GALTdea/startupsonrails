@@ -47,3 +47,6 @@
 
 # Ignore temp files
 /app/views/companies/index.html_copy.erb
+
+# Ignore cursor rules 
+/.cursorrules
