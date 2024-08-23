@@ -12,26 +12,26 @@
             </div>
         </div>
         <% @featured_blogs.each do |blog| %>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-            <!-- Card -->
-            <div class="card mb-4 shadow-lg card-lift">
-                <div class="article-card p-3 m-1 gradient-bg-1">
-                    <h3 class="card-title mb-3"><%= link_to blog.title, blog_path(blog), class: "text-reset" %></h3>
-                    <p class="text-muted mb-1">Author:</p>
-                    <p class="text-muted">Published: <%= blog.created_at.strftime("%b %d") %></p>
-                </div>
-                <!-- Card body -->
-                <div class="card-body">
-                    <p><%= sanitize(blog.content.to_s.truncate(100)) %></p>
-                        <!-- Media content -->
-                    <div class="row align-items-center g-0 mt-4">
-                        <div class="col-auto">
-                            <p class="fs-6 mb-0">12 Min Read</p>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                <!-- Card -->
+                <div class="card mb-4 shadow-lg">
+                    <div class="article-card p-3 m-1 gradient-bg-1">
+                        <h3 class="card-title mb-3"><%= link_to blog.title, blog_path(blog), class: "text-reset" %></h3>
+                        <p class="text-muted mb-1">Author:</p>
+                        <p class="text-muted">Published: <%= blog.created_at.strftime("%b %d") %></p>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <p><%= sanitize(blog.content.to_s.truncate(100)) %></p>
+                            <!-- Media content -->
+                        <div class="row align-items-center g-0 mt-4">
+                            <div class="col-auto">
+                                <p class="fs-6 mb-0">12 Min Read</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <% end %>
     </div>
 </div>
