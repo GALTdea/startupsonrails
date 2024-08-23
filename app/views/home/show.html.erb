@@ -22,7 +22,7 @@
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
-                        <p><%= sanitize(blog.content.to_s.truncate(100)) %></p>
+                        <p><%= truncate(strip_tags(blog.content.to_s), length: 100, escape: false) %></p>
                             <!-- Media content -->
                         <div class="row align-items-center g-0 mt-4">
                             <div class="col-auto">
