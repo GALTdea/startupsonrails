@@ -18,19 +18,21 @@
                     </svg>
                 </span>
             </a>
+
             <div class="collapse show" id="collapseExample">
                 <div class="mt-3">
-                    <%= form_with url: companies_path, method: :get, data: { turbo_frame: "companies_list", turbo: "true" }, local: true do |f| %>
-                        <%#= f.label :category_id, "Category", class: "form-label" %>
+                    <%= form_with url: companies_path, method: :get, data: { controller: "filter", turbo_frame: "companies_list", turbo: "true" }, local: true do |f| %>
                         <% Category.showcased.each do |category| %>
                             <div class="form-check mb-2">
                                 <%= f.check_box :category_ids, { multiple: true, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } }, category.id, nil %>
                                 <%= f.label "category_#{category.id}", category.name.humanize, class: "form-check-label ml-2 fw-100" %>
                             </div>
                         <% end %>
+                        <%= f.submit "Apply Filters", class: "d-none", data: { filter_target: "submitButton" } %>
                     <% end %>
                 </div>
             </div>
+
         </div>
 
         <div class="card-body border-top py-3">
