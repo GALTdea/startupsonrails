@@ -24,7 +24,7 @@
                         <%#= f.label :category_id, "Category", class: "form-label" %>
                         <% Category.showcased.each do |category| %>
                             <div class="form-check mb-2">
-                                <%#= f.check_box :category_ids, { multiple: true }, category.id, nil, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } %>
+                                <%= f.check_box :category_ids, { multiple: true, id: "category_#{category.id}", class: "form-check-input", data: { action: "change->filter#submit" } }, category.id, nil %>
                                 <%= f.label "category_#{category.id}", category.name.humanize, class: "form-check-label ml-2 fw-100" %>
                             </div>
                         <% end %>
