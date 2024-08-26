@@ -1,0 +1,12 @@
+<%= turbo_frame_tag "companies_list" do %>
+  <% companies.each do |company| %>
+    <%= render partial: "company_card", locals: { company: company } %>
+  <% end %>
+  
+  <!-- Pagination -->
+  <% if pagy.pages > 1 %>
+    <nav aria-label="Page navigation">
+      <%== pagy_bootstrap_nav(pagy) %>
+    </nav>
+  <% end %>
+<% end %>
