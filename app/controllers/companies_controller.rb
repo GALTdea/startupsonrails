@@ -27,6 +27,40 @@ class CompaniesController < ApplicationController
   #   end
   # end
 
+  # def index
+  #   @companies = Company.where(status: :active)
+
+  #   if params[:query].present?
+  #     @companies = @companies.where('name ILIKE ?', "%#{params[:query]}%")
+  #   elsif params[:category_ids].present?
+  #     category_ids = params[:category_ids].reject(&:blank?)
+  #     @companies = @companies.joins(:categories).where(categories: { id: category_ids }).distinct
+  #   end
+
+  #   @pagy, @companies = pagy(@companies.order(name: :asc))
+
+  #   respond_to do |format|
+  #     format.html
+
+  #     format.turbo_stream do
+  #       render turbo_stream: turbo_stream.replace(
+  #         'companies_list',
+  #         partial: 'companies/list',
+  #         locals: { companies: @companies, pagy: @pagy }
+  #       )
+  #     end
+
+  #     format.json do
+  #       if params[:query].present?
+  #         render json: @companies.as_json(only: %i[id name])
+  #       else
+  #         # Additional JSON response handling can be done here if needed.
+  #         render json: { companies: @companies, pagy: pagy_metadata(@pagy) }
+  #       end
+  #     end
+  #   end
+  # end
+
   def index
     @companies = Company.where(status: :active)
 
@@ -41,7 +75,6 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       format.html
-
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           'companies_list',
@@ -49,14 +82,8 @@ class CompaniesController < ApplicationController
           locals: { companies: @companies, pagy: @pagy }
         )
       end
-
       format.json do
-        if params[:query].present?
-          render json: @companies.as_json(only: %i[id name])
-        else
-          # Additional JSON response handling can be done here if needed.
-          render json: { companies: @companies, pagy: pagy_metadata(@pagy) }
-        end
+        render json: @companies.as_json(only: %i[id name])
       end
     end
   end
