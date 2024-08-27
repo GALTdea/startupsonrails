@@ -1,26 +1,45 @@
 import { Controller } from "@hotwired/stimulus"
 
-
-// Connects to data-controller="autocomplete"
 export default class extends Controller {
-  static targets = [ "input", "results" ]
-  
+  static targets = ["input", "results"]
+
   connect() {
     console.log("Autocomplete connected")
   }
 
   search() {
-    if (this.inputTarget.value.length > 1) {
+    clearTimeout(this.timeout)
+    this.timeout = setTimeout(() => {
+      this.performSearch()
+    }, 300)
+  }
 
-      fetch(`/companies?query=${this.inputTarget.value}`, {
-        headers: { "Accept": "application/json" }
+  performSearch() {
+    const query = this.inputTarget.value.trim()
+    if (query.length > 1) {
+      fetch(`/companies?query=${encodeURIComponent(query)}`, {
+        headers: {
+          "Accept": "text/vnd.turbo-stream.html, application/json",
+          "X-Requested-With": "XMLHttpRequest"
+        }
       })
-      .then(response => response.json())
-      .then(data => {
-        this.resultsTarget.innerHTML = data.map(company => {
-          return `<li data-id="${company.id}" data-action="click->autocomplete#select">${company.name}</li>`;
-        }).join('');
-      })
+        .then(response => {
+          const contentType = response.headers.get("Content-Type")
+          if (contentType && contentType.includes("text/vnd.turbo-stream.html")) {
+            return response.text().then(html => {
+              Turbo.renderStreamMessage(html)
+            })
+          } else {
+            return response.json().then(data => {
+              this.resultsTarget.innerHTML = data.map(company => {
+                return `<li class="list-group-item" data-id="${company.id}" data-action="click->autocomplete#select">${company.name}</li>`;
+              }).join('');
+              this.showResults()
+            })
+          }
+        })
+    } else {
+      this.clearResults()
     }
   }
 
@@ -29,18 +48,12 @@ export default class extends Controller {
     window.location.href = `/companies/${companyId}`;
   }
 
-  haveResults() {
-    return this.resultsTarget.children.length > 0;
+  showResults() {
+    this.resultsTarget.classList.remove('d-none')
   }
 
-  populateResults(data) {
-    // populate the results
-
-    if (this.haveResults()) {
-      this.resultsTarget.classList.add('has-results');
-    } else {
-      this.resultsTarget.classList.remove('has-results');
-    }
+  clearResults() {
+    this.resultsTarget.innerHTML = ''
+    this.resultsTarget.classList.add('d-none')
   }
 }
-
