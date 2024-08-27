@@ -2,10 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 col-12">
-        <div class="mb-4">
-          <h1 class="fw-bold mb-1">Discover Best Places to Work!</h1>
-          <p>Company reviews. Salaries. Interviews. Jobs.</p>
-        </div>
         <div class="bg-white rounded-md-pill me-lg-8 shadow rounded-3">
           <!-- card body -->
           <div class="p-md-2 p-4">
@@ -22,10 +18,7 @@
                   <input data-autocomplete-target="input" data-action="input->autocomplete#search" type="search" placeholder="Search companies..." class="form-control rounded-pill border-0 ps-3 form-focus-none" aria-label="Search companies" aria-describedby="searchJob">
                 </div>
               </div>
-              <ul data-autocomplete-target="results" class="list-group position-absolute mt-5"></ul>
-            </div>
-
-              <!-- Location field (optional, remove if not needed) -->
+              <!-- Location field -->
               <div class="col-12 col-md-4">
                 <div class="input-group mb-3 mb-md-0 border-md-0 border rounded-pill">
                   <span class="input-group-text bg-transparent border-0 pe-0 ps-md-0" id="location">
@@ -37,14 +30,11 @@
                   <input type="search" class="form-control rounded-pill border-0 ps-3 form-focus-none" placeholder="Location" aria-label="Location" aria-describedby="location">
                 </div>
               </div>
-
               <div class="col-12 col-md-3 text-end d-grid">
-                <button type="button" class="btn btn-primary rounded-pill" onclick="document.querySelector('[data-action=keyup]->autocomplete#search').dispatchEvent(new Event('keyup'));">Search</button>
+                <button type="button" class="btn btn-primary rounded-pill" data-action="click->autocomplete#search">Search</button>
               </div>
-
-              <ul data-autocomplete-target="results" class="list-group"></ul>
             </div>
-
+            <ul data-autocomplete-target="results" class="list-group position-absolute mt-2"></ul>
           </div>
         </div>
       </div>
