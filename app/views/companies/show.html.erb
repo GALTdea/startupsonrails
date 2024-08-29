@@ -49,38 +49,86 @@
           <div class="card-body">
             <h5 class="card-title">Company Snapshot</h5>
             <p class="text-muted mb-3"><%= @company.about %></p>
-            <ul class="list-unstyled">
-              <li class="d-flex align-items-center">
-                <div class="me-3"> <i class="fas fa-map-marker-alt  text-dark-emphasis"></i> </div>
-                <div>
-                  <%= @company.location if @company.location %>
-                </div>
-              </li>
-              <li class="mt-2 d-flex align-items-center">
-                <div class="me-3"><i class="fas fa-users text-dark-emphasis"></i> </div>
-                <div>
-                  <%#= @company.size %>
-                </div>
-              </li>
-              <li class="mt-2 d-flex align-items-center">
-                <div class="me-3"><i class="fas fa-industry text-dark-emphasis"></i> </div>
-                <div>
-                  <%#= @company.industry %>
-                </div>
-              </li>
-              <li class="mt-2 d-flex align-items-center">
-                <div class="me-3"><i class="fas fa-sitemap text-dark-emphasis"></i> </div>
-                <div>
-                  <%#= @company.company_type %>
-                </div>
-              </li>
-              <li class="mt-2 d-flex align-items-center">
-                <div class="me-3"><i class="fas fa-calendar-alt text-dark-emphasis"></i> </div>
-                <div>
-                  <%#= @company.founded %>
-                </div>
-              </li>
-            </ul>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <% if @company.location.present? %>
+                    <li class="d-flex align-items-center">
+                      <div class="me-3"> <i class="fas fa-map-marker-alt  text-dark-emphasis"></i> </div>
+                      <div>
+                        <%= @company.location %>
+                      </div>
+                    </li>
+                  <% end %>
+                  <%# if @company.size.present? %>
+                    <li class="mt-2 d-flex align-items-center">
+                      <div class="me-3"><i class="fas fa-users text-dark-emphasis"></i> </div>
+                      <div>
+                        <%#= @company.size %>
+                      </div>
+                    </li>
+                  <%# end %>
+                  <%# if @company.industry.present? %>
+                    <li class="mt-2 d-flex align-items-center">
+                      <div class="me-3"><i class="fas fa-industry text-dark-emphasis"></i> </div>
+                      <div>
+                        <%# @company.industry %>
+                      </div>
+                    </li>
+                  <%# end %>
+                  <%# if @company.company_type.present? %>
+                    <li class="mt-2 d-flex align-items-center">
+                      <div class="me-3"><i class="fas fa-sitemap text-dark-emphasis"></i> </div>
+                      <div>
+                        <%#= @company.company_type %>
+                      </div>
+                    </li>
+                  <%# end %>
+                  <%# if @company.founded.present? %>
+                    <li class="mt-2 d-flex align-items-center">
+                      <div class="me-3"><i class="fas fa-calendar-alt text-dark-emphasis"></i> </div>
+                      <div>
+                        <%#= @company.founded %>
+                      </div>
+                    </li>
+                  <%# end %>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <% if @company.email.present? %>
+                    <li class="d-flex align-items-center">
+                      <div class="me-3"><i class="fas fa-envelope text-dark-emphasis"></i></div>
+                      <div>
+                        <%= @company.email %>
+                      </div>
+                    </li>
+                  <% end %>
+                  <% if @company.url.present? %>
+                    <li class="mt-2 d-flex align-items-center">
+                      <div class="me-3"><i class="fas fa-link text-dark-emphasis"></i></div>
+                    <div>
+                      <%= link_to @company.url, @company.url, target: "_blank" %>
+                      </div>
+                    </li>
+                  <% end %>
+                  <% if @company.tech_stack.present? %>
+                    <li class="mt-2 d-flex align-items-center">
+                      <div class="me-3"><i class="fas fa-code text-dark-emphasis"></i></div>
+                      <div>
+                        <%= @company.tech_stack %>
+                      </div>
+                    </li>
+                  <% end %>
+                  <li class="mt-2 d-flex align-items-center">
+                    <div class="me-3"><i class="fas fa-user-circle text-dark-emphasis"></i></div>
+                    <div>
+                      <%= @company.user.name %>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
