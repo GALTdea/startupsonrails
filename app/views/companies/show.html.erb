@@ -225,20 +225,28 @@
     </div>
 
     <!-- Admin links -->
-    <div class="adimin_links">
-      <% if user_signed_in? && current_user.admin? %>
-        <div class="admin_links">
-          <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-link' %>
-          <%= link_to 'Delete', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
-          <% Company.statuses.keys.each do |status| %>
-            <% unless @company.status == status %>
-              <%= form_with url: update_status_company_path(@company, status: status), method: :patch, local: true do |form| %>
-                <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class:"btn btn-link" %>
+    <% if user_signed_in? && current_user.admin? %>
+      <nav class="navbar navbar-light bg-light mb-4">
+        <div class="container-fluid">
+          <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item me-3">
+              <%= link_to 'Edit', edit_company_path(@company), class: 'nav-link' %>
+            </li>
+            <li class="nav-item me-3">
+              <%= link_to 'Delete', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link' %>
+            </li>
+            <% Company.statuses.keys.each do |status| %>
+              <% unless @company.status == status %>
+                <li class="nav-item me-3">
+                  <%= form_with url: update_status_company_path(@company, status: status), method: :patch, local: true do |form| %>
+                    <%= form.submit "Set as #{status.titleize}", data: { confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class: "nav-link btn btn-link p-0" %>
+                  <% end %>
+                </li>
               <% end %>
             <% end %>
-          <% end %>
+          </ul>
         </div>
-      <% end  %>
-    </div>
+      </nav>
+    <% end %>
   </div>
 </section>
