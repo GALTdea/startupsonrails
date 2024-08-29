@@ -14,7 +14,7 @@
           <div>
             <!-- heading -->
             <h3 class="mb-1">
-              <%= link_to company.name, company_path(company), class: 'text-inherit' %>
+              <%= link_to company.name, company_path(company), class: 'text-inherit', data: { turbo_frame: "_top" } %>
             </h3>
           </div>
           <div>
