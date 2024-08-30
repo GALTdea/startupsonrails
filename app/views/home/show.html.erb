@@ -63,24 +63,24 @@
                             id="pills-<%= category.name.parameterize %>"
                             role="tabpanel"
                             aria-labelledby="pills-<%= category.name.parameterize %>-tab">
-                        <!-- row -->
-                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                            <% companies.each do |company| %>
-                            <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
-                                <!-- card card-borderd  -->
-                                <%= link_to company_path(company), class: "card h-100" do %>
-                                <!-- card body  -->
-                                <div class="card-body">
-                                    <% if company.logo.present? %>
-                                    <%= image_tag company.logo, alt: company.name, class: "icon-lg mb-3" %>
+                            <!-- row -->
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                <% companies.each do |company| %>
+                                <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                                    <!-- card card-borderd  -->
+                                    <%= link_to company_path(company), class: "card h-100" do %>
+                                    <!-- card body  -->
+                                    <div class="card-body">
+                                        <% if company.logo.present? %>
+                                        <%= image_tag company.logo, alt: company.name, class: "icon-lg mb-3" %>
+                                        <% end %>
+                                        <h3><%= company.name %></h3>
+                                        <p class="mb-0">Full platform of marketing, sales, other service.</p>
+                                    </div>
                                     <% end %>
-                                    <h3><%= company.name %></h3>
-                                    <p class="mb-0">Full platform of marketing, sales, other service.</p>
                                 </div>
                                 <% end %>
                             </div>
-                            <% end %>
-                        </div>
                         </div>
                     <% end %>
                 </div>
