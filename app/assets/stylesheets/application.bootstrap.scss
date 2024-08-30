@@ -5,6 +5,58 @@
 @import "theme.min.css";
 
 
+.max-w-prose {
+  max-width: 65ch;
+}
+
+.prose {
+  line-height: 1.75;
+}
+
+.prose>*+* {
+  margin-top: 1.5em;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-outline-primary {
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-outline-danger {
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+.btn-outline-danger:hover {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-outline-secondary {
+  color: #6b7280;
+  border: 1px solid #6b7280;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6b7280;
+  color: white;
+}
+
+
 
 .logos-container {
   width: 100%;
