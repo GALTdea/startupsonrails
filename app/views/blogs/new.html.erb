@@ -1,23 +1,62 @@
-<h1>Blogs</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Create a New Blog Post</h1>
 
-<%= form_with model: @blog do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <%= form_with model: @blog, local: true, class: 'needs-validation', novalidate: true do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, class: 'form-label' %>
+      <%= form.text_field :title, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Please provide a title for your blog post.
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :content, class: 'form-label' %>
+      <%= form.rich_text_area :content, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Please provide content for your blog post.
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :image %>
-    <%= form.file_field :image, direct_upload: true %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :image, class: 'form-label' %>
+      <%= form.file_field :image, class: 'form-control', direct_upload: true, accept: 'image/*' %>
+      <div class="form-text">Upload an image for your blog post (optional).</div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :status, class: 'form-label' %>
+      <%= form.select :status, Blog.statuses.keys.map { |status| [status.titleize, status] }, {}, class: 'form-select' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Create Blog Post', class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', blogs_path, class: 'btn btn-secondary ms-2' %>
+    </div>
+  <% end %>
+</div>
+
+<%= content_for :javascript do %>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  </script>
 <% end %>
-  
