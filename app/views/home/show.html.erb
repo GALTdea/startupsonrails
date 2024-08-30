@@ -1,8 +1,3 @@
-<!-- Sponsors -->
-
-<!-- end -->
-
-
 <!-- Featured Articles -->
 <div class="container">
     <div class="row">
@@ -12,30 +7,24 @@
             </div>
         </div>
         <% @featured_blogs.each do |blog| %>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12 mb-4">
                 <!-- Card -->
-                <div class="card mb-4 shadow-lg">
+                <div class="card shadow-lg h-100 d-flex flex-column">
                     <div class="article-card p-3 m-1 gradient-bg-1">
-                        <h3 class="card-title mb-3"><%= link_to blog.title, blog_path(blog), class: "text-reset" %></h3>
-                        <p class="text-muted mb-1">Author:</p>
-                        <p class="text-muted">Published: <%= blog.created_at.strftime("%b %d") %></p>
+                        <h3 class="card-title mb-3" style="height: 3.6em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                            <%= link_to blog.title, blog_path(blog), class: "text-reset" %>
+                        </h3>
+                        <p class="text-muted mb-0">Published: <%= blog.created_at.strftime("%b %d") %></p>
                     </div>
                     <!-- Card body -->
-                    <div class="card-body">
-                        <p><%= truncate(strip_tags(blog.content.to_s), length: 100, escape: false) %></p>
-                            <!-- Media content -->
-                        <div class="row align-items-center g-0 mt-4">
-                            <div class="col-auto">
-                                <p class="fs-6 mb-0">12 Min Read</p>
-                            </div>
-                        </div>
+                    <div class="card-body d-flex flex-column">
+                        <p class="flex-grow-1"><%= truncate(strip_tags(blog.content.to_s), length: 100, escape: false) %></p>
                     </div>
                 </div>
             </div>
         <% end %>
     </div>
 </div>
-
 
 <!-- Categories Section -->
 <section class="mt-6">
