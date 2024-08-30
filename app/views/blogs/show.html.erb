@@ -20,11 +20,11 @@
 
       <% if user_signed_in? && current_user.admin? %>
         <div class="admin-links mt-5 text-center">
-          <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary me-2 mb-2' %>
-          <%= link_to 'Delete', @blog, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger me-2 mb-2' %>
+          <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary btn-sm me-2 mb-2' %>
+          <%= link_to 'Delete', @blog, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm me-2 mb-2' %>
           <% Blog.statuses.keys.each do |status| %>
             <% unless @blog.status == status %>
-              <%= button_to "Set as #{status.titleize}", update_status_blog_path(@blog, status: status), method: :patch, data: { turbo_confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class: "btn btn-secondary me-2 mb-2" %>
+              <%= button_to "Set as #{status.titleize}", update_status_blog_path(@blog, status: status), method: :patch, data: { turbo_confirm: "Are you sure you want to change the status to #{status.titleize}?" }, class: "btn btn-secondary btn-sm me-2 mb-2" %>
             <% end %>
           <% end %>
         </div>
