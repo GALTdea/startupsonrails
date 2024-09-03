@@ -88,3 +88,55 @@
         </div>
     </div>
 </section>
+
+<!-- Trending Open Source Projects Section -->
+<section class="mt-6">
+    <div class="container mb-lg-8">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-4">
+                    <h2 class="mb-1 h3 fw-normal">Trending Open Source Projects</h2>
+                    <p>Popular Ruby and Rails projects with strong community support</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <% [
+                { name: 'rails/rails', description: 'Ruby on Rails', stars: 52000, forks: 20500 },
+                { name: 'jekyll/jekyll', description: 'Jekyll is a blog-aware static site generator in Ruby', stars: 45000, forks: 9800 },
+                { name: 'discourse/discourse', description: 'A platform for community discussion', stars: 36000, forks: 7500 }
+            ].each do |project| %>
+                <div class="col">
+                    <div class="card shadow-lg h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <a href="https://github.com/<%= project[:name] %>" class="text-reset" target="_blank" rel="noopener noreferrer">
+                                    <%= project[:name] %>
+                                </a>
+                            </h3>
+                            <p class="card-text"><%= project[:description] %></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-star-fill"></i> <%= number_with_delimiter(project[:stars]) %>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-diagram-2"></i> <%= number_with_delimiter(project[:forks]) %>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <p class="mb-1 text-muted">Supported by:</p>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <% 4.times do |i| %>
+                                    <img src="https://via.placeholder.com/30" alt="Supporter <%= i + 1 %>" class="rounded-circle me-2" width="30" height="30">
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>
