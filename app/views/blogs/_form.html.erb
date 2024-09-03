@@ -1,48 +1,36 @@
-<%= form_with(model: blog, local: true) do |form| %>
-  <% if blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+<div class="container">
+  <%= form_with(model: blog, local: true, class: 'mb-3') do |form| %>
+    <% if blog.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+        <ul>
+        <% blog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% blog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="mb-3">
+      <%= form.label :title, class: 'form-label' %>
+      <%= form.text_field :title, class: 'form-control' %>
     </div>
+
+    <div class="mb-3">
+      <%= form.label :content, class: 'form-label' %>
+      <%= form.rich_text_area :content, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :status, class: 'form-label' %>
+      <%= form.select :status, Blog.statuses.keys, {}, class: 'form-select' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :image, class: 'form-label' %>
+      <%= form.file_field :image, class: 'form-control' %>
+    </div>
+
+    <%= form.submit class: 'btn btn-primary' %>
   <% end %>
-
-  <div class="form-label">
-    <%= form.label :status %> <br>
-    <%= form.radio_button :status, 'draft' %>
-    <%= form.label :status_draft, 'Draft' %>
-    <%= form.radio_button :status, 'published' %>
-    <%= form.label :status_published, 'Published' %>
-    <%= form.radio_button :status, 'featured' %>
-    <%= form.label :status_featured, 'Featured' %>
-  </div>
-
-
-  <div class="form-label">
-    <%= form.label :title , class: 'form-label'%>
-    <%= form.text_field :title, class: 'form-control' %>
-  </div>
-
-  <div class="form-label">
-    <%= form.label :content %>
-    <%= form.text_area :content, class: 'form-control' %>
-  </div>
-
-  <div class="form-lebel">
-    <%= form.label :status %>
-  </div>
-  
-
-  <div class="form-label">
-    <%= form.label :image %>
-    <%= form.file_field :image, class: 'form-control' %>
-  </div>
-
-  <div class="submit">
-    <%= form.submit  class:"btn btn-secondary" %>
-  </div>
-<% end %>
+</div>

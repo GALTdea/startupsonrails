@@ -1,2 +1,5 @@
-<h1>Blogs</h1>
-<%= render 'form', blog: @blog %>
+<div class="container mt-4">
+  <h1>Edit Blog</h1>
+  <%= render 'form', blog: @blog %>
+  <%= link_to 'Back', blogs_path, class: 'btn btn-secondary' %>
+</div>
