@@ -90,24 +90,27 @@
   <div class="container">
     <div class="row mb-4">
       <div class="col-12">
-        <h2 class="h3 fw-normal">Trending Open Source Projects</h2>
+        <h2 class="h3 fw-normal">Top Open Source Projects</h2>
         <p class="text-muted">Popular Ruby and Rails projects with strong community support</p>
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       <% [
-        { name: 'rails/rails', description: 'Ruby on Rails', stars: 52000, forks: 20500 },
-        { name: 'jekyll/jekyll', description: 'Jekyll is a blog-aware static site generator in Ruby', stars: 45000, forks: 9800 },
-        { name: 'discourse/discourse', description: 'A platform for community discussion', stars: 36000, forks: 7500 }
+        { name: 'rails/rails', description: 'Ruby on Rails', stars: 52000, forks: 20500, icon: 'bi-gem' },
+        { name: 'jekyll/jekyll', description: 'Jekyll is a blog-aware static site generator in Ruby', stars: 45000, forks: 9800, icon: 'bi-file-earmark-text' },
+        { name: 'discourse/discourse', description: 'A platform for community discussion', stars: 36000, forks: 7500, icon: 'bi-chat-dots' }
       ].each do |project| %>
         <div class="col">
           <div class="card shadow h-100">
             <div class="card-body">
-              <h3 class="h5 card-title">
-                <a href="https://github.com/<%= project[:name] %>" class="text-reset" target="_blank" rel="noopener noreferrer">
-                  <%= project[:name] %>
-                </a>
-              </h3>
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi <%= project[:icon] %> fs-4 me-2"></i>
+                <h3 class="h5 card-title mb-0">
+                  <a href="https://github.com/<%= project[:name] %>" class="text-reset" target="_blank" rel="noopener noreferrer">
+                    <%= project[:name] %>
+                  </a>
+                </h3>
+              </div>
               <p class="card-text mb-3"><%= project[:description] %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
