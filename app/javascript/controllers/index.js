@@ -12,3 +12,6 @@ application.register("filter", FilterController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import RichTextController from "./rich_text_controller"
+application.register("rich-text", RichTextController)
