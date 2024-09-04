@@ -4,6 +4,15 @@
 // line below imports the theme.min.css file from the theme folder located in the same directory as the application.scss file.
 @import "theme.min.css";
 
+// rich text editor
+.responsive-rich-text {
+  min-height: 200px;
+  height: auto;
+  max-height: 66vh;
+  overflow-y: auto;
+}
+
+
 
 .max-w-prose {
   max-width: 65ch;
