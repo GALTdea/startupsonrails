@@ -1,5 +1,13 @@
-<div class="container mt-4">
-  <h1>Edit Blog</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Edit Blog Post</h1>
+
   <%= render 'form', blog: @blog %>
-  <%= link_to 'Back', blogs_path, class: 'btn btn-secondary' %>
+
+  <%= link_to 'Cancel', @blog, class: 'btn btn-secondary mt-3' %>
 </div>
+
+<%= content_for :javascript do %>
+  <script>
+    // ... existing JavaScript ...
+  </script>
+<% end %>

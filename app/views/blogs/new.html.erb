@@ -1,39 +1,9 @@
 <div class="container mt-5">
   <h1 class="mb-4">Create a New Blog Post</h1>
 
-  <%= form_with model: @blog, local: true, class: 'needs-validation', novalidate: true do |form| %>
-    <div class="mb-3">
-      <%= form.label :title, class: 'form-label' %>
-      <%= form.text_field :title, class: 'form-control', required: true %>
-      <div class="invalid-feedback">
-        Please provide a title for your blog post.
-      </div>
-    </div>
+  <%= render 'form', blog: @blog %>
 
-    <div class="mb-3">
-      <%= form.label :content, class: 'form-label' %>
-      <%= form.rich_text_area :content, class: 'form-control', required: true %>
-      <div class="invalid-feedback">
-        Please provide content for your blog post.
-      </div>
-    </div>
-
-    <div class="mb-3">
-      <%= form.label :image, class: 'form-label' %>
-      <%= form.file_field :image, class: 'form-control', direct_upload: true, accept: 'image/*' %>
-      <div class="form-text">Upload an image for your blog post (optional).</div>
-    </div>
-
-    <div class="mb-3">
-      <%= form.label :status, class: 'form-label' %>
-      <%= form.select :status, Blog.statuses.keys.map { |status| [status.titleize, status] }, {}, class: 'form-select' %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit 'Create Blog Post', class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', blogs_path, class: 'btn btn-secondary ms-2' %>
-    </div>
-  <% end %>
+  <%= link_to 'Cancel', blogs_path, class: 'btn btn-secondary mt-3' %>
 </div>
 
 <%= content_for :javascript do %>
