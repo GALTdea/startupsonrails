@@ -13,7 +13,7 @@
           <div class="card shadow h-100">
             <div class="article-card p-3 gradient-bg-1 m-1">
               <h3 class="card-title h5" style="height: 3em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                <%= link_to blog.title, blog_path(blog), class: "text-reset" %>
+                <%= link_to blog.title, blog_path(blog.slug), class: "text-reset" %>
               </h3>
             </div>
             <!-- Card body -->
