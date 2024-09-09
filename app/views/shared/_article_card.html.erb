@@ -6,6 +6,14 @@
   </div>
   <div class="card-body d-flex flex-column">
     <p class="flex-grow-1 text-truncate-3"><%= strip_tags(blog.content.to_s) %></p>
-    <p class="text-muted mb-0 text-end">Published: <%= blog.created_at.strftime("%b %d") %></p>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="text-muted mb-0">Published: <%= blog.created_at.strftime("%b %d") %></p>
+      <% if user_signed_in? && current_user.admin? %>
+        <div>
+          <%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-sm btn-outline-primary me-2' %>
+          <%= link_to 'Delete', blog_path(blog), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
