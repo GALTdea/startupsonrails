@@ -18,12 +18,17 @@ class BlogPolicy < ApplicationPolicy
   def update?
     user.admin?
   end
+
+  def destroy?
+    user.admin?
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      if user.present?
-        scope.all
-      end
+      return unless user.present?
+
+      scope.all
     end
   end
 end
