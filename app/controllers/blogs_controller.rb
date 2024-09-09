@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy, :update_status]
-  before_action :authenticate_user!, only: [:new, :create, :index]
+  before_action :set_blog, only: %i[show edit update destroy update_status]
+  before_action :authenticate_user!, only: %i[new create index]
 
   def index
     @blogs = Blog.all
@@ -19,7 +19,7 @@ class BlogsController < ApplicationController
     @blog = authorize Blog.new(blog_params)
     @blog.user = current_user
     if @blog.save
-      redirect_to @blog, notice: "Blog was successfully created."
+      redirect_to @blog, notice: 'Blog was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,10 +29,16 @@ class BlogsController < ApplicationController
     authorize @blog
   end
 
+  def destroy
+    authorize @blog
+    @blog.destroy
+    redirect_to blogs_url, notice: 'Blog was successfully destroyed.'
+  end
+
   def update
     authorize @blog
     if @blog.update(blog_params)
-      redirect_to @blog, notice: "Blog was successfully updated."
+      redirect_to @blog, notice: 'Blog was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -49,6 +55,7 @@ class BlogsController < ApplicationController
   end
 
   private
+
   def blog_params
     params.require(:blog).permit(:title, :content, :image, :status)
   end
