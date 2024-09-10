@@ -1,20 +1,21 @@
-<h1>Category: <%= @category.name %></h1>
+<div class="container">
+  <h1>Category: <%= @category.name %></h1>
 
-<%= form_with url: category_companies_path(@category), method: :post do %>
-  <div class="field">
-    <%= label_tag :company_id, "Select a company to add" %>
-    <%= select_tag :company_id, options_from_collection_for_select(Company.all, "id", "name") %>
-  </div>
+  <%= form_with url: category_companies_path(@category), method: :post do %>
+    <div class="field">
+      <%= label_tag :company_id, "Select a company to add" %>
+      <%= select_tag :company_id, options_from_collection_for_select(Company.all, "id", "name") %>
+    </div>
 
-  <div class="actions">
-    <%= submit_tag "Add Company" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= submit_tag "Add Company" %>
+    </div>
+  <% end %>
 
 
-<% @category.companies.each do |company| %>
-  <%= company.name %>
-  <%= button_to 'Remove', remove_company_category_path(@category, company_id: company.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <br>
-<% end %>
-
+  <% @category.companies.each do |company| %>
+    <%= company.name %>
+    <%= button_to 'Remove', remove_company_category_path(@category, company_id: company.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
+  <% end %>
+</div>
