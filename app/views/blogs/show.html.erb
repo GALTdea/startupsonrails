@@ -1,9 +1,4 @@
-<% content_for :twitter_card_meta do %>
-  <%= render 'shared/twitter_card_meta', 
-             title: @blog.title,
-            #  description: @blog.about,
-            image_url: @blog.image.attached? ? url_for(@blog.image) : default_svg_image_url %>
-<% end %>
+
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10">
@@ -46,3 +41,9 @@
     </div>
   </div>
 </div>
+
+<% content_for :twitter_card_meta do %>
+  <%= render 'shared/twitter_card_meta', 
+             title: @blog.title,
+            image_url: @blog.image.attached? ? url_for(@blog.image) : default_svg_image_url %>
+<% end %>
