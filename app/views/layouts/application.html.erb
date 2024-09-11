@@ -25,6 +25,15 @@
       gtag('config', 'G-E8S63YKX4C');
     </script>
 
+    <!-- Twitter Card metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YourTwitterHandle">
+    <meta name="twitter:title" content="<%= title %>">
+    <meta name="twitter:description" content="<%= description %>">
+    <meta name="twitter:image" content="<%= image_url %>">
+
+    <%= yield :twitter_card_meta %>
+
   </head>
 
   <body class="">
