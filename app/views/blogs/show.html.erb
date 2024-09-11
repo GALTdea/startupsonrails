@@ -1,8 +1,8 @@
 <% content_for :twitter_card_meta do %>
   <%= render 'shared/twitter_card_meta', 
-             title: @company.name,
-             description: @company.about,
-             image_url: @company.logo.attached? ? url_for(@company.logo) : asset_url('default_company_logo.jpg') %>
+             title: @blog.title,
+            #  description: @blog.about,
+             image_url: @blog.image.attached? ? url_for(@blog.image) : asset_url('default_company_logo.jpg') %>
 <% end %>
 
 <div class="container my-5">

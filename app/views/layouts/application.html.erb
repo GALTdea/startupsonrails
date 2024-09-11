@@ -1,64 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StartupsOnRails</title>
+    <title><%= content_for?(:title) ? yield(:title) : 'StartupsOnRails' %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
-    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
-    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     
     <%= stylesheet_link_tag "theme.min", media: "all" %>
 
-   <script src="https://kit.fontawesome.com/c211385aec.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c211385aec.js" crossorigin="anonymous"></script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E8S63YKX4C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <%= render 'shared/twitter_card_meta', 
+               title: content_for?(:title) ? yield(:title) : 'StartupsOnRails',
+               description: content_for?(:description) ? yield(:description) : 'Discover and learn about startups built with Ruby on Rails',
+               image_url: content_for?(:image_url) ? yield(:image_url) : default_svg_image_url %>
 
-      gtag('config', 'G-E8S63YKX4C');
-    </script>
-
-    <!-- Twitter Card metadata -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@YourTwitterHandle">
-    <meta name="twitter:title" content="<%= title %>">
-    <meta name="twitter:description" content="<%= description %>">
-    <meta name="twitter:image" content="<%= image_url %>">
-
-    <%= yield :twitter_card_meta %>
+    <%= yield :head %>
 
   </head>
 
-  <body class="">
-    <% if user_signed_in? && current_user.admin? %>
-      <%= render 'shared/admin_navbar' %>
-    <% else %>
-        <%= render 'shared/navbar' %>
-    <% end %>
-
-    <% if notice.present? %>
-      <span class="notice"><%= notice %></span>
-    <% end %>
-    
-    <% if alert.present? %>
-      <span class="alert"><%= alert %></span>
-    <% end %>
-
-    <% if controller_name == 'home' && action_name == 'show' %>
-      <%# <div class="container"> %>
-        <%= render 'shared/welcome_header' %>
-      <%# </div> %>
-    <% end %>
-
-      <%= yield %>
-
-    <%= render 'shared/footer' %>
+  <body>
+    <%= yield %>
   </body>
 </html>

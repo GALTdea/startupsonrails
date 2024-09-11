@@ -8,6 +8,10 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.friendly.find(params[:id])
+    @page_title = @blog.title
+    @page_description = @blog.content.to_plain_text.truncate(200)
+    @page_image_url = @blog.image.attached? ? url_for(@blog.image) : nil
   end
 
   def new
