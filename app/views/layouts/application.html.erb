@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : 'StartupsOnRails' %></title>
+    <title>StartupsOnRails</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
+    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     
     <%= stylesheet_link_tag "theme.min", media: "all" %>
 
-    <script src="https://kit.fontawesome.com/c211385aec.js" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/c211385aec.js" crossorigin="anonymous"></script>
 
- 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E8S63YKX4C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <%= yield :head %>
+      gtag('config', 'G-E8S63YKX4C');
+    </script>
 
   </head>
 
-  <body>
-    <% if Rails.env.development? %>
-      <%= console %>
+  <body class="">
+    <% if user_signed_in? && current_user.admin? %>
+      <%= render 'shared/admin_navbar' %>
+    <% else %>
+        <%= render 'shared/navbar' %>
     <% end %>
-    <%= yield %>
+
+    <% if notice.present? %>
+      <span class="notice"><%= notice %></span>
+    <% end %>
+    
+    <% if alert.present? %>
+      <span class="alert"><%= alert %></span>
+    <% end %>
+
+    <% if controller_name == 'home' && action_name == 'show' %>
+      <%# <div class="container"> %>
+        <%= render 'shared/welcome_header' %>
+      <%# </div> %>
+    <% end %>
+
+      <%= yield %>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>
