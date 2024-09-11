@@ -2,7 +2,7 @@
   <%= render 'shared/twitter_card_meta', 
              title: @blog.title,
             #  description: @blog.about,
-             image_url: @blog.image.attached? ? url_for(@blog.image) : asset_url('default_company_logo.jpg') %>
+            image_url: @blog.image.attached? ? url_for(@blog.image) : default_svg_image_url %>
 <% end %>
 
 <div class="container my-5">

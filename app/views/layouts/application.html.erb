@@ -13,10 +13,7 @@
 
     <script src="https://kit.fontawesome.com/c211385aec.js" crossorigin="anonymous"></script>
 
-    <%= render 'shared/twitter_card_meta', 
-               title: content_for?(:title) ? yield(:title) : 'StartupsOnRails',
-               description: content_for?(:description) ? yield(:description) : 'Discover and learn about startups built with Ruby on Rails',
-               image_url: content_for?(:image_url) ? yield(:image_url) : default_svg_image_url %>
+ 
 
     <%= yield :head %>
 
