@@ -20,6 +20,9 @@
   </head>
 
   <body>
+    <% if Rails.env.development? %>
+      <%= console %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

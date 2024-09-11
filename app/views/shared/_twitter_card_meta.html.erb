@@ -3,3 +3,8 @@
 <meta name="twitter:title" content="<%= title %>">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="<%= image_url %>">
+<% if image_url.present? %>
+  <meta name="twitter:image" content="<%= image_url %>">
+<% else %>
+  <meta name="twitter:image" content="<%= default_svg_image_url %>">
+<% end %>
