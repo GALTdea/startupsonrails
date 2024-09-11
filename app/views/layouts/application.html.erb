@@ -47,7 +47,9 @@
         <%= render 'shared/welcome_header' %>
       <%# </div> %>
     <% end %>
-      <%= console %>
+      <% if Rails.env.development? %>
+        <%= console %>
+      <% end %>
 
       <%= yield %>
 
