@@ -7,6 +7,9 @@ import { application } from "./application"
 import AutocompleteController from "./autocomplete_controller"
 application.register("autocomplete", AutocompleteController)
 
+import CategoryAutocompleteController from "./category_autocomplete_controller"
+application.register("category-autocomplete", CategoryAutocompleteController)
+
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 

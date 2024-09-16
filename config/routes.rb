@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     member do
       patch :update_status
     end
+    get 'search', on: :collection
   end
 
   get 'home/show'
-  root "home#show"
+  root 'home#show'
 end

@@ -136,6 +136,11 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def search
+    @companies = Company.where('name ILIKE ?', "%#{params[:query]}%").limit(10)
+    render json: @companies.map { |company| { id: company.id, name: company.name } }
+  end
+
   private
 
   def set_company
