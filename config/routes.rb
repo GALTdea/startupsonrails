@@ -18,9 +18,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :companies do
-    member do
-      patch :update_status
-    end
     get 'search', on: :collection
   end
 

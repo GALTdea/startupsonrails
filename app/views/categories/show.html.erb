@@ -1,26 +1,39 @@
-<div class="container">
-  <h1>Category: <%= @category.name %></h1>
+<div class="container mt-4">
+  <h1 class="mb-4">Category: <%= @category.name %></h1>
 
-  <%= form_with url: category_companies_path(@category), method: :post, data: { controller: "category-autocomplete" } do |f| %>
-    <div class="field">
-      <%= f.label :company_name, "Enter a company name to add" %>
-      <%= f.text_field :company_name, data: { 
-        category_autocomplete_target: "input",
-        action: "input->category-autocomplete#search"
-      } %>
-      <%= f.hidden_field :company_id %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Add a Company to this Category</h5>
+      <%= form_with url: category_companies_path(@category), method: :post, data: { controller: "category-autocomplete" }, class: "row g-3 align-items-center" do |f| %>
+        <div class="col-auto">
+          <%= f.label :company_name, "Company name:", class: "col-form-label" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :company_name, class: "form-control", placeholder: "Start typing a company name...", data: { 
+            category_autocomplete_target: "input",
+            action: "input->category-autocomplete#search"
+          } %>
+          <%= f.hidden_field :company_id %>
+          <div data-category-autocomplete-target="results" class="autocomplete-results mt-1"></div>
+        </div>
+        <div class="col-auto">
+          <%= f.submit "Add Company", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
+  </div>
 
-    <div data-category-autocomplete-target="results" class="autocomplete-results"></div>
-
-    <div class="actions">
-      <%= f.submit "Add Company" %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Companies in this Category</h5>
+      <ul class="list-group">
+        <% @category.companies.each do |company| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= company.name %>
+            <%= button_to 'Remove', remove_company_category_path(@category, company_id: company.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-  <% end %>
-
-  <% @category.companies.each do |company| %>
-    <%= company.name %>
-    <%= button_to 'Remove', remove_company_category_path(@category, company_id: company.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <br>
-  <% end %>
+  </div>
 </div>
