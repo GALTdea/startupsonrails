@@ -66,8 +66,10 @@ class CompaniesController < ApplicationController
 
     if params[:query].present?
       @companies = @companies.where('name ILIKE ?', "%#{params[:query]}%")
+    elsif params[:category_id].present?
+      @companies = @companies.joins(:categories).where(categories: { id: params[:category_id] }).distinct
     elsif params[:category_ids].present?
-      category_ids = params[:category_ids].reject(&:blank?)
+      category_ids = Array(params[:category_ids]).reject(&:blank?)
       @companies = @companies.joins(:categories).where(categories: { id: category_ids }).distinct
     end
 

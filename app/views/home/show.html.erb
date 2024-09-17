@@ -84,6 +84,12 @@
                   </div>
                 <% end %>
               </div>
+              <div class="text-end mt-3">
+                <%= link_to companies_path(category_id: category.id), class: "text-decoration-none" do %>
+                  View all <%= category.name.titleize %> companies
+                  <i class="fas fa-arrow-right ms-2"></i>
+                <% end %>
+              </div>
             </div>
           <% end %>
         </div>
