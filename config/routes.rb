@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :users
   resources :companies do
     get 'search', on: :collection
+    member do
+      patch :update_status
+    end
   end
 
   get 'home/show'
