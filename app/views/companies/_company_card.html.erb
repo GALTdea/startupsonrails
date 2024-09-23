@@ -44,7 +44,7 @@
           </div>
 
           <div class="mt-3">
-            <p class="mb-0"><%= company.about %></p>
+            <p class="mb-0"><%= truncate(company.about, length: 150, separator: ' ', omission: '...') %></p>
           </div>
         </div>
         
