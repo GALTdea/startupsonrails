@@ -29,57 +29,67 @@ class Company < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  scope :with_about, -> { where.not(about:  nil).where.not(about: '') }
+  scope :with_about, -> { where.not(about: nil).where.not(about: '') }
 
   validates :name, :url, :user_id, presence: true
 
   enum status: { pending: 0, active: 1, rejected: 2 }
 
-  def self.import_from_csv(current_user)
-    csv_file_path = Rails.root.join('db/seeds', 'companies-6.csv')
+  def self.import_from_csv(csv_file_path = nil)
+    csv_file_path ||= Rails.root.join('db/seeds', 'ruby_rails_companies.csv')
 
     success_count = 0
     error_count = 0
     error_messages = []
 
-    allowed_attributes = Company.new.attributes.keys.map(&:to_sym) # Get all allowed attributes
+    allowed_attributes = Company.new.attributes.keys.map(&:to_sym)
+
+    # Find the first admin user
+    admin_user = User.find_by(user_type: :admin)
+
+    unless admin_user
+      return {
+        success_count: 0,
+        error_count: 0,
+        error_messages: ['No admin user found. Please create an admin user first.']
+      }
+    end
 
     CSV.foreach(csv_file_path, headers: true, header_converters: :symbol) do |row|
       row_hash = row.to_h
-
-      # Keep only the allowed attributes
       filtered_row_hash = row_hash.slice(*allowed_attributes)
+      filtered_row_hash[:user_id] = admin_user.id
 
-      # Add the user_id to the attributes
-      filtered_row_hash[:user_id] = current_user.id
-
-      company = self.new(filtered_row_hash)
+      company = new(filtered_row_hash)
       begin
         if company.save
           success_count += 1
         else
           error_count += 1
-          error_messages << company.errors.full_messages.join(', ')
+          error_messages << "Failed to save company '#{filtered_row_hash[:name]}': #{company.errors.full_messages.join(', ')}"
         end
-      rescue ActiveRecord::RecordNotFound => e
+      rescue ActiveRecord::RecordNotUnique => e
         error_count += 1
-        error_message = "Failed to save or find company named '#{filtered_row_hash[:name]}': #{e.message}"
-        error_messages << error_message
-        Rails.logger.error(error_message)
+        error_messages << "Duplicate company '#{filtered_row_hash[:name]}': #{e.message}"
+      rescue StandardError => e
+        error_count += 1
+        error_messages << "Error processing company '#{filtered_row_hash[:name]}': #{e.message}"
       end
     end
 
     {
-      success_count: success_count,
-      error_count: error_count,
-      error_messages: error_messages
+      success_count:,
+      error_count:,
+      error_messages:
     }
   end
 
   def generated_logo_url
     "public/company_logos/#{name.downcase.gsub(' ', '_')}_logo.png"
   end
+
   private
+
   def normalize_name
     self.name = name.strip.downcase
   end
