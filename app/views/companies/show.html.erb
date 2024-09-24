@@ -1,3 +1,10 @@
+<% content_for :twitter_card_meta do %>
+  <%= render 'shared/twitter_card_meta', 
+             title: @company.name,
+             description: @company.about,
+             image_url: @company.logo.attached? ? url_for(@company.logo) : nil %>
+<% end %>
+
 <section style="">
   <div class="container py-5">
     <div class="row">
