@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'contributions/create'
   resources :blogs do
     member do
       patch :update_status
