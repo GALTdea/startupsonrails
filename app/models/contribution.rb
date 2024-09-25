@@ -8,6 +8,7 @@ class Contribution < ApplicationRecord
 
   def fetch_github_data
     repo_name = github_url.split('/')[-2..-1].join('/')
+    # debugger
     github_data = GithubService.new(repo_name).fetch_repo_data
 
     self.name = github_data[:name]

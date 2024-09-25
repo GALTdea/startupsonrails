@@ -34,6 +34,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.friendly.find(params[:id])
+    @contributions = @company.contributions.to_a
     @page_title = @company.name
     @page_description = @company.about
     @page_image_url = @company.logo.attached? ? url_for(@company.logo) : nil
