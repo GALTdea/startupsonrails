@@ -1,2 +1,3 @@
-<h1>Issues#new</h1>
-<p>Find me in app/views/issues/new.html.erb</p>
+<h1>New Issue for <%= @company.name %></h1>
+<%= render 'form', company: @company, issue: @issue %>
+<%= link_to 'Back', company_issues_path(@company), class: 'btn btn-secondary mt-3' %>

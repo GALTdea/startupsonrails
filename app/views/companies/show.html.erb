@@ -134,7 +134,11 @@
         <div class="mt-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title h2">Sponsorships & Contributions</h5>
+              <h5 class="card-title h2">Sponsorships & Contributions
+                <% if @company.issues.any? %>
+                  <%= link_to 'Open Issues', company_issues_path(@company), class: 'btn  btn-link' %>
+                <% end %>
+              </h5>
               <p class="text-muted mb-4">We believe in giving back to the open source community. These are some of the projects we proudly support and use:</p>
               <div class="row">
                 <% if @contributions.any? %>
@@ -186,6 +190,9 @@
             </li>
             <li class="nav-item me-3">
               <%= link_to 'Delete', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link' %>
+            </li>
+            <li class="nav-item me-3">
+              <%= link_to 'New Issue', new_company_issue_path(@company), class: 'nav-link' %>
             </li>
             <% Company.statuses.keys.each do |status| %>
               <% unless @company.status == status %>
