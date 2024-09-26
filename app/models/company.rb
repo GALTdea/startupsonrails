@@ -19,6 +19,7 @@ require 'csv'
 class Company < ApplicationRecord
   has_many :categorizations
   has_many :categories, through: :categorizations
+  has_many :contributions
   belongs_to :user, optional: true
 
   before_save :normalize_name

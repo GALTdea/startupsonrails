@@ -1,0 +1,8 @@
+<%= form_with(model: [@company, @company.contributions.build], local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :github_url, "GitHub Repository URL", class: 'form-label' %>
+    <%= form.url_field :github_url, class: 'form-control', placeholder: 'https://github.com/user/repo' %>
+  </div>
+
+  <%= form.submit 'Add Contribution', class: 'btn btn-primary' %>
+<% end %>

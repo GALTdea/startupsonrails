@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'contributions/create'
   resources :blogs do
     member do
       patch :update_status
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
     member do
       patch :update_status
     end
+    resources :contributions, only: [:create]
   end
 
   get 'home/show'
