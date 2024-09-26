@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><%= @company.name %> open issues: </h1>
+
+  <% if @issues.any? %>
+    <ul class="list-group">
+      <% @issues.each do |issue| %>
+        <li class="list-group-item">
+          <h5><%= link_to issue.title, issue.github_url, target: "_blank" %></h5>
+          <p><%= issue.description %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No issues listed.</p>
+  <% end %>
+
+  <%= link_to 'New Issue', new_company_issue_path(@company), class: 'btn btn-primary mt-3' %>
+</div>

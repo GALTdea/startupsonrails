@@ -38,6 +38,8 @@ class CompaniesController < ApplicationController
     @page_title = @company.name
     @page_description = @company.about
     @page_image_url = @company.logo.attached? ? url_for(@company.logo) : nil
+
+    @issues = @company.issues
   end
 
   def new

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'issues/index'
+  get 'issues/new'
+  get 'issues/edit'
   get 'contributions/create'
   resources :blogs do
     member do
@@ -24,6 +27,7 @@ Rails.application.routes.draw do
       patch :update_status
     end
     resources :contributions, only: [:create]
+    resources :issues, except: [:show]
   end
 
   get 'home/show'

@@ -1,0 +1,5 @@
+<div class="container">
+  <h1>New Issue for <%= @company.name %></h1>
+  <%= render 'form', company: @company, issue: @issue %>
+  <%= link_to 'Back', company_issues_path(@company), class: 'btn btn-secondary mt-3' %>
+</div>
