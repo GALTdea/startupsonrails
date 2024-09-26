@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'issues/index'
+  get 'issues/new'
+  get 'issues/edit'
   get 'contributions/create'
   resources :blogs do
     member do

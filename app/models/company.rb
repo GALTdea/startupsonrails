@@ -22,6 +22,8 @@ class Company < ApplicationRecord
   has_many :contributions
   belongs_to :user, optional: true
 
+  has_many :issues, dependent: :destroy
+
   before_save :normalize_name
 
   has_one_attached :logo
