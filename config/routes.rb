@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       patch :update_status
     end
     resources :contributions, only: [:create]
+    resources :issues, except: [:show]
   end
 
   get 'home/show'
