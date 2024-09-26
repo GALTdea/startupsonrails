@@ -14,5 +14,6 @@
     <p>No issues listed.</p>
   <% end %>
 
-  <%= link_to 'New Issue', new_company_issue_path(@company), class: 'btn btn-primary mt-3' %>
+
+  <%= link_to 'New Issue', new_company_issue_path(@company), class: 'btn btn-primary mt-3' if current_user && current_user.admin? %>
 </div>
