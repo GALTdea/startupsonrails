@@ -32,3 +32,5 @@ import "./theme.min.js"
 // import './vendor/typed.js';
 // import './vendor/validation.js';
 // import './init_theme';
+
+import "./custom/popover"
