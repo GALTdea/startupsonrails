@@ -16,5 +16,8 @@ application.register("filter", FilterController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import PopoverController from "./popover_controller"
+application.register("popover", PopoverController)
+
 import RichTextController from "./rich_text_controller"
 application.register("rich-text", RichTextController)
