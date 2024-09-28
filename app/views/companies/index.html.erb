@@ -20,7 +20,19 @@
                   <span class="input-group-text bg-transparent border-0 pe-0 ps-md-0" id="location">
                     <i class="fas fa-map-marker-alt" style="width: 16px; height: 16px;"></i>
                   </span>
-                  <%= f.search_field :location, id: "location-search", placeholder: "Location", class: "form-control rounded-pill border-0 ps-3 form-focus-none", "aria-label": "Location", "aria-describedby": "location", style: "background-color: inherit;", data: { popover: true, popover_content: "Upcoming feature", popover_placement: "top" } %>
+                  <%= f.search_field :location, 
+                      id: "location-search", 
+                      placeholder: "Location", 
+                      class: "form-control rounded-pill border-0 ps-3 form-focus-none", 
+                      "aria-label": "Location", 
+                      "aria-describedby": "location", 
+                      style: "background-color: inherit;", 
+                      data: { 
+                        controller: "popover",
+                        popover_content_value: "Upcoming feature",
+                        popover_placement_value: "top"
+                      } 
+                  %>
                 </div>
               </div>
               <div class="col-12 col-md-3 text-end d-grid">

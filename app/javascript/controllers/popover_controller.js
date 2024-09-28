@@ -1,22 +1,23 @@
 import { Controller } from "@hotwired/stimulus"
 import { Popover } from "../custom/popover"
 
-// Connects to data-controller="popover"
 export default class extends Controller {
+  static values = {
+    content: String,
+    placement: { type: String, default: 'top' }
+  }
+
   connect() {
-    const popoverTriggerList = document.querySelectorAll('[data-popover]')
-    this.popovers = [...popoverTriggerList].map(popoverTriggerEl => {
-      const content = popoverTriggerEl.getAttribute('data-popover-content')
-      const placement = popoverTriggerEl.getAttribute('data-popover-placement') || 'top'
-      const popover = new Popover(popoverTriggerEl, { content, placement })
-      popover.init()
-      return popover
+    this.popover = new Popover(this.element, {
+      content: this.contentValue,
+      placement: this.placementValue
     })
+    this.popover.init()
   }
 
   disconnect() {
-    if (this.popovers) {
-      this.popovers.forEach(popover => popover.destroy())
+    if (this.popover) {
+      this.popover.destroy()
     }
   }
 }
