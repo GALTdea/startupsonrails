@@ -5,7 +5,7 @@
         <% if company.logo.attached? %>
           <%= image_tag company.logo, alt: company.name, class: "icon-shape border rounded-3 icon-xxl" %>
         <% else %>
-          <img src="https://via.placeholder.com/150" alt="Image placeholder" class="icon-shape border rounded-3 icon-xxl">
+          <%= company_logo_placeholder(company, size: 150) %>
         <% end %>
       </div>
       <!-- text -->
