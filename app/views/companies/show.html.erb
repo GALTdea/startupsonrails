@@ -13,10 +13,11 @@
         <div class="card mb-4">
           <div class="card-body text-center">
             <% if @company.logo.attached? %>
-              <%= image_tag @company.logo, class: "img-fluid rounded" %>
+              <%= image_tag @company.logo, class: "img-fluid rounded-circle", style: "width: 150px; height: 150px; object-fit: cover;" %>
             <% else %>
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                class="rounded-circle img-fluid" style="width: 150px;">
+              <div class="rounded-circle overflow-hidden" style="width: 150px; height: 150px; margin: 0 auto;">
+                <%= company_logo_placeholder(@company, size: 150) %>
+              </div>
             <% end %>
             <h5 class="my-3 h2"><%= @company.name %></h5>
           </div>
