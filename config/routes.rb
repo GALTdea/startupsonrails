@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:create], controller: 'category_companies'
     member do
       delete 'remove_company/:company_id', to: 'categories#remove_company', as: :remove_company
+      post :toggle_featured
     end
   end
 

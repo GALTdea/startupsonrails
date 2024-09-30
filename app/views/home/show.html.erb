@@ -35,19 +35,19 @@
   </div>
 </section>
 
-<!-- Categories Section -->
+<!-- Featured Categories Section -->
 <section class="py-5 bg-light">
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h2 class="head-title">Popular Companies</h2>
+        <h2 class="head-title">Featured Categories</h2>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <!-- Nav tab -->
         <ul class="nav nav-pills mb-4 bg-white p-2 rounded-3" id="pills-tab" role="tablist">
-          <% @featured_categories.each_with_index do |(category, _), index| %>
+          <% @featured_categories.each_with_index do |category, index| %>
             <li class="nav-item" role="presentation">
               <a class="nav-link <%= 'active' if index.zero? %>"
                  id="pills-<%= category.name.parameterize %>-tab"
@@ -64,13 +64,13 @@
         
         <!-- Tab content -->
         <div class="tab-content" id="pills-tabContent">
-          <% @featured_categories.each_with_index do |(category, companies), index| %>
+          <% @featured_categories.each_with_index do |category, index| %>
             <div class="tab-pane fade <%= 'show active' if index.zero? %>"
                  id="pills-<%= category.name.parameterize %>"
                  role="tabpanel"
                  aria-labelledby="pills-<%= category.name.parameterize %>-tab">
               <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
-                <% companies.each do |company| %>
+                <% category.companies.limit(6).each do |company| %>
                   <div class="col">
                     <%= link_to company_path(company), class: "card h-100 text-decoration-none" do %>
                       <div class="card-body text-center">
