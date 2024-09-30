@@ -4,7 +4,7 @@
   <div class="card mb-4">
     <div class="card-body">
       <h5 class="card-title mb-3">Add a Company to this Category</h5>
-      <%= form_with url: category_companies_path(@category), method: :post, data: { controller: "category-autocomplete" }, class: "row g-3 align-items-center" do |f| %>
+      <%= form_with url: category_companies_path(@category), method: :post, data: { controller: "category-autocomplete" }, class: "row g-3 align-items-center", id: "add_company_form" do |f| %>
         <div class="col-auto">
           <%= f.label :company_name, "Company name:", class: "col-form-label" %>
         </div>
@@ -13,7 +13,7 @@
             category_autocomplete_target: "input",
             action: "input->category-autocomplete#search"
           } %>
-          <%= f.hidden_field :company_id %>
+          <%= f.hidden_field :company_id, data: { category_autocomplete_target: "companyId" } %>
           <div data-category-autocomplete-target="results" class="autocomplete-results mt-1"></div>
         </div>
         <div class="col-auto">
@@ -26,13 +26,8 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title mb-3">Companies in this Category</h5>
-      <ul class="list-group">
-        <% @category.companies.each do |company| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <%= company.name %>
-            <%= button_to 'Remove', remove_company_category_path(@category, company_id: company.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
-          </li>
-        <% end %>
+      <ul class="list-group" id="companies_list">
+        <%= render partial: "categories/company", collection: @category.companies, locals: { category: @category } %>
       </ul>
     </div>
   </div>

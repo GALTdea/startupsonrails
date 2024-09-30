@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["input", "results"]
+  static targets = ["input", "results", "companyId"]
 
   connect() {
     console.log("%c Category Autocomplete controller connected", "color: green; font-weight: bold;")
@@ -45,6 +45,14 @@ export default class extends Controller {
         ${company.name}
       </li>
     `).join('')
+  }
+
+  selectCompany(event) {
+    const companyName = event.target.textContent
+    const companyId = event.target.dataset.companyId
+    this.inputTarget.value = companyName
+    this.companyIdTarget.value = companyId
+    this.resultsTarget.innerHTML = ""
   }
 
   select(event) {

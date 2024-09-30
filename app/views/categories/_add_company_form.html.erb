@@ -1,0 +1,16 @@
+<%= form_with url: category_companies_path(category), method: :post, data: { controller: "category-autocomplete" }, class: "row g-3 align-items-center", id: "add_company_form" do |f| %>
+  <div class="col-auto">
+    <%= f.label :company_name, "Company name:", class: "col-form-label" %>
+  </div>
+  <div class="col-md-6">
+    <%= f.text_field :company_name, class: "form-control", placeholder: "Start typing a company name...", data: { 
+      category_autocomplete_target: "input",
+      action: "input->category-autocomplete#search"
+    } %>
+    <%= f.hidden_field :company_id, data: { category_autocomplete_target: "companyId" } %>
+    <div data-category-autocomplete-target="results" class="autocomplete-results mt-1"></div>
+  </div>
+  <div class="col-auto">
+    <%= f.submit "Add Company", class: "btn btn-primary" %>
+  </div>
+<% end %>
