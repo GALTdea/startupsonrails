@@ -96,4 +96,6 @@ class Company < ApplicationRecord
   def normalize_name
     self.name = name.strip.downcase
   end
+
+  scope :search_by_location, ->(location) { where('location ILIKE ?', "%#{location}%") }
 end

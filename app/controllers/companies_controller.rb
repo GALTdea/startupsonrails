@@ -7,7 +7,9 @@ class CompaniesController < ApplicationController
     @companies = Company.where(status: :active)
 
     if params[:query].present?
-      @companies = @companies.where('name ILIKE ?', "%#{params[:query]}%")
+      @companies = @companies.where('name ILIKE ? OR location ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+    elsif params[:location].present?
+      @companies = @companies.where('location ILIKE ?', "%#{params[:location]}%")
     elsif params[:category_id].present?
       @companies = @companies.joins(:categories).where(categories: { id: params[:category_id] }).distinct
     elsif params[:category_ids].present?
@@ -27,7 +29,7 @@ class CompaniesController < ApplicationController
         )
       end
       format.json do
-        render json: @companies.as_json(only: %i[id name])
+        render json: @companies.as_json(only: %i[id name location])
       end
     end
   end

@@ -16,8 +16,10 @@ export default class extends Controller {
 
   performSearch() {
     const query = this.inputTarget.value.trim()
+    const isLocation = this.inputTarget.id === "location-search"
     if (query.length > 1) {
-      fetch(`/companies?query=${encodeURIComponent(query)}`, {
+      const searchParam = isLocation ? `location=${encodeURIComponent(query)}` : `query=${encodeURIComponent(query)}`
+      fetch(`/companies?${searchParam}`, {
         headers: {
           "Accept": "text/vnd.turbo-stream.html, application/json",
           "X-Requested-With": "XMLHttpRequest"
@@ -32,7 +34,7 @@ export default class extends Controller {
           } else {
             return response.json().then(data => {
               this.resultsTarget.innerHTML = data.map(company => {
-                return `<li class="list-group-item" data-id="${company.id}" data-action="click->autocomplete#select">${company.name}</li>`;
+                return `<li class="list-group-item" data-id="${company.id}" data-action="click->autocomplete#select">${company.name} - ${company.location}</li>`;
               }).join('');
               this.showResults()
             })
