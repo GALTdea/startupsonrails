@@ -14,7 +14,7 @@ puts 'Admin user created or updated.'
 puts 'Creating companies...'
 if Company.count == 0
   puts 'Starting import from CSV...'
-  result = Company.import_from_csv(admin)
+  result = Company.import_from_csv
   puts "Imported #{result[:success_count]} companies."
   puts "Encountered #{result[:error_count]} errors."
   result[:error_messages].each do |error|
