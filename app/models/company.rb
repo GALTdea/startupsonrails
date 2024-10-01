@@ -34,13 +34,13 @@ class Company < ApplicationRecord
 
   scope :with_about, -> { where.not(about: nil).where.not(about: '') }
 
-  validates :name, :url, :user_id, presence: true
+  validates :name, :url, :user_id, presence: true, uniqueness: true
 
   enum status: { pending: 0, active: 1, rejected: 2 }
 
   def self.import_from_csv(csv_file_path = nil)
-    csv_file_path ||= Rails.root.join('db/seeds', 'ruby_rails_companies.csv')
-
+    # csv_file_path ||= Rails.root.join('db/seeds', 'ruby_rails_companies.csv')
+    csv_file_path ||= Rails.root.join('db/seeds', 'companies-6.csv')
     success_count = 0
     error_count = 0
     error_messages = []
