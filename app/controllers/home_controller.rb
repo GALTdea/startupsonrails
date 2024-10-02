@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     ahoy.track 'My first event', language: 'Ruby'
 
     # @featured_categories = Category.featured_with_companies
-    @featured_categories = Category.where(featured: true).limit(5)
+    @featured_categories = Category.where(featured: true).limit(6)
     @featured_blogs = Blog.featured
 
     @top_categories = Category.showcased
