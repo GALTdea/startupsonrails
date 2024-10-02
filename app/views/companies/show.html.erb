@@ -42,23 +42,23 @@
                       </div>
                     </li>
                   <% end %>
-                  <%# if @company.size.present? %>
+                  <% if @company.employee_count.present? %>
                     <li class="mt-2 d-flex align-items-center">
                       <div class="me-3"><i class="fas fa-users text-dark-emphasis"></i> </div>
                       <div>
-                        <%#= @company.size %>
+                        <%= @company.employee_count %>
                       </div>
                     </li>
-                  <%# end %>
+                  <% end %>
 
-                  <%# if @company.company_type.present? %>
+                  <% if @company.company_type.present? %>
                     <li class="mt-2 d-flex align-items-center">
                       <div class="me-3"><i class="fas fa-sitemap text-dark-emphasis"></i> </div>
                       <div>
-                        <%#= @company.company_type %>
+                        <%= @company.company_type %>
                       </div>
                     </li>
-                  <%# end %>
+                  <% end %>
                 </ul>
               </div>
               <div class="col-md-6">
