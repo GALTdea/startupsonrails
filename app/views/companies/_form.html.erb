@@ -13,20 +13,46 @@
   <%= form_with(model: company, local: true) do |form| %>
     <div class="mb-3">
       <%= form.label :name, "Company Name", class: 'form-label' %> 
-      <%= form.text_field :name, placeholder:"",  class: 'form-control ' %>
+      <%= form.text_field :name, placeholder: "", class: 'form-control' %>
     </div>
 
     <div class="row mb-3">
       <div class="col-md-6">
-        <%= form.label  :url, "Company URL", class: 'form-label' %> <br> 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">https://www</span>
-            <%= form.text_field :url, class: 'form-control' %>
-          </div>
+        <%= form.label :url, "Company URL", class: 'form-label' %> <br> 
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon3">https://www</span>
+          <%= form.text_field :url, class: 'form-control' %>
+        </div>
       </div>
       <div class="col-md-6">
         <%= form.label :email, "Company email", class: 'form-label' %>  <small>optional</small>
         <%= form.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :location, "Company Location", class: 'form-label' %>
+        <%= form.text_field :location, class: 'form-control' %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :employees_count, "Number of Employees", class: 'form-label' %>
+        <%= form.number_field :employees_count, class: 'form-control', min: 1 %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <%= form.label :company_type, "Company Type", class: 'form-label' %>
+        <%= form.select :company_type, ['Startup', 'SME', 'Enterprise', 'Non-profit', 'Other'], { prompt: 'Select company type' }, class: 'form-select' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :year_founded, "Year Founded", class: 'form-label' %>
+        <%= form.number_field :year_founded, class: 'form-control', min: 1800, max: Date.current.year %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :revenue, "Annual Revenue", class: 'form-label' %>
+        <%= form.number_field :revenue, class: 'form-control', min: 0, step: 1000 %>
       </div>
     </div>
     
@@ -36,7 +62,7 @@
     </div>
 
     <div class="row mb-3">
-      <%= form.label :tech_stack, "Tec stac description" %>
+      <%= form.label :tech_stack, "Tech stack description" %>
       <%= form.text_area :tech_stack, class: "form-control" %>
     </div>
 
@@ -45,7 +71,9 @@
       <%= form.file_field :logo, direct_upload: true %>
     </div>
     
-    <% if company.persisted? %>  <%= form.hidden_field :_method, value: 'patch' %>  <% end %>
-    <%= form.submit %>
+    <% if company.persisted? %>
+      <%= form.hidden_field :_method, value: 'patch' %>
+    <% end %>
+    <%= form.submit class: 'btn btn-primary' %>
   <% end %>
 </div>
