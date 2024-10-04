@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.friendly.find(params[:id])
+    @company = Company.includes(:open_source_projects).find(params[:id])
     @contributions = @company.contributions.to_a
     @page_title = @company.name
     @page_description = @company.about

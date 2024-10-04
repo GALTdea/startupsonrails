@@ -119,44 +119,37 @@
               <div class="tab-content" id="openSourceTabContent">
                 <!-- Contributions & Sponsorships Tab -->
                 <div class="tab-pane fade show active" id="contributes" role="tabpanel" aria-labelledby="contributes-tab">
-                  <div class="row">
-                    <div class="col-md-6 mb-4">
-                      <div class="card h-100">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/50" alt="Project Logo" class="me-3 rounded" style="width: 50px; height: 50px;">
-                            <h5 class="card-title mb-0">Contribution Project</h5>
+                  <% if current_user && current_user.admin? %>
+                    <h4 class="mb-3">Add New Open Source Project</h4>
+                    <%= render 'open_source_projects/form', company: @company %>
+                  <% end %>
+
+                  <div id="open-source-projects" class="row" data-open-source-project-target="projectsList">
+                    <% @company.open_source_projects.each do |project| %>
+                      <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                              <%= image_tag project.icon_url.presence || 'default_project_icon.png', alt: "#{project.name} Logo", class: "me-3 rounded", style: "width: 50px; height: 50px;" %>
+                              <h5 class="card-title mb-0"><%= project.name %></h5>
+                            </div>
+                            <p class="card-text"><%= project.description %></p>
+                            <div class="mt-3">
+                              <% if project.project_type == 'contribution' %>
+                                <span class="badge bg-success me-2">Active Contributor</span>
+                              <% else %>
+                                <span class="badge bg-warning text-dark me-2">Sponsor</span>
+                              <% end %>
+                              <span class="badge bg-info me-2"><%= project.stars %> Stars</span>
+                              <span class="badge bg-secondary"><%= project.forks %> Forks</span>
+                            </div>
                           </div>
-                          <p class="card-text">Description of the company's contributions to this project.</p>
-                          <div class="mt-3">
-                            <span class="badge bg-success me-2">Active Contributor</span>
-                            <span class="badge bg-info">10 PRs Merged</span>
+                          <div class="card-footer bg-transparent">
+                            <%= link_to "View Project", project.url, class: "btn btn-outline-primary btn-sm", target: "_blank" %>
                           </div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                          <a href="#" class="btn btn-outline-primary btn-sm">View Contributions</a>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                      <div class="card h-100">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/50" alt="Project Logo" class="me-3 rounded" style="width: 50px; height: 50px;">
-                            <h5 class="card-title mb-0">Sponsored Project</h5>
-                          </div>
-                          <p class="card-text">Details about the company's sponsorship of this project.</p>
-                          <div class="mt-3">
-                            <span class="badge bg-warning text-dark me-2">Gold Sponsor</span>
-                            <span class="badge bg-secondary">Since 2021</span>
-                          </div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                          <a href="#" class="btn btn-outline-primary btn-sm">Sponsor Page</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Add more contribution or sponsorship cards here -->
+                    <% end %>
                   </div>
                 </div>
                 

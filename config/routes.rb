@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
     resources :contributions, only: [:create]
     resources :issues, except: [:show]
+    resources :open_source_projects, only: %i[index create update destroy]
   end
 
   get 'home/show'

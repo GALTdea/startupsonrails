@@ -1,0 +1,13 @@
+<%= form_with(model: [@company, OpenSourceProject.new], local: false, class: 'mb-4', id: 'new-open-source-project-form') do |form| %>
+  <div class="mb-3">
+    <%= form.label :url, "GitHub URL", class: "form-label" %>
+    <%= form.url_field :url, class: "form-control", placeholder: "https://github.com/user/repo" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :project_type, "Project Type", class: "form-label" %>
+    <%= form.select :project_type, options_for_select([['Contribution', 'contribution'], ['Sponsorship', 'sponsorship']]), {}, class: "form-select" %>
+  </div>
+  <%= form.submit "Add Project", class: "btn btn-primary" %>
+<% end %>
+
+<div id="form-errors" class="alert alert-danger mt-3" style="display: none;"></div>

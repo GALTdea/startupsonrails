@@ -11,7 +11,7 @@ class OpenSourceProjectsController < ApplicationController
     if @open_source_project.save
       render json: @open_source_project, status: :created
     else
-      render json: @open_source_project.errors, status: :unprocessable_entity
+      render json: { errors: @open_source_project.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -39,6 +39,6 @@ class OpenSourceProjectsController < ApplicationController
   end
 
   def open_source_project_params
-    params.require(:open_source_project).permit(:name, :description, :project_type, :url, :icon_url, :stars, :forks)
+    params.require(:open_source_project).permit(:url, :project_type)
   end
 end
