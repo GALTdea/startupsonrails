@@ -103,46 +103,116 @@
         <div class="mt-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title h2">Sponsorships & Contributions
-                <% if @company.issues.any? %>
-                  <%= link_to 'Open Issues', company_issues_path(@company), class: 'btn  btn-link' %>
-                <% end %>
-              </h5>
-              <p class="text-muted mb-4">We believe in giving back to the open source community. These are some of the projects we proudly support and use:</p>
-              <div class="row">
-                <% if @contributions.any? %>
-                  <% @contributions.each do |contribution| %>
+              <h2 class="card-title mb-4">Open Source Involvement</h2>
+              
+              <!-- Tabs -->
+              <ul class="nav nav-tabs mb-4" id="openSourceTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="contributes-tab" data-bs-toggle="tab" data-bs-target="#contributes" type="button" role="tab" aria-controls="contributes" aria-selected="true">Contributions & Sponsorships</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="help-wanted-tab" data-bs-toggle="tab" data-bs-target="#help-wanted" type="button" role="tab" aria-controls="help-wanted" aria-selected="false">Help Wanted</button>
+                </li>
+              </ul>
+              
+              <!-- Tab Content -->
+              <div class="tab-content" id="openSourceTabContent">
+                <!-- Contributions & Sponsorships Tab -->
+                <div class="tab-pane fade show active" id="contributes" role="tabpanel" aria-labelledby="contributes-tab">
+                  <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="card h-100">
-                        <div class="card-body d-flex flex-column align-items-start">
-                          <%= image_tag contribution.icon_url, alt: "#{contribution.name} Logo", class: "img-fluid mb-3 rounded", style: "width: 50px;" %>
-                          <h6 class="card-title"><%= contribution.name %></h6>
-                          <p class="card-text text-muted"><%= truncate(contribution.description, length: 100) %></p>
-                          <div class="mt-auto">
-                            <span class="badge bg-light text-dark me-2">
-                              <i class="fab fa-github"></i> <%= number_with_delimiter(contribution.stars) %> Stars 
-                            </span>
-                            <span class="badge bg-light text-dark">
-                              <i class="fas fa-code-branch"></i> <%= number_with_delimiter(contribution.forks) %> Forks
-                            </span>
+                        <div class="card-body">
+                          <div class="d-flex align-items-center mb-3">
+                            <img src="https://via.placeholder.com/50" alt="Project Logo" class="me-3 rounded" style="width: 50px; height: 50px;">
+                            <h5 class="card-title mb-0">Contribution Project</h5>
+                          </div>
+                          <p class="card-text">Description of the company's contributions to this project.</p>
+                          <div class="mt-3">
+                            <span class="badge bg-success me-2">Active Contributor</span>
+                            <span class="badge bg-info">10 PRs Merged</span>
                           </div>
                         </div>
-                        <%= link_to "", contribution.github_url, target: "_blank", class: "stretched-link" %>
+                        <div class="card-footer bg-transparent">
+                          <a href="#" class="btn btn-outline-primary btn-sm">View Contributions</a>
+                        </div>
                       </div>
                     </div>
-                  <% end %>
-                <% else %>
-                  <div class="col-12">
-                    <p class="text-muted">No contributions have been added yet.</p>
+                    <div class="col-md-6 mb-4">
+                      <div class="card h-100">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center mb-3">
+                            <img src="https://via.placeholder.com/50" alt="Project Logo" class="me-3 rounded" style="width: 50px; height: 50px;">
+                            <h5 class="card-title mb-0">Sponsored Project</h5>
+                          </div>
+                          <p class="card-text">Details about the company's sponsorship of this project.</p>
+                          <div class="mt-3">
+                            <span class="badge bg-warning text-dark me-2">Gold Sponsor</span>
+                            <span class="badge bg-secondary">Since 2021</span>
+                          </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                          <a href="#" class="btn btn-outline-primary btn-sm">Sponsor Page</a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Add more contribution or sponsorship cards here -->
                   </div>
-                <% end %>
-              </div>
-              <% if user_signed_in? && current_user.admin? %>
-                <div class="mt-4">
-                  <h6>Add New Contribution</h6>
-                  <%= render 'contributions/form' %>
                 </div>
-              <% end %>
+                
+                <!-- Help Wanted Tab -->
+                <div class="tab-pane fade" id="help-wanted" role="tabpanel" aria-labelledby="help-wanted-tab">
+                  <h3 class="mb-4">Open Issues - We Need Your Help!</h3>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Implement Dark Mode</h5>
+                        <small class="text-muted">2 days ago</small>
+                      </div>
+                      <p class="mb-1">We're looking for help implementing a dark mode feature in our main application.</p>
+                      <small class="text-muted">Main App • UI/UX • Good First Issue</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Optimize Database Queries</h5>
+                        <small class="text-muted">1 week ago</small>
+                      </div>
+                      <p class="mb-1">We need assistance in optimizing some of our database queries for better performance.</p>
+                      <small class="text-muted">Backend • Performance • Intermediate</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Improve Test Coverage</h5>
+                        <small class="text-muted">3 days ago</small>
+                      </div>
+                      <p class="mb-1">Help us increase our test coverage by writing additional unit and integration tests.</p>
+                      <small class="text-muted">Testing • All Levels</small>
+                    </a>
+                  </div>
+                  
+                  <div class="mt-4">
+                    <h4>How to Contribute</h4>
+                    <ol class="list-group list-group-numbered">
+                      <li class="list-group-item">Fork the repository on GitHub</li>
+                      <li class="list-group-item">Create a new branch for your contribution</li>
+                      <li class="list-group-item">Make your changes and commit them</li>
+                      <li class="list-group-item">Push to your fork and submit a pull request</li>
+                      <li class="list-group-item">Wait for review and address any feedback</li>
+                    </ol>
+                  </div>
+                  
+                  <div class="mt-4 text-center">
+                    <a href="#" class="btn btn-primary">View All Open Issues on GitHub</a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Call to Action -->
+              <div class="mt-5 text-center">
+                <h4>Want to Contribute?</h4>
+                <p>We're always looking for passionate developers to join our open-source efforts!</p>
+                <a href="#" class="btn btn-primary">Get Involved</a>
+              </div>
             </div>
           </div>
         </div>
