@@ -98,4 +98,6 @@ class Company < ApplicationRecord
   end
 
   scope :search_by_location, ->(location) { where('location ILIKE ?', "%#{location}%") }
+
+  has_many :open_source_projects, dependent: :destroy
 end
