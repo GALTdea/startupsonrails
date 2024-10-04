@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'open_source_projects/index'
+  get 'open_source_projects/create'
+  get 'open_source_projects/update'
+  get 'open_source_projects/destroy'
   get 'issues/index'
   get 'issues/new'
   get 'issues/edit'
