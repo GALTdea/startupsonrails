@@ -3,6 +3,7 @@ class OpenSourceProject < ApplicationRecord
   has_one :user, through: :company
 
   validates :url, presence: true, format: { with: %r{\Ahttps://github\.com/[a-zA-Z0-9\-_]+/[a-zA-Z0-9\-_]+\z} }
+  validates :url, uniqueness: { scope: :company_id, message: 'has already been added for this company' }
   validates :project_type, presence: true, inclusion: { in: %w[contribution sponsorship] }
 
   before_validation :fetch_github_data, on: :create
