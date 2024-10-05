@@ -120,8 +120,34 @@
                 <!-- Contributions & Sponsorships Tab -->
                 <div class="tab-pane fade show active" id="contributes" role="tabpanel" aria-labelledby="contributes-tab">
                   <% if current_user && current_user.admin? %>
-                    <h4 class="mb-3">Add New Open Source Project</h4>
-                    <%= render 'open_source_projects/form', company: @company %>
+                    <div data-controller="open-source-project">
+                      <h4 class="mb-3">Add New Open Source Project</h4>
+                      <%= form_with(model: [@company, OpenSourceProject.new], data: { 
+                        action: "submit->open-source-project#submitForm",
+                        'open-source-project-target': "form"
+                      }) do |form| %>
+                        <div class="mb-3">
+                          <%= form.label :url, "GitHub URL", class: "form-label" %>
+                          <%= form.url_field :url, class: "form-control", required: true %>
+                        </div>
+                        <div class="mb-3">
+                          <%= form.label :project_type, "Project Type", class: "form-label" %>
+                          <%= form.select :project_type, 
+                                          options_for_select([['Contribution', 'contribution'], ['Sponsorship', 'sponsorship']]), 
+                                          { prompt: "Select project type" }, 
+                                          { class: "form-select", required: true } %>
+                        </div>
+                        <%= form.submit "Add Project", class: "btn btn-primary" %>
+                      <% end %>
+
+                      <div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
+
+                      <div data-open-source-project-target="projectsList" class="row mt-4">
+                        <% @company.open_source_projects.each do |project| %>
+                          <!-- Render each project here (you can use the same HTML structure as in the addProjectToList method) -->
+                        <% end %>
+                      </div>
+                    </div>
                   <% end %>
 
                   <div id="open-source-projects" class="row" data-open-source-project-target="projectsList">
