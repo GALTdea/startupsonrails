@@ -1,5 +1,6 @@
 class OpenSourceProject < ApplicationRecord
   belongs_to :company
+  has_one :user, through: :company
 
   validates :url, presence: true, format: { with: %r{\Ahttps://github\.com/[a-zA-Z0-9\-_]+/[a-zA-Z0-9\-_]+\z} }
   validates :project_type, presence: true, inclusion: { in: %w[contribution sponsorship] }
