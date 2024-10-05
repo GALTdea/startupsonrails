@@ -16,15 +16,21 @@
 #  remember_created_at    :datetime
 #
 class User < ApplicationRecord
+  has_many :companies
+  has_many :open_source_projects, through: :companies
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         validates :user_type, presence: true
+  validates :user_type, presence: true
 
   enum user_type: {
     member: 0,
-     admin: 1
-    }
+    admin: 1
+  }
+  def admin?
+    user_type == 'admin'
+  end
 end
