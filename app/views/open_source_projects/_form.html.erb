@@ -1,13 +1,21 @@
-<%= form_with(model: [@company, OpenSourceProject.new], local: false, class: 'mb-4', id: 'new-open-source-project-form') do |form| %>
+<%= form_with(model: [company, OpenSourceProject.new], local: false, data: { 
+  action: "submit->open-source-project#submitForm",
+  'open-source-project-target': "form"
+}) do |form| %>
   <div class="mb-3">
     <%= form.label :url, "GitHub URL", class: "form-label" %>
-    <%= form.url_field :url, class: "form-control", placeholder: "https://github.com/user/repo" %>
+    <%= form.url_field :url, class: "form-control", placeholder: "https://github.com/user/repo", required: true %>
   </div>
+
   <div class="mb-3">
     <%= form.label :project_type, "Project Type", class: "form-label" %>
-    <%= form.select :project_type, options_for_select([['Contribution', 'contribution'], ['Sponsorship', 'sponsorship']]), {}, class: "form-select" %>
+    <%= form.select :project_type, 
+                    options_for_select([['Contribution', 'contribution'], ['Sponsorship', 'sponsorship']]), 
+                    { prompt: "Select project type" }, 
+                    { class: "form-select", required: true } %>
   </div>
-  <%= form.submit "Add Project", class: "btn btn-primary" %>
+
+  <%= form.submit "Add Project", class: "btn btn-primary", data: { disable_with: "Adding..." } %>
 <% end %>
 
-<div id="form-errors" class="alert alert-danger mt-3" style="display: none;"></div>
+<div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
