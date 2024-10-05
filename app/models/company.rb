@@ -17,11 +17,10 @@
 #
 require 'csv'
 class Company < ApplicationRecord
+  belongs_to :user
   has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :contributions
-  belongs_to :user, optional: true
-
   has_many :issues, dependent: :destroy
 
   before_save :normalize_name
@@ -100,4 +99,6 @@ class Company < ApplicationRecord
   scope :search_by_location, ->(location) { where('location ILIKE ?', "%#{location}%") }
 
   has_many :open_source_projects, dependent: :destroy
+  # has_many :users
+  has_many :open_source_projects
 end
