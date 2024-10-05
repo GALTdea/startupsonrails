@@ -1,9 +1,8 @@
 class OpenSourceProject < ApplicationRecord
   belongs_to :company
 
-  validates :name, presence: true
+  validates :url, presence: true, format: { with: %r{\Ahttps://github\.com/[a-zA-Z0-9\-_]+/[a-zA-Z0-9\-_]+\z} }
   validates :project_type, presence: true, inclusion: { in: %w[contribution sponsorship] }
-  validates :url, presence: true, format: { with: %r{\Ahttps://github\.com/[a-zA-Z0-9\-_]+/[a-zA-Z0-9\-_]+\z}, message: 'must be a valid GitHub repository URL' }
 
   before_validation :fetch_github_data, on: :create
 
@@ -12,9 +11,8 @@ class OpenSourceProject < ApplicationRecord
   def fetch_github_data
     return unless url.present?
 
-    github_client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
     repo_name = url.split('github.com/').last
-    repo_data = github_client.repository(repo_name)
+    repo_data = Octokit::Client.new.repository(repo_name)
 
     self.name = repo_data.name
     self.description = repo_data.description
