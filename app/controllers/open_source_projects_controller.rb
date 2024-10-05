@@ -15,7 +15,8 @@ class OpenSourceProjectsController < ApplicationController
   private
 
   def set_company
-    @company = current_user.company
+    # @company = current_user.company
+    @company = Company.friendly.find(params[:company_id])
   end
 
   def open_source_project_params
