@@ -5,39 +5,36 @@ export default class extends Controller {
   static targets = ["form", "projectsList", "errors"]
 
   connect() {
-    console.log("Open Source Project controller connected")
+    console.log("OpenSourceProject controller connected")
   }
 
-  submitForm(event) {
+  async submitForm(event) {
     event.preventDefault()
     const form = this.formTarget
     const formData = new FormData(form)
 
-    fetch(form.action, {
-      method: form.method,
-      body: formData,
-      headers: {
-        "Accept": "application/json",
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
-      },
-      credentials: "same-origin"
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.errors) {
-          this.showErrors(data.errors)
-        } else {
-          this.addProjectToList(data)
-          form.reset()
-          this.errorsTarget.style.display = 'none'
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          "Accept": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
         }
       })
-      .catch(error => console.error('Error:', error))
-  }
+      const data = await response.json()
 
-  showErrors(errors) {
-    this.errorsTarget.innerHTML = Object.values(errors).join(', ')
-    this.errorsTarget.style.display = 'block'
+      if (response.ok) {
+        this.addProjectToList(data)
+        form.reset()
+        this.errorsTarget.textContent = ''
+      } else {
+        this.errorsTarget.textContent = data.errors.join(', ')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      this.errorsTarget.textContent = 'An unexpected error occurred. Please try again.'
+    }
   }
 
   addProjectToList(project) {
