@@ -101,4 +101,16 @@ class Company < ApplicationRecord
   has_many :open_source_projects, dependent: :destroy
   # has_many :users
   has_many :open_source_projects
+
+  def self.export_to_csv
+    require 'csv'
+
+    CSV.generate(headers: true) do |csv|
+      csv << column_names
+
+      find_each do |company|
+        csv << company.attributes.values
+      end
+    end
+  end
 end
