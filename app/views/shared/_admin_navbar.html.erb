@@ -48,5 +48,8 @@
         </ul>
       </div>
     </div>
+    <%= link_to export_companies_path, class: "btn btn-primary ms-2", data: { turbo: false } do %>
+      <i class="fas fa-download"></i> Export Companies
+    <% end %>
   </div>
 </nav>
