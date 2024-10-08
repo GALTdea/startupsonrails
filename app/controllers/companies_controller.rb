@@ -95,6 +95,11 @@ class CompaniesController < ApplicationController
     render json: @companies.map { |company| { id: company.id, name: company.name } }
   end
 
+  def export
+    filepath = Company.export_to_csv
+    send_file filepath, filename: File.basename(filepath), type: 'text/csv'
+  end
+
   private
 
   def set_company
