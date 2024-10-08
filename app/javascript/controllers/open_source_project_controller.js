@@ -63,4 +63,29 @@ export default class extends Controller {
     `
     this.projectsListTarget.insertAdjacentHTML('afterbegin', projectHtml)
   }
+
+  removeProject(event) {
+    event.preventDefault()
+    const projectElement = event.target.closest('.col-md-6')
+    const projectId = this.projectIdParamValue
+    const companyId = this.companyIdParamValue
+
+    if (confirm('Are you sure you want to remove this project?')) {
+      fetch(event.target.form.action, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+          'Accept': 'application/json'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            projectElement.remove()
+          } else {
+            console.error('Failed to remove project')
+          }
+        })
+        .catch(error => console.error('Error:', error))
+    }
+  }
 }
