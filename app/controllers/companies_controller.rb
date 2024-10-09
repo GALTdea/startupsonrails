@@ -96,8 +96,11 @@ class CompaniesController < ApplicationController
   end
 
   def export
-    filepath = Company.export_to_csv
-    send_file filepath, filename: File.basename(filepath), type: 'text/csv'
+    csv_data = Company.export_to_csv
+    send_data csv_data,
+              filename: "companies_export_#{Time.now.strftime('%Y%m%d_%H%M%S')}.csv",
+              type: 'text/csv',
+              disposition: 'attachment'
   end
 
   private
