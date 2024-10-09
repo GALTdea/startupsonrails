@@ -37,6 +37,8 @@ class Company < ApplicationRecord
 
   enum status: { pending: 0, active: 1, rejected: 2 }
 
+  scope :duplicates, -> { select(:name, :url).group(:name, :url).having('count(*) > 1').pluck(:name, :url) }
+
   def self.import_from_csv(csv_file_path = nil)
     # csv_file_path ||= Rails.root.join('db/seeds', 'ruby_rails_companies.csv')
     csv_file_path ||= Rails.root.join('db/seeds', 'combined_companies.csv')

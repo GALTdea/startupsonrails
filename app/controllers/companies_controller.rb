@@ -15,6 +15,9 @@ class CompaniesController < ApplicationController
     elsif params[:category_ids].present?
       category_ids = Array(params[:category_ids]).reject(&:blank?)
       @companies = @companies.joins(:categories).where(categories: { id: category_ids }).distinct
+    elsif params[:filter] == 'duplicates'
+      duplicate_names_urls = Company.duplicates
+      @companies = Company.where(name: duplicate_names_urls.map(&:first), url: duplicate_names_urls.map(&:last))
     end
 
     @pagy, @companies = pagy(@companies.order(name: :asc))
