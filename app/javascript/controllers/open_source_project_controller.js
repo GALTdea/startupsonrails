@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="open-source-project"
 export default class extends Controller {
-  static targets = ["form", "projectsList", "errors"]
+  static targets = ["form", "errors", "projectsList"]
 
   connect() {
     console.log("OpenSourceProject controller connected")
@@ -87,5 +87,10 @@ export default class extends Controller {
         })
         .catch(error => console.error('Error:', error))
     }
+  }
+
+  toggleForm(event) {
+    event.preventDefault()
+    this.formTarget.classList.toggle("d-none")
   }
 }
