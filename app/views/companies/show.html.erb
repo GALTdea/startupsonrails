@@ -265,7 +265,7 @@
               <%= link_to 'Edit', edit_company_path(@company), class: 'nav-link' %>
             </li>
             <li class="nav-item me-3">
-              <%= link_to 'Delete', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link' %>
+              <%= button_to 'Delete', company_path(@company), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %>
             </li>
             <li class="nav-item me-3">
               <%= link_to 'New Issue', new_company_issue_path(@company), class: 'nav-link' %>
