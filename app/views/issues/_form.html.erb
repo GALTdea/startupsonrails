@@ -1,15 +1,29 @@
 <%= form_with(model: [@company, @issue], local: true) do |form| %>
+  <% if @issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+      <ul>
+        <% @issue.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="mb-3">
-    <%= form.label :title %>
+    <%= form.label :title, class: 'form-label' %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
+
   <div class="mb-3">
-    <%= form.label :description %>
+    <%= form.label :description, class: 'form-label' %>
     <%= form.text_area :description, class: 'form-control' %>
   </div>
+
   <div class="mb-3">
-    <%= form.label :github_url %>
+    <%= form.label :github_url, 'GitHub Issue URL', class: 'form-label' %>
     <%= form.url_field :github_url, class: 'form-control' %>
   </div>
+
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>
