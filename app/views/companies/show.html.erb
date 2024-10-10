@@ -131,6 +131,8 @@
                 <div class="tab-content" id="openSourceTabContent">
                   <!-- Contributions & Sponsorships Tab -->
                   <div class="tab-pane fade show active" id="contributes" role="tabpanel" aria-labelledby="contributes-tab">
+                    <h4 class="mb-3">Open Source Projects</h4>
+                    <%= render 'project_form', company: @company %>
                     <%= render 'open_source_projects', company: @company %>
                   </div>
                   
