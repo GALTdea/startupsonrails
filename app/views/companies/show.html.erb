@@ -190,10 +190,29 @@
                 <!-- Help Wanted Tab -->
                 <div class="tab-pane fade" id="help-wanted" role="tabpanel" aria-labelledby="help-wanted-tab">
                   <h3 class="mb-4">Open Issues - We Need Your Help!</h3>
-                  <div class="alert alert-info" role="alert">
-                    <p class="mb-0">No open issues have been posted yet. Check back later for opportunities to contribute!</p>
-                  </div>
                   
+                  <% if @issues.any? %>
+                    <div class="list-group">
+                      <% @issues.each do |issue| %>
+                        <div class="list-group-item">
+                          <h5 class="mb-1"><%= link_to issue.title, issue.github_url, target: "_blank" %></h5>
+                          <p class="mb-1"><%= issue.description %></p>
+                          <small class="text-muted">Posted on: <%= issue.created_at.strftime("%B %d, %Y") %></small>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <div class="alert alert-info" role="alert">
+                      <p class="mb-0">No open issues have been posted yet. Check back later for opportunities to contribute!</p>
+                    </div>
+                  <% end %>
+                  
+                  <% if current_user && (current_user.admin? || current_user == @company.user) %>
+                    <div class="mt-4">
+                      <%= link_to "Add New Issue", new_company_issue_path(@company), class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+
                   <div class="mt-4">
                     <h4>How to Contribute</h4>
                     <ol class="list-group list-group-numbered">
@@ -203,10 +222,6 @@
                       <li class="list-group-item">Push to your fork and submit a pull request</li>
                       <li class="list-group-item">Wait for review and address any feedback</li>
                     </ol>
-                  </div>
-                  
-                  <div class="mt-4 text-center">
-                    <a href="#" class="btn btn-primary">View All Open Issues on GitHub</a>
                   </div>
                 </div>
               </div>
