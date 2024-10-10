@@ -131,72 +131,7 @@
                 <div class="tab-content" id="openSourceTabContent">
                   <!-- Contributions & Sponsorships Tab -->
                   <div class="tab-pane fade show active" id="contributes" role="tabpanel" aria-labelledby="contributes-tab">
-                    <% if current_user && current_user.admin? %>
-                      <div data-controller="open-source-project">
-                        <h4 class="mb-3">Add New Open Source Project</h4>
-                        <%= form_with(model: [@company, OpenSourceProject.new], data: { 
-                          action: "submit->open-source-project#submitForm",
-                          'open-source-project-target': "form"
-                        }) do |form| %>
-                          <div class="mb-3">
-                            <%= form.label :url, "GitHub URL", class: "form-label" %>
-                            <%= form.url_field :url, class: "form-control", required: true %>
-                          </div>
-                          <div class="mb-3">
-                            <%= form.label :project_type, "Project Type", class: "form-label" %>
-                            <%= form.select :project_type, 
-                                            options_for_select([['Contribution', 'contribution'], ['Sponsorship', 'sponsorship']]), 
-                                            { prompt: "Select project type" }, 
-                                            { class: "form-select", required: true } %>
-                          </div>
-                          <%= form.submit "Add Project", class: "btn btn-primary" %>
-                        <% end %>
-
-                        <div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
-
-                        <div data-open-source-project-target="projectsList" class="row mt-4">
-                          <% @company.open_source_projects.each do |project| %>
-                            <!-- Render each project here (you can use the same HTML structure as in the addProjectToList method) -->
-                          <% end %>
-                        </div>
-                      </div>
-                    <% end %>
-
-                    <div id="open-source-projects" class="row" data-open-source-project-target="projectsList">
-                      <% @company.open_source_projects.each do |project| %>
-                        <div class="col-md-6 mb-4">
-                          <div class="card h-100">
-                            <div class="card-body">
-                              <div class="d-flex align-items-center mb-3">
-                                <%= image_tag project.icon_url.presence || 'default_project_icon.png', alt: "#{project.name} Logo", class: "me-3 rounded", style: "width: 50px; height: 50px;" %>
-                                <h5 class="card-title mb-0"><%= project.name %></h5>
-                              </div>
-                              <p class="card-text"><%= project.description %></p>
-                              <div class="mt-3">
-                                <% if project.project_type == 'contribution' %>
-                                  <span class="badge bg-success me-2">Active Contributor</span>
-                                <% else %>
-                                  <span class="badge bg-warning text-dark me-2">Sponsor</span>
-                                <% end %>
-                                <span class="badge bg-info me-2"><%= project.stars %> Stars</span>
-                                <span class="badge bg-secondary"><%= project.forks %> Forks</span>
-                              </div>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
-                              <%= link_to "View Project", project.url, class: "btn btn-outline-primary btn-sm", target: "_blank" %>
-                              <% if current_user && (current_user.admin? || current_user == @company.user) %>
-                                <%= button_to "Remove", company_open_source_project_path(@company, project), method: :delete, data: { 
-                                  controller: "open-source-project",
-                                  action: "open-source-project#removeProject",
-                                  open_source_project_project_id_param: project.id,
-                                  open_source_project_company_id_param: @company.id
-                                }, class: "btn btn-outline-danger btn-sm" %>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div>
-                      <% end %>
-                    </div>
+                    <%= render 'open_source_projects', company: @company %>
                   </div>
                   
                   <!-- Help Wanted Tab -->

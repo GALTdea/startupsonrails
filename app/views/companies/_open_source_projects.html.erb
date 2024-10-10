@@ -1,0 +1,35 @@
+<div data-controller="open-source-project">
+  <h4 class="mb-3">Open Source Projects</h4>
+  
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Add Project", "#", class: "btn btn-primary mb-3", data: { action: "click->open-source-project#toggleForm" } %>
+    
+    <%= form_with(model: [@company, OpenSourceProject.new], 
+                  class: "d-none", 
+                  data: { 
+                    action: "submit->open-source-project#submitForm",
+                    'open-source-project-target': "form"
+                  }) do |form| %>
+      <div class="mb-3">
+        <%= form.label :url, "GitHub URL", class: "form-label" %>
+        <%= form.url_field :url, class: "form-control", required: true %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :project_type, "Project Type", class: "form-label" %>
+        <%= form.select :project_type, 
+                        options_for_select([['Contribution', 'contribution'], ['Sponsorship', 'sponsorship']]), 
+                        { prompt: "Select project type" }, 
+                        { class: "form-select", required: true } %>
+      </div>
+      <%= form.submit "Add Project", class: "btn btn-primary" %>
+    <% end %>
+
+    <div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
+  <% end %>
+
+  <div data-open-source-project-target="projectsList" class="row mt-4">
+    <% @company.open_source_projects.each do |project| %>
+      <!-- Render each project here (you can use the same HTML structure as in the addProjectToList method) -->
+    <% end %>
+  </div>
+</div>
