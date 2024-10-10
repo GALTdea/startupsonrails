@@ -72,6 +72,15 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def destroy
+    # authorize @company
+    if @company.destroy
+      redirect_to companies_path, notice: 'Company was successfully deleted.', turbo_stream: false
+    else
+      redirect_to @company, alert: 'Failed to delete the company.', turbo_stream: false
+    end
+  end
+
   def edit
     authorize @company
   end
