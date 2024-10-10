@@ -27,3 +27,6 @@ application.register("popover", PopoverController)
 
 import RichTextController from "./rich_text_controller"
 application.register("rich-text", RichTextController)
+
+import TabsController from "./tabs_controller"
+application.register("tabs", TabsController)
