@@ -30,3 +30,6 @@ application.register("rich-text", RichTextController)
 
 import TabsController from "./tabs_controller"
 application.register("tabs", TabsController)
+
+import ToggleFormController from "./toggle_form_controller"
+application.register("toggle-form", ToggleFormController)

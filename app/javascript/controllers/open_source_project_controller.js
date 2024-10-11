@@ -89,8 +89,8 @@ export default class extends Controller {
     }
   }
 
-  toggleForm(event) {
-    event.preventDefault()
-    this.formTarget.classList.toggle("d-none")
-  }
+  // toggleForm(event) {
+  //   event.preventDefault()
+  //   this.formTarget.classList.toggle("d-none")
+  // }
 }

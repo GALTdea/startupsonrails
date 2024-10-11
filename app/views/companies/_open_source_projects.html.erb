@@ -2,13 +2,15 @@
   <h4 class="mb-3">Open Source Projects</h4>
   
   <% if current_user && current_user.admin? %>
-    <%= link_to "Add Project", "#", class: "btn btn-primary mb-3", data: { action: "click->open-source-project#toggleForm" } %>
-    
+
+  <div data-controller="open-source-project toggle-form">
+    <%= link_to "Add Project", "#", class: "btn btn-primary mb-3", data: { action: "click->toggle-form#toggle" } %>
     <%= form_with(model: [@company, OpenSourceProject.new], 
                   class: "d-none", 
                   data: { 
                     action: "submit->open-source-project#submitForm",
-                    'open-source-project-target': "form"
+                    'open-source-project-target': "form",
+                    'toggle-form-target': "form"
                   }) do |form| %>
       <div class="mb-3">
         <%= form.label :url, "GitHub URL", class: "form-label" %>
@@ -25,6 +27,7 @@
     <% end %>
 
     <div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
+  </div>
   <% end %>
 
   <div data-open-source-project-target="projectsList" class="row mt-4">
