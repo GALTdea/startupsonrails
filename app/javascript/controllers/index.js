@@ -25,6 +25,9 @@ application.register("open-source-project", OpenSourceProjectController)
 import PopoverController from "./popover_controller"
 application.register("popover", PopoverController)
 
+import ProjectListController from "./project_list_controller"
+application.register("project-list", ProjectListController)
+
 import RichTextController from "./rich_text_controller"
 application.register("rich-text", RichTextController)
 
