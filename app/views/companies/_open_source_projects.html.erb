@@ -29,7 +29,7 @@
     </div>
   <% end %>
 
-  <div data-project-list-target="list">
+  <div data-project-list-target="list" class="row">
     <% @company.open_source_projects.each do |project| %>
       <%= render 'companies/open_source_project', project: project, company: @company %>
     <% end %>
