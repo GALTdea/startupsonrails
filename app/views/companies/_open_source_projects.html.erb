@@ -1,6 +1,4 @@
 <div data-controller="open-source-project project-list">
-  <h4 class="mb-3">Open Source Projects</h4>
-  
   <% if current_user && current_user.admin? %>
     <div data-controller="toggle-form">
       <%= link_to "Add Project", "#", class: "btn btn-primary mb-3", data: { action: "click->toggle-form#toggle" } %>
@@ -24,7 +22,6 @@
         </div>
         <%= form.submit "Add Project", class: "btn btn-primary" %>
       <% end %>
-
       <div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
     </div>
   <% end %>
@@ -35,4 +32,3 @@
     <% end %>
   </div>
 </div>
-
