@@ -112,8 +112,8 @@
                     <button class="nav-link active" id="contributes-tab" data-bs-toggle="tab" data-bs-target="#contributes" type="button" role="tab" aria-controls="contributes" aria-selected="true">Contributions & Sponsorships</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <%= link_to "Get Involved", "#help-wanted", 
-                        class: "nav-link", 
+                    <%= link_to "#help-wanted", 
+                        class: "nav-link position-relative", 
                         id: "help-wanted-tab",
                         data: { 
                           action: "tabs#switchToHelpWanted"
@@ -122,8 +122,15 @@
                         aria: { 
                           controls: "help-wanted", 
                           selected: false 
-                        } 
-                    %>
+                        } do %>
+                      Get Involved
+                      <% if @issues.any? %>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          <%= @issues.count %>
+                          <span class="visually-hidden">open issues</span>
+                        </span>
+                      <% end %>
+                    <% end %>
                   </li>
                 </ul>
                 
