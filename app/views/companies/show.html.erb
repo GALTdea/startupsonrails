@@ -107,13 +107,15 @@
               
               <!-- Tabs -->
               <div data-controller="tabs">
-                <ul class="nav nav-tabs mb-4" id="openSourceTabs" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="contributes-tab" data-bs-toggle="tab" data-bs-target="#contributes" type="button" role="tab" aria-controls="contributes" aria-selected="true">Contributions & Sponsorships</button>
+                <ul class="nav nav-tabs flex-column flex-sm-row mb-4" id="openSourceTabs" role="tablist">
+                  <li class="nav-item flex-sm-fill" role="presentation">
+                    <button class="nav-link w-100 active" id="contributes-tab" data-bs-toggle="tab" data-bs-target="#contributes" type="button" role="tab" aria-controls="contributes" aria-selected="true">
+                      Contributions & Sponsorships
+                    </button>
                   </li>
-                  <li class="nav-item" role="presentation">
+                  <li class="nav-item flex-sm-fill" role="presentation">
                     <%= link_to "#help-wanted", 
-                        class: "nav-link position-relative", 
+                        class: "nav-link w-100 position-relative", 
                         id: "help-wanted-tab",
                         data: { 
                           action: "tabs#switchToHelpWanted"
