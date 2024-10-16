@@ -141,6 +141,11 @@
                   <!-- Contributions & Sponsorships Tab -->
                   <div class="tab-pane fade show active" id="contributes" role="tabpanel" aria-labelledby="contributes-tab">
                     <h4 class="mb-3">Open Source Projects</h4>
+                    <% if current_user && (current_user.admin? || current_user == @company.user) %>
+                      <div class="mt-4">
+                        <%= link_to "Manage Open Source Projects", company_open_source_projects_path(@company), class: "btn btn-primary" %>
+      </div>
+    <% end %>
                     <%= render 'companies/open_source_projects', company: @company %>
                   </div>
                   
