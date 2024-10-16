@@ -24,9 +24,8 @@
         </div>
       </div>
       
-       <!-- second col, company info -->
+      <!-- second col, company info -->
       <div class="col-lg-8">
-        
         <div class="card mb-4">
           <div class="card-body">
             <h5 class="card-title h2">Company Snapshot</h5>
@@ -140,12 +139,12 @@
                 <div class="tab-content" id="openSourceTabContent">
                   <!-- Contributions & Sponsorships Tab -->
                   <div class="tab-pane fade show active" id="contributes" role="tabpanel" aria-labelledby="contributes-tab">
-                    <h4 class="mb-3">Open Source Projects</h4>
+                    <h4 class="mb-1">Open Source Projects</h4>
                     <% if current_user && (current_user.admin? || current_user == @company.user) %>
-                      <div class="mt-4">
-                        <%= link_to "Manage Open Source Projects", company_open_source_projects_path(@company), class: "btn btn-primary" %>
-      </div>
-    <% end %>
+                      <div class="">
+                        <%= link_to "Manage Projects", company_open_source_projects_path(@company), class: "btn btn-link" %>
+                      </div>
+                    <% end %>
                     <%= render 'companies/open_source_projects', company: @company %>
                   </div>
                   
