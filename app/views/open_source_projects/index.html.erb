@@ -1,2 +1,38 @@
-<h1>OpenSourceProjects#index</h1>
-<p>Find me in app/views/open_source_projects/index.html.erb</p>
+<h1><%= @company.name %>'s Open Source Projects</h1>
+
+<div data-controller="open-source-project project-list">
+  <div data-project-list-target="list" class="row mb-4">
+    <% @company.open_source_projects.each do |project| %>
+      <%= render partial: 'open_source_projects/open_source_project', locals: { project: project, company: @company } %>
+    <% end %>
+  </div>
+
+  <% if current_user && current_user.admin? %>
+    <div data-controller="toggle-form">
+      <%= link_to "Add Project", "#", class: "btn btn-primary mb-3", data: { action: "click->toggle-form#toggle" } %>
+      <%= form_with(model: [@company, OpenSourceProject.new], 
+                    class: "d-none", 
+                    data: { 
+                      action: "submit->open-source-project#submitForm",
+                      'open-source-project-target': "form",
+                      'toggle-form-target': "form"
+                    }) do |form| %>
+        <div class="mb-3">
+          <%= form.label :url, "GitHub URL", class: "form-label" %>
+          <%= form.url_field :url, class: "form-control", required: true %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :project_type, "Project Type", class: "form-label" %>
+          <%= form.select :project_type, 
+                          options_for_select([['Contribution', 'contribution'], ['Sponsorship', 'sponsorship']]), 
+                          { prompt: "Select project type" }, 
+                          { class: "form-select", required: true } %>
+        </div>
+        <%= form.submit "Add Project", class: "btn btn-primary" %>
+      <% end %>
+      <div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Back to Company", company_path(@company), class: "btn btn-secondary mt-3" %>
