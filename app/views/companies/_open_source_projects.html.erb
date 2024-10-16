@@ -1,6 +1,6 @@
-<div class="container"> 
+<div class="container">
   <div data-project-list-target="list" class="row">
-    <% @company.open_source_projects.each do |project| %>
+    <% @company.open_source_projects.first(6).each do |project| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <div class="card h-100">
           <div class="card-body">
@@ -29,4 +29,10 @@
       </div>
     <% end %>
   </div>
+  
+  <% if @company.open_source_projects.count > 6 %>
+    <div class="text-center mt-4">
+      <%= link_to "View All Open Source Projects", company_open_source_projects_path(@company), class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>
