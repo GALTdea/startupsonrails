@@ -1,6 +1,7 @@
-<h1><%= @company.name %>'s Open Source Projects</h1>
+<div class="container">
+  <h1><%= @company.name %>'s Open Source Projects</h1>
 
-<div data-controller="open-source-project project-list">
+  <div data-controller="open-source-project project-list">
   <div data-project-list-target="list" class="row mb-4">
     <% @company.open_source_projects.each do |project| %>
       <%= render partial: 'open_source_projects/open_source_project', locals: { project: project, company: @company } %>
@@ -32,7 +33,8 @@
       <% end %>
       <div data-open-source-project-target="errors" class="alert alert-danger mt-3" style="display: none;"></div>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<%= link_to "Back to Company", company_path(@company), class: "btn btn-secondary mt-3" %>
+  <%= link_to "Back to Company", company_path(@company), class: "btn btn-secondary mt-3" %>
+</div>
