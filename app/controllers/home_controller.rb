@@ -29,6 +29,8 @@ class HomeController < ApplicationController
       cat = Category.find_by(name: category)
       @tops_companies[name] = cat.companies
     end
+
+    @issues = Issue.includes(:company).order(created_at: :desc).limit(10)
   end
 
   def index
