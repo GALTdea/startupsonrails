@@ -334,3 +334,18 @@ end
 # when "production"
 
 # end
+
+# Set featured categories
+featured_category_names = ['top_rails_companies', 'trending', 'hotwire', 'tooling', 'Los Angeles', 'New York']
+
+featured_category_names.each do |category_name|
+  category = Category.find_by(name: category_name)
+  if category
+    category.update(featured: true)
+    puts "Set #{category_name} as featured."
+  else
+    puts "Category #{category_name} not found."
+  end
+end
+
+puts 'Featured categories have been set.'
