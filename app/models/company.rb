@@ -22,6 +22,7 @@ class Company < ApplicationRecord
   has_many :categories, through: :categorizations
   has_many :contributions
   has_many :issues, dependent: :destroy
+  has_many :open_source_projects, dependent: :destroy
 
   before_save :normalize_name
 
