@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     collection do
       get :export
     end
+    resources :open_source_projects do
+      resources :issues
+    end
   end
 
   get 'home/show'

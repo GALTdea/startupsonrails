@@ -21,8 +21,9 @@ class Company < ApplicationRecord
   has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :contributions
-  has_many :issues, dependent: :destroy
   has_many :open_source_projects, dependent: :destroy
+
+  # Remove the has_many :issues association
 
   before_save :normalize_name
 
@@ -93,6 +94,10 @@ class Company < ApplicationRecord
     "public/company_logos/#{name.downcase.gsub(' ', '_')}_logo.png"
   end
 
+  def issues
+    Issue.joins(:open_source_project).where(open_source_projects: { company_id: id })
+  end
+
   private
 
   def normalize_name
@@ -116,4 +121,13 @@ class Company < ApplicationRecord
       end
     end
   end
+
+  # Make this method public
+  # def all_issues
+  #   Issue.joins(:open_source_project).where(open_source_projects: { company_id: id })
+  # end
+
+  # def issues
+  #   Issue.joins(:open_source_project).where(open_source_projects: { company_id: id })
+  # end
 end

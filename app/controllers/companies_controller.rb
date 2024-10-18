@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   include Pagy::Backend
-  before_action :set_company, only: %i[show edit update destroy update_status]
+  before_action :set_company, only: %i[edit update destroy update_status]
   before_action :authenticate_user!, only: %i[new edit update destroy update_status]
 
   def index
@@ -39,13 +39,11 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.includes(:open_source_projects).friendly.find(params[:id])
-
+    @issues = @company.issues
     @contributions = @company.contributions.to_a
     @page_title = @company.name
     @page_description = @company.about
     @page_image_url = @company.logo.attached? ? url_for(@company.logo) : nil
-
-    @issues = @company.issues
   end
 
   def new

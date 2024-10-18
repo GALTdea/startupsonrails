@@ -1,6 +1,6 @@
 class OpenSourceProject < ApplicationRecord
   belongs_to :company
-  has_one :user, through: :company
+  has_many :issues, dependent: :destroy
 
   validates :url, presence: true, format: { with: %r{\Ahttps://github\.com/[a-zA-Z0-9\-_]+/[a-zA-Z0-9\-_]+\z} }
   validates :url, uniqueness: { scope: :company_id, message: 'has already been added for this company' }

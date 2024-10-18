@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_04_181500) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_18_174512) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -177,10 +177,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_04_181500) do
     t.string "title"
     t.text "description"
     t.string "github_url"
-    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_issues_on_company_id"
+    t.bigint "open_source_project_id"
+    t.index ["open_source_project_id"], name: "index_issues_on_open_source_project_id"
   end
 
   create_table "open_source_projects", force: :cascade do |t|
@@ -219,6 +219,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_04_181500) do
   add_foreign_key "categorizations", "companies"
   add_foreign_key "companies", "users"
   add_foreign_key "contributions", "companies"
-  add_foreign_key "issues", "companies"
+  add_foreign_key "issues", "open_source_projects"
   add_foreign_key "open_source_projects", "companies"
 end
