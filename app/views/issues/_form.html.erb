@@ -1,4 +1,7 @@
-<%= form_with(model: [@company, @issue], local: true) do |form| %>
+<%= form_with(model: [@company, @issue], local: true, data: { 
+  controller: "issue",
+  issue_company_id_value: @company.id
+}) do |form| %>
   <% if @issue.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
@@ -10,20 +13,38 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= form.label :title, class: 'form-label' %>
-    <%= form.text_field :title, class: 'form-control' %>
+  <div class="field">
+    <%= form.label :open_source_project_id %>
+    <%= form.collection_select :open_source_project_id, @open_source_projects, :id, :name, 
+                               { prompt: "Select a project" }, 
+                               { class: 'form-control', 
+                                 data: { action: 'change->issue#fetchGithubIssues' } } %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :description, class: 'form-label' %>
+  <div class="field">
+    <%= form.label :github_issue %>
+    <%= form.select :github_issue, [], { prompt: "Select an issue" }, 
+                    { class: 'form-control', 
+                      data: { issue_target: 'githubIssueSelect', 
+                              action: 'change->issue#selectGithubIssue' } } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', data: { issue_target: 'titleInput' } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :github_url, 'GitHub Issue URL', class: 'form-label' %>
-    <%= form.url_field :github_url, class: 'form-control' %>
+  <div class="field">
+    <%= form.label :github_url %>
+    <%= form.url_field :github_url, class: 'form-control', data: { issue_target: 'githubUrlInput' } %>
   </div>
 
-  <%= form.submit class: 'btn btn-primary' %>
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
 <% end %>

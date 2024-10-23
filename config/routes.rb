@@ -36,6 +36,11 @@ Rails.application.routes.draw do
     resources :open_source_projects do
       resources :issues
     end
+    resources :issues do
+      collection do
+        get 'fetch_github_issues'
+      end
+    end
   end
 
   get 'home/show'

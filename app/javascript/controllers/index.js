@@ -19,6 +19,9 @@ application.register("filter", FilterController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import IssueController from "./issue_controller"
+application.register("issue", IssueController)
+
 import OpenSourceProjectController from "./open_source_project_controller"
 application.register("open-source-project", OpenSourceProjectController)
 
