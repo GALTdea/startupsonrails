@@ -178,4 +178,19 @@ class Company < ApplicationRecord
       f.puts "\n"
     end
   end
+
+  def self.update_mismatched_slugs
+    mismatched_companies = where.not(
+      "LOWER(REPLACE(name, ' ', '-')) = slug"
+    )
+
+    mismatched_companies.update_all(status: :pending)
+
+    mismatched_companies.find_each do |company|
+      company.slug = nil
+      company.save
+    end
+
+    mismatched_companies.count
+  end
 end
