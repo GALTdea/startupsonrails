@@ -27,6 +27,9 @@ namespace :companies do
 
   desc 'Update companies from CSV file'
   task update: :environment do
+    require 'faraday'
+    require 'faraday/retry'
+
     csv_file_path = ENV['CSV_FILE'] || Rails.root.join('db/seeds', 'combined_companies.csv')
 
     unless File.exist?(csv_file_path)

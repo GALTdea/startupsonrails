@@ -137,13 +137,20 @@ class Company < ApplicationRecord
     updated_companies = []
 
     CSV.foreach(csv_file_path, headers: true, header_converters: :symbol) do |row|
-      company = Company.find_by(name: row[:name])
+      company = Company.where('LOWER(name) = ?', row[:name].to_s.downcase).first
       if company
-        attributes_to_update = row.to_h.slice(*allowed_attributes)
+        attributes_to_update = row.to_h.except(:id, :created_at, :updated_at, :user_id)
+        # Filter out unknown attributes
+        attributes_to_update.select! { |attr| company.has_attribute?(attr) }
+
         if company.update(attributes_to_update)
           updated_count += 1
           updated_companies << company.name
+        else
+          puts "Failed to update #{company.name}: #{company.errors.full_messages.join(', ')}"
         end
+      else
+        puts "Company not found: #{row[:name]}"
       end
     end
 
