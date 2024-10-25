@@ -95,3 +95,5 @@ gem 'ahoy_matey', '~> 5.0', '>= 5.0.2'
 gem 'aws-sdk-s3'
 
 gem 'octokit', '~> 4.0'
+
+gem "faraday-retry", "~> 2.2"
