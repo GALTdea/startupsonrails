@@ -130,4 +130,45 @@ class Company < ApplicationRecord
   # def issues
   #   Issue.joins(:open_source_project).where(open_source_projects: { company_id: id })
   # end
+
+  def self.update_from_csv(csv_file_path = nil)
+    csv_file_path ||= Rails.root.join('db/seeds', 'combined_companies.csv')
+    updated_count = 0
+    updated_companies = []
+
+    CSV.foreach(csv_file_path, headers: true, header_converters: :symbol) do |row|
+      company = Company.find_by(name: row[:name])
+      if company
+        attributes_to_update = row.to_h.slice(*allowed_attributes)
+        if company.update(attributes_to_update)
+          updated_count += 1
+          updated_companies << company.name
+        end
+      end
+    end
+
+    log_updates(updated_companies, updated_count)
+
+    {
+      updated_count:,
+      updated_companies:
+    }
+  end
+
+  private
+
+  def self.allowed_attributes
+    new.attributes.keys.map(&:to_sym) - %i[id created_at updated_at]
+  end
+
+  def self.log_updates(updated_companies, updated_count)
+    log_file = Rails.root.join('log', 'company_updates.log')
+    File.open(log_file, 'a') do |f|
+      f.puts "Update performed at: #{Time.current}"
+      f.puts 'Companies updated:'
+      updated_companies.each { |name| f.puts "- #{name}" }
+      f.puts "Total companies updated: #{updated_count}"
+      f.puts "\n"
+    end
+  end
 end
