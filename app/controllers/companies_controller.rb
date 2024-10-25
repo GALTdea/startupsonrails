@@ -121,6 +121,6 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:name, :url, :email, :about, :user_id, :tech_stack, :logo, :location,
-                                    :employees_count, :company_type, :year_founded, :revenue)
+                                    :employee_count, :company_type, :year_founded, :revenue)
   end
 end
