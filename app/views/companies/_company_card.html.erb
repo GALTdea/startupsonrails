@@ -3,7 +3,7 @@
     <div class="d-lg-flex">
       <div class="mb-3 mb-lg-0">
         <% if company.logo.attached? %>
-          <%= image_tag company.logo, alt: company.name, class: "icon-shape border rounded-3 icon-xxl" %>
+          <%= image_tag company.logo, alt: company.name, class: "icon-shape border rounded-3", style: "width: 150px; height: 150px; object-fit: contain;" %>
         <% else %>
           <%= company_logo_placeholder(company, size: 150) %>
         <% end %>
