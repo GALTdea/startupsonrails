@@ -20,23 +20,33 @@
                   <span class="input-group-text bg-transparent border-0 pe-0 ps-md-0" id="location">
                     <i class="fas fa-map-marker-alt" style="width: 16px; height: 16px;"></i>
                   </span>
-                  <%= f.search_field :location, 
-                      id: "location-search", 
-                      placeholder: "Location", 
-                      class: "form-control rounded-pill border-0 ps-3 form-focus-none", 
-                      "aria-label": "Location", 
-                      "aria-describedby": "location", 
-                      style: "background-color: inherit;", 
-                      data: { 
-                        action: "input->autocomplete#search"
-                      } 
-                  %>
+                  <% if params[:location].present? %>
+                    <div class="form-control rounded-pill border-0 ps-3 d-flex align-items-center justify-content-between">
+                      <span><%= params[:location] %></span>
+                      <%= link_to companies_path, class: "text-decoration-none", title: "Clear filter" do %>
+                        <i class="fas fa-times text-muted"></i>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <%= f.search_field :location, 
+                        id: "location-search", 
+                        placeholder: "Location", 
+                        class: "form-control rounded-pill border-0 ps-3 form-focus-none", 
+                        "aria-label": "Location", 
+                        "aria-describedby": "location", 
+                        style: "background-color: inherit;", 
+                        data: { 
+                          action: "input->autocomplete#search"
+                        } 
+                    %>
+                  <% end %>
                 </div>
               </div>
               <div class="col-12 col-md-3 text-end d-grid">
                 <%= f.submit "Search", class: "btn btn-primary rounded-pill", data: { action: "click->autocomplete#search" } %>
               </div>
             <% end %>
+            <!-- Add this after the search form, before the results -->
             <ul data-autocomplete-target="results" class="list-group position-absolute mt-2"></ul>
           </div>
         </div>

@@ -58,4 +58,10 @@ export default class extends Controller {
     this.resultsTarget.innerHTML = ''
     this.resultsTarget.classList.add('d-none')
   }
+
+  clearFilter() {
+    this.inputTarget.value = "";
+    this.clearResults();
+    this.element.requestSubmit();
+  }
 }

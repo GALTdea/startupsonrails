@@ -6,6 +6,11 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.where(status: :active)
 
+    if params[:location].present?
+      @companies = @companies.search_by_location(params[:location])
+      @filtered_by_location = true
+    end
+
     if params[:query].present?
       @companies = @companies.where('name ILIKE ? OR location ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
     elsif params[:location].present?
