@@ -97,13 +97,11 @@
             </div>
           </div>
         </div>
-
         <!-- New section for showcasing open-source software -->
         <div class="mt-4">
           <div class="card mb-4">
             <div class="card-body">
               <h2 class="card-title mb-4">Open Source Involvement</h2>
-              
               <!-- Tabs -->
               <div data-controller="tabs">
                 <ul class="nav nav-tabs mb-4" id="openSourceTabs" role="tablist">
@@ -134,7 +132,6 @@
                     <% end %>
                   </li>
                 </ul>
-                
                 <!-- Tab Content -->
                 <div class="tab-content" id="openSourceTabContent">
                   <!-- Contributions & Sponsorships Tab -->
@@ -170,8 +167,7 @@
                     
                     <% if current_user && (current_user.admin? || current_user == @company.user) %>
                       <div class="mt-4">
-                        
-<%= link_to "Add New Issue", new_company_issue_path(@company), class: "btn btn-primary" %>
+                        <%= link_to "Add New Issue", new_company_issue_path(@company), class: "btn btn-primary" %>
                       </div>
                     <% end %>
 
@@ -187,7 +183,6 @@
                     </div>
                   </div>
                 </div>
-                
                 <!-- Call to Action -->
                 <div class="mt-5 text-center">
                   <h4>Want to Contribute?</h4>
@@ -203,7 +198,6 @@
             </div>
           </div>
         </div>
-
         <!--tech stack -->
         <div class="card mt-4">
           <div class="card-body">
