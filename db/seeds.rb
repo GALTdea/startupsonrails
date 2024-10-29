@@ -29,8 +29,10 @@ puts "Total companies in database: #{Company.count}"
 puts "Imported #{Company.count} companies."
 
 puts 'Activating all companies in the database...'
-Company.all.each do |company|
+Company.find_each do |company|
   company.update!(status: :active)
+rescue ActiveRecord::RecordInvalid => e
+  puts "Warning: Could not update company '#{company.name}': #{e.message}"
 end
 
 puts 'Creating categories and adding companies to them...'
@@ -109,42 +111,6 @@ CATEGORIZATIONS = {
     zendesk
     fiverr
   ],
-  # top_contribuitors: [
-  #   'hey.com',
-  #   'beehiiv',
-  #   'gitlab',
-  #   'heroku',
-  #   'gorails',
-  #   'hey.com',
-  #   'beehiiv',
-  #   'gitlab',
-  #   'heroku',
-  #   'gorails',
-  # ],
-  # top_hotwire_use: [
-  #   'appsignal',
-  #   'github',
-  #   'gitlab',
-  #   'heroku',
-  #   'jumpstart',
-  #   'appsignal',
-  #   'github',
-  #   'gitlab',
-  #   'heroku',
-  #   'jumpstart',
-  # ],
-  # top_jr_friendly: [
-  #   'appsignal',
-  #   'github',
-  #   'gitlab',
-  #   'heroku',
-  #   'jumpstart',
-  #   'appsignal',
-  #   'github',
-  #   'gitlab',
-  #   'heroku',
-  #   'jumpstart',
-  # ],
   top_tooling: %w[
     appsignal
     github
@@ -221,98 +187,6 @@ CATEGORIZATIONS = {
     jumpstart
     appsignal
   ]
-  # "Berlin" => [
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # ],
-  # "Tokyo" => [
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # ],
-  # "Sydney" => [
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # ],
-  # "Toronto" => [
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # ],
-  # "Paris" => [
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # ],
-  # "Singapore" => [
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # ],
-  # "São Paulo" => [
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # 'github',
-  # 'gitlab',
-  # 'heroku',
-  # 'jumpstart',
-  # 'appsignal',
-  # ]
-
 }
 
 all_companies = CATEGORIZATIONS.values.flatten.uniq.map do |company_name|
