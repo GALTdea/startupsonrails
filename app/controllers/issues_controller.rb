@@ -24,7 +24,7 @@ class IssuesController < ApplicationController
     apply_github_issue_data if params[:issue][:github_issue].present?
 
     if @issue.save
-      redirect_to company_issue_path(@company, @issue), notice: 'Issue was successfully created.'
+      redirect_to company_path(@company, anchor: 'help-wanted'), notice: 'Issue was successfully created.'
     else
       @open_source_projects = @company.open_source_projects
       render :new
@@ -74,7 +74,7 @@ class IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :github_url, :open_source_project_id)
+    params.require(:issue).permit(:title, :description, :github_url, :open_source_project_id, :github_issue)
   end
 
   def apply_github_issue_data
