@@ -97,3 +97,58 @@
     </div>
   </div>
 </section>
+
+<!-- Help Wanted - Open Source Issues -->
+<section class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="mb-1">Help Wanted</h2>
+        <p class="text-muted mb-0">Active issues from companies looking for contributors</p>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Company</th>
+              <th scope="col">Project</th>
+              <th scope="col">Issue</th>
+              <th scope="col" class="text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @issues.each do |issue| %>
+              <tr>
+                <td style="width: 25%">
+                  <div class="d-flex align-items-center">
+                    <% if issue.company.logo.attached? %>
+                      <%= image_tag issue.company.logo, class: "rounded-circle me-2", style: "width: 32px; height: 32px; object-fit: cover;" %>
+                    <% end %>
+                    <%= link_to issue.company.name, company_path(issue.company), class: "text-decoration-none text-dark" %>
+                  </div>
+                </td>
+                <td style="width: 20%">
+                  <%= issue.open_source_project.name %>
+                </td>
+                <td style="width: 40%">
+                  <div>
+                    <h6 class="mb-0"><%= issue.title %></h6>
+                    <small class="text-muted"><%= truncate(issue.description, length: 60) %></small>
+                  </div>
+                </td>
+                <td class="text-end" style="width: 15%">
+                  <%= link_to issue.github_url, class: "btn btn-sm btn-outline-primary", target: "_blank" do %>
+                    View Issue <i class="fab fa-github ms-1"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
