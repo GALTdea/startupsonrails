@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_30_195642) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_29_183321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -194,19 +194,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_30_195642) do
     t.integer "forks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "project_supports", force: :cascade do |t|
-    t.bigint "company_id", null: false
-    t.bigint "open_source_project_id", null: false
-    t.string "support_type", null: false
-    t.text "details"
-    t.datetime "started_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id", "open_source_project_id", "support_type"], name: "index_project_supports_uniqueness", unique: true
-    t.index ["company_id"], name: "index_project_supports_on_company_id"
-    t.index ["open_source_project_id"], name: "index_project_supports_on_open_source_project_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_open_source_projects_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -232,6 +221,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_30_195642) do
   add_foreign_key "companies", "users"
   add_foreign_key "contributions", "companies"
   add_foreign_key "issues", "open_source_projects"
-  add_foreign_key "project_supports", "companies"
-  add_foreign_key "project_supports", "open_source_projects"
+  add_foreign_key "open_source_projects", "companies"
 end
