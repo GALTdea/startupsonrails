@@ -21,7 +21,6 @@ class Company < ApplicationRecord
   has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :contributions
-  has_many :project_supports, dependent: :destroy
   has_many :open_source_projects, through: :project_supports
 
   # Remove the has_many :issues association
@@ -97,7 +96,7 @@ class Company < ApplicationRecord
 
   def issues
     Issue.joins(open_source_project: :project_supports)
-        .where(project_supports: { company_id: id })
+         .where(project_supports: { company_id: id })
   end
 
   private

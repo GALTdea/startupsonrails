@@ -16,9 +16,8 @@ class IssuesController < ApplicationController
   end
 
   def create
-    @issue = @company.issues.new(issue_params)
-    @open_source_project = @company.open_source_projects.find(params[:issue][:open_source_project_id])
-    @issue.open_source_project = @open_source_project
+    @open_source_project = OpenSourceProject.find(params[:issue][:open_source_project_id])
+    @issue = @open_source_project.issues.build(issue_params)
 
     # Apply GitHub issue data if provided
     apply_github_issue_data if params[:issue][:github_issue].present?

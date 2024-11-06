@@ -43,9 +43,23 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.includes(:open_source_projects).friendly.find(params[:id])
+    # This query:
+    # 1. Uses includes() to eager load project_supports and their associated open_source_projects
+    #    to avoid N+1 queries when accessing these associations
+    # 2. Uses friendly.find() to look up the company by its friendly ID (slug) instead of numeric ID
+    # 3. Finds a single company record matching the ID/slug from params
+    @company = Company.includes(project_supports: :open_source_project)
+                      .friendly.find(params[:id])
+
+    @sponsored_projects = @company.open_source_projects
+                                  .joins(:project_supports)
+                                  .where(project_supports: { support_type: 'sponsorship' })
+
+    @contributed_projects = @company.open_source_projects
+                                    .joins(:project_supports)
+                                    .where(project_supports: { support_type: 'contribution' })
+
     @issues = @company.issues
-    @contributions = @company.contributions.to_a
     @page_title = @company.name
     @page_description = @company.about
     @page_image_url = @company.logo.attached? ? url_for(@company.logo) : nil

@@ -1,15 +1,24 @@
 class OpenSourceProjectsController < ApplicationController
-  before_action :set_company
+  # before_action :set_company
   before_action :set_project, only: [:destroy]
   before_action :authorize_user, only: [:destroy]
 
+  def new
+    @open_source_project = OpenSourceProject.new
+  end
+
   def create
-    @open_source_project = @company.open_source_projects.build(open_source_project_params)
+    Rails.logger.debug "Params received: #{params.inspect}"
+    Rails.logger.debug "Permitted params: #{open_source_project_params.inspect}"
+
+    @open_source_project = OpenSourceProject.new(open_source_project_params)
+    Rails.logger.debug "Valid? #{@open_source_project.valid?}"
+    Rails.logger.debug "Errors: #{@open_source_project.errors.full_messages}" if @open_source_project.invalid?
 
     if @open_source_project.save
-      render json: @open_source_project, status: :created
+      redirect_to admin_companies_path, notice: 'Open Source Project was successfully created.'
     else
-      render json: { errors: @open_source_project.errors.full_messages }, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,11 +35,11 @@ class OpenSourceProjectsController < ApplicationController
     @open_source_projects = @company.open_source_projects
   end
 
-  private
-
-  def set_company
-    @company = Company.friendly.find(params[:company_id])
+  def new
+    @open_source_project = OpenSourceProject.new
   end
+
+  private
 
   def set_project
     @project = @company.open_source_projects.find(params[:id])
@@ -43,6 +52,6 @@ class OpenSourceProjectsController < ApplicationController
   end
 
   def open_source_project_params
-    params.require(:open_source_project).permit(:url, :project_type)
+    params.require(:open_source_project).permit(:name, :description, :url, :project_type, :icon_url, :stars, :forks)
   end
 end

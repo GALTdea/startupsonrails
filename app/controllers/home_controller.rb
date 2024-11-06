@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def show
     ahoy.track 'My first event', language: 'Ruby'
-
     # @featured_categories = Category.featured_with_companies
     @featured_categories = Category.where(featured: true).limit(6)
     @featured_blogs = Blog.featured
@@ -30,7 +29,8 @@ class HomeController < ApplicationController
       @tops_companies[name] = cat.companies
     end
 
-    @issues = Issue.includes(:company).order(created_at: :desc).limit(10)
+    # @issues = Issue.includes(:company).order(created_at: :desc).limit(10)
+    @issues = Issue.order(created_at: :desc).limit(10)
   end
 
   def index

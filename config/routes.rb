@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :open_source_projects, only: [:index]
+  resources :open_source_projects, only: %i[index new create]
   resources :issues, only: [:index]
 
   get 'contributions/create'
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
     end
     resources :contributions, only: [:create]
     resources :issues, except: [:show]
-    resources :open_source_projects, only: %i[index create update destroy]
     collection do
       get :export
     end
