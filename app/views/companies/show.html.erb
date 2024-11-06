@@ -170,8 +170,9 @@
 
                     <% if current_user && (current_user.admin? || current_user == @company.user) %>
                       <div class="mb-4">
-                        <%= link_to "Manage Company Supports", 
-                            company_supports_path(@company.slug), 
+                        <%= link_to "Manage Company Supports",
+                            # company_supports_path(@company),  
+                            company_project_supports_path(@company), 
                             class: "btn btn-primary" %>
                       </div>
                     <% end %>

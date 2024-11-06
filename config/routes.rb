@@ -42,11 +42,11 @@ Rails.application.routes.draw do
         get 'fetch_github_issues'
       end
     end
-    resources :project_supports, only: [:index], as: 'supports'
+    resources :project_supports, only: %i[index new create]
   end
 
   get 'home/show'
   root 'home#show'
 
-  resources :project_supports, only: %i[new create destroy]
+  resources :project_supports, only: [:destroy]
 end

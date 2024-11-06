@@ -1,4 +1,4 @@
-<%= form_with(model: project_support, local: true) do |f| %>
+<%= form_with(model: [@company, project_support], local: true) do |f| %>
   <% if project_support.errors.any? %>
     <div class="alert alert-danger">
       <h4><%= pluralize(project_support.errors.count, "error") %> prohibited this support from being saved:</h4>
@@ -9,8 +9,6 @@
       </ul>
     </div>
   <% end %>
-
-  <%= f.hidden_field :company_id, value: company.id %>
 
   <%= fields_for :open_source_project, @open_source_project do |op| %>
     <div class="mb-3">
@@ -34,6 +32,6 @@
 
   <div class="d-grid gap-2">
     <%= f.submit "Add Support", class: "btn btn-primary" %>
-    <%= link_to "Return to Company", company_path(company), class: "btn btn-secondary mt-2" %>
+    <%= link_to "Return to Company", company_path(@company), class: "btn btn-secondary mt-2" %>
   </div>
 <% end %>
