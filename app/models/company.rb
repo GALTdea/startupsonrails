@@ -21,7 +21,8 @@ class Company < ApplicationRecord
   has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :contributions
-  has_many :open_source_projects, dependent: :destroy
+  has_many :project_supports, dependent: :destroy
+  has_many :open_source_projects, through: :project_supports
 
   # Remove the has_many :issues association
 
@@ -95,7 +96,8 @@ class Company < ApplicationRecord
   end
 
   def issues
-    Issue.joins(:open_source_project).where(open_source_projects: { company_id: id })
+    Issue.joins(open_source_project: :project_supports)
+        .where(project_supports: { company_id: id })
   end
 
   private
@@ -106,9 +108,8 @@ class Company < ApplicationRecord
 
   scope :search_by_location, ->(location) { where('location ILIKE ?', "%#{location}%") }
 
-  has_many :open_source_projects, dependent: :destroy
-  # has_many :users
-  has_many :open_source_projects
+  has_many :project_supports, dependent: :destroy
+  has_many :open_source_projects, through: :project_supports
 
   def self.export_to_csv
     require 'csv'
@@ -192,5 +193,13 @@ class Company < ApplicationRecord
     end
 
     mismatched_companies.count
+  end
+
+  def sponsored_projects
+    open_source_projects.merge(ProjectSupport.sponsorship)
+  end
+
+  def contributed_projects
+    open_source_projects.merge(ProjectSupport.contribution)
   end
 end
