@@ -48,7 +48,7 @@ class ProjectSupportsController < ApplicationController
                       notice: success_message
         end
         format.turbo_stream do
-          render turbo_stream: turbo_stream.multi(
+          render turbo_stream: [
             turbo_stream.remove("project_support_#{@project_support.id}"),
             turbo_stream.append('flash',
                                 partial: 'shared/flash',
@@ -56,7 +56,7 @@ class ProjectSupportsController < ApplicationController
                                   message: success_message,
                                   type: 'success'
                                 })
-          )
+          ]
         end
       end
     else
