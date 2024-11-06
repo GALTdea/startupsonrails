@@ -1,0 +1,10 @@
+<%= turbo_stream.append "company_#{@company.id}_project_supports" do %>
+  <%= render partial: 'project_supports/project_support', locals: { support: @project_support } %>
+<% end %>
+
+<%= turbo_stream.update "flash" do %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    Project support was successfully created.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

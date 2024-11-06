@@ -1,0 +1,39 @@
+<%= form_with(model: project_support, local: true) do |f| %>
+  <% if project_support.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(project_support.errors.count, "error") %> prohibited this support from being saved:</h4>
+      <ul>
+        <% project_support.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :company_id, value: company.id %>
+
+  <%= fields_for :open_source_project, @open_source_project do |op| %>
+    <div class="mb-3">
+      <%= op.label :url, "Project URL", class: "form-label" %>
+      <%= op.url_field :url, class: "form-control", required: true,
+          placeholder: "https://github.com/organization/project" %>
+      <div class="form-text">Enter the GitHub repository URL of the open source project</div>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :support_type, "Type of Support", class: "form-label" %>
+    <%= f.select :support_type,
+                options_for_select([
+                  ['Sponsorship', 'sponsorship'],
+                  ['Contribution', 'contribution']
+                ]),
+                { prompt: "Select type of support" },
+                { class: "form-select", required: true } %>
+  </div>
+
+  <div class="d-grid gap-2">
+    <%= f.submit "Add Support", class: "btn btn-primary" %>
+    <%= link_to "Return to Company", company_path(company), class: "btn btn-secondary mt-2" %>
+  </div>
+<% end %>

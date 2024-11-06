@@ -1,0 +1,9 @@
+<div class="list-group-item d-flex justify-content-between align-items-center" id="<%= dom_id(support) %>">
+  <%= link_to support.open_source_project.url, 
+              support.open_source_project.url, 
+              target: "_blank", 
+              class: "text-decoration-none" %>
+  <span class="badge <%= support.support_type == 'sponsorship' ? 'bg-primary' : 'bg-success' %> rounded-pill">
+    <%= support.support_type.titleize %>
+  </span>
+</div>

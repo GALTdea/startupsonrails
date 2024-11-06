@@ -48,8 +48,10 @@ class CompaniesController < ApplicationController
     #    to avoid N+1 queries when accessing these associations
     # 2. Uses friendly.find() to look up the company by its friendly ID (slug) instead of numeric ID
     # 3. Finds a single company record matching the ID/slug from params
-    @company = Company.includes(project_supports: :open_source_project)
-                      .friendly.find(params[:id])
+    # @company = Company.includes(project_supports: :open_source_project)
+    #                   .friendly.find(params[:id])
+    # @company = Company.includes(:open_source_projects).friendly.find(params[:id])
+    @company = Company.friendly.find(params[:id])
 
     @sponsored_projects = @company.open_source_projects
                                   .joins(:project_supports)
@@ -135,7 +137,8 @@ class CompaniesController < ApplicationController
   private
 
   def set_company
-    @company = Company.includes(:open_source_projects).friendly.find(params[:id])
+    # @company = Company.includes(:open_source_projects).friendly.find(params[:id])
+    @company = Company.call(:open_source_projects).friendly.find(params[:id])
   end
 
   def company_params

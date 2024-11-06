@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'project_supports/new'
+  get 'project_supports/create'
   resources :open_source_projects, only: %i[index new create]
   resources :issues, only: [:index]
 
@@ -40,8 +42,11 @@ Rails.application.routes.draw do
         get 'fetch_github_issues'
       end
     end
+    resources :project_supports, only: [:index], as: 'supports'
   end
 
   get 'home/show'
   root 'home#show'
+
+  resources :project_supports, only: %i[new create destroy]
 end

@@ -201,4 +201,9 @@ class Company < ApplicationRecord
   def contributed_projects
     open_source_projects.merge(ProjectSupport.contribution)
   end
+
+  # Add this method to ensure slug is updated when name changes
+  def should_generate_new_friendly_id?
+    name_changed? || slug.blank?
+  end
 end
