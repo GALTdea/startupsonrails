@@ -1,9 +1,24 @@
-<div class="list-group-item d-flex justify-content-between align-items-center" id="<%= dom_id(support) %>">
-  <%= link_to support.open_source_project.url, 
-              support.open_source_project.url, 
-              target: "_blank", 
-              class: "text-decoration-none" %>
-  <span class="badge <%= support.support_type == 'sponsorship' ? 'bg-primary' : 'bg-success' %> rounded-pill">
-    <%= support.support_type.titleize %>
-  </span>
+<div class="list-group-item d-flex justify-content-between align-items-center" id="project_support_<%= support.id %>">
+  <div>
+    <%= link_to support.open_source_project.url, 
+        support.open_source_project.url, 
+        target: "_blank", 
+        class: "text-decoration-none" %>
+    <small class="text-muted d-block">
+      Added <%= time_ago_in_words(support.created_at) %> ago
+    </small>
+  </div>
+  <div class="d-flex align-items-center">
+    <span class="badge bg-<%= support.support_type == 'sponsorship' ? 'primary' : 'success' %> me-2">
+      <%= support.support_type.titleize %>
+    </span>
+    <% if current_user&.admin? || current_user == support.company.user %>
+      <%= button_to project_support_path(support), 
+          method: :delete,
+          class: "btn btn-link text-danger p-0",
+          form: { data: { turbo_confirm: "Are you sure?" } } do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>

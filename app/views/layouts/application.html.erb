@@ -36,13 +36,13 @@
         <%= render 'shared/navbar' %>
     <% end %>
 
-    <% if notice.present? %>
-      <span class="notice"><%= notice %></span>
-    <% end %>
-    
-    <% if alert.present? %>
-      <span class="alert"><%= alert %></span>
-    <% end %>
+    <div id="flash" class="container mt-3">
+      <% flash.each do |type, message| %>
+        <%= render "shared/flash", 
+            message: message, 
+            type: type == "notice" ? "success" : "danger" %>
+      <% end %>
+    </div>
 
     <% if controller_name == 'home' && action_name == 'show' %>
       <%# <div class="container"> %>
