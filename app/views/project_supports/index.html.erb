@@ -10,31 +10,12 @@
           <!-- Sponsorships Section -->
           <div class="mb-4">
             <h4>Sponsorships</h4>
-            <div id="sponsorship_supports">
+            <div id="<%= dom_id(@company, 'sponsorship_supports') %>">
               <% if @project_supports.sponsorship.any? %>
                 <div class="list-group mb-3">
-                  <% @project_supports.sponsorship.each do |support| %>
-                    <div class="list-group-item d-flex justify-content-between align-items-center">
-                      <div>
-                        <%= link_to support.open_source_project.url, 
-                            support.open_source_project.url, 
-                            target: "_blank", 
-                            class: "text-decoration-none" %>
-                        <small class="text-muted d-block">
-                          Added <%= time_ago_in_words(support.created_at) %> ago
-                        </small>
-                      </div>
-                      <div class="d-flex align-items-center">
-                        <span class="badge bg-primary me-2">Sponsor</span>
-                        <%= button_to project_support_path(support), 
-                            method: :delete,
-                            class: "btn btn-link text-danger p-0",
-                            form: { data: { turbo_confirm: "Are you sure?" } } do %>
-                          <i class="fas fa-trash"></i>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
+                  <%= render partial: 'project_support', 
+                           collection: @project_supports.sponsorship, 
+                           as: :support %>
                 </div>
               <% else %>
                 <p class="text-muted">No sponsored projects yet.</p>
@@ -45,31 +26,12 @@
           <!-- Contributions Section -->
           <div class="mb-4">
             <h4>Contributions</h4>
-            <div id="contribution_supports">
+            <div id="<%= dom_id(@company, 'contribution_supports') %>">
               <% if @project_supports.contribution.any? %>
                 <div class="list-group mb-3">
-                  <% @project_supports.contribution.each do |support| %>
-                    <div class="list-group-item d-flex justify-content-between align-items-center">
-                      <div>
-                        <%= link_to support.open_source_project.url, 
-                            support.open_source_project.url, 
-                            target: "_blank", 
-                            class: "text-decoration-none" %>
-                        <small class="text-muted d-block">
-                          Added <%= time_ago_in_words(support.created_at) %> ago
-                        </small>
-                      </div>
-                      <div class="d-flex align-items-center">
-                        <span class="badge bg-success me-2">Contributor</span>
-                        <%= button_to project_support_path(support), 
-                            method: :delete,
-                            class: "btn btn-link text-danger p-0",
-                            form: { data: { turbo_confirm: "Are you sure?" } } do %>
-                          <i class="fas fa-trash"></i>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
+                  <%= render partial: 'project_support', 
+                           collection: @project_supports.contribution, 
+                           as: :support %>
                 </div>
               <% else %>
                 <p class="text-muted">No contributed projects yet.</p>

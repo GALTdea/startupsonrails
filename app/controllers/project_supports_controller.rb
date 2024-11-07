@@ -36,43 +36,26 @@ class ProjectSupportsController < ApplicationController
 
   def destroy
     @company = @project_support.company
-    project_name = @project_support.open_source_project.url.split('/').last
-    support_type = @project_support.support_type
 
     if @project_support.destroy
-      success_message = "#{project_name} has been removed from #{support_type} projects"
-
       respond_to do |format|
         format.html do
           redirect_to company_project_supports_path(@company),
-                      notice: success_message
+                      notice: 'Project support was successfully removed.'
         end
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.remove("project_support_#{@project_support.id}"),
-            turbo_stream.append('flash',
-                                partial: 'shared/flash',
-                                locals: {
-                                  message: success_message,
-                                  type: 'success'
-                                })
-          ]
-        end
+        format.turbo_stream
       end
     else
-      error_message = 'Unable to remove project support'
       respond_to do |format|
         format.html do
           redirect_to company_project_supports_path(@company),
-                      alert: error_message
+                      alert: 'Unable to remove project support.'
         end
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append('flash',
+          render turbo_stream: turbo_stream.update('flash',
                                                    partial: 'shared/flash',
-                                                   locals: {
-                                                     message: error_message,
-                                                     type: 'danger'
-                                                   })
+                                                   locals: { message: 'Unable to remove project support',
+                                                             type: 'danger' })
         end
       end
     end

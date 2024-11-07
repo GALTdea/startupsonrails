@@ -1,0 +1,8 @@
+<%= turbo_stream.remove dom_id(@project_support) %>
+
+<%= turbo_stream.update "flash" do %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= "#{@project_support.open_source_project.url.split('/').last} has been removed from #{@project_support.support_type} projects" %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

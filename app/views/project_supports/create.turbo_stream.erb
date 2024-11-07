@@ -1,5 +1,7 @@
-<%= turbo_stream.append "company_#{@company.id}_project_supports" do %>
-  <%= render partial: 'project_supports/project_support', locals: { support: @project_support } %>
+<%= turbo_stream.append dom_id(@company, "#{@project_support.support_type}_supports") do %>
+  <div class="list-group mb-3">
+    <%= render partial: 'project_support', locals: { support: @project_support } %>
+  </div>
 <% end %>
 
 <%= turbo_stream.update "flash" do %>
@@ -7,4 +9,13 @@
     Project support was successfully created.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+<% end %>
+
+<%# Reset the form %>
+<%= turbo_stream.update "new_project_support" do %>
+  <%= render partial: 'form', 
+             locals: { 
+               project_support: ProjectSupport.new(company: @company),
+               company: @company 
+             } %>
 <% end %>

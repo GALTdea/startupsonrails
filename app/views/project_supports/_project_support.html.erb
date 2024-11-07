@@ -1,4 +1,4 @@
-<div class="list-group-item d-flex justify-content-between align-items-center" id="project_support_<%= support.id %>">
+<div class="list-group-item d-flex justify-content-between align-items-center" id="<%= dom_id(support) %>" data-support-type="<%= support.support_type %>">
   <div>
     <%= link_to support.open_source_project.url, 
         support.open_source_project.url, 
