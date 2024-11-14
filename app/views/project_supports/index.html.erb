@@ -53,20 +53,22 @@
                         local: true, 
                         data: { controller: "project-support" }) do |f| %>
             
-            <%= fields_for :open_source_project, OpenSourceProject.new do |op| %>
-              <div class="mb-3">
-                <%= op.label :url, "GitHub URL", class: "form-label" %>
-                <%= op.url_field :url, 
-                    class: "form-control", 
+            <div class="mb-3">
+              <%= f.label :open_source_project_id, "Select Project", class: "form-label" %>
+              <%= f.collection_select :open_source_project_id,
+                  OpenSourceProject.order(stars: :desc),
+                  :id,
+                  :name,
+                  { prompt: "Select an open source project" },
+                  { class: "form-select",
                     required: true,
-                    placeholder: "https://github.com/org/project",
-                    data: { 
-                      project_support_target: "url",
-                      action: "input->project-support#validateUrl"
-                    } %>
-                <div class="form-text">Enter the GitHub repository URL</div>
+                    data: { project_support_target: "project" } } %>
+              <div class="form-text">
+                <%= link_to "Can't find your project? Add it here", 
+                    new_open_source_project_path,
+                    target: "_blank" %>
               </div>
-            <% end %>
+            </div>
 
             <div class="mb-3">
               <%= f.label :support_type, "Type of Support", class: "form-label" %>

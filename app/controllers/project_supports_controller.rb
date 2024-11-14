@@ -14,22 +14,14 @@ class ProjectSupportsController < ApplicationController
 
   def create
     @project_support = @company.project_supports.new(project_support_params)
-    @open_source_project = OpenSourceProject.find_or_create_by!(
-      url: open_source_project_params[:url]
-    )
-
-    @project_support.open_source_project = @open_source_project
 
     respond_to do |format|
       if @project_support.save
-        project_name = @open_source_project.url.split('/').last
+        project_name = @project_support.open_source_project.name
         success_message = "Successfully added #{project_name} as a #{@project_support.support_type} project"
-
         format.html { redirect_to company_project_supports_path(@company), notice: success_message }
-        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
       end
     end
   end
@@ -79,11 +71,6 @@ class ProjectSupportsController < ApplicationController
   end
 
   def project_support_params
-    # params.require(:project_support).permit(:company_id, :support_type)
-    params.require(:project_support).permit(:support_type)
-  end
-
-  def open_source_project_params
-    params.require(:open_source_project).permit(:url)
+    params.require(:project_support).permit(:open_source_project_id, :support_type)
   end
 end
