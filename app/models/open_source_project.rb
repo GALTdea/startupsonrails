@@ -11,6 +11,7 @@ class OpenSourceProject < ApplicationRecord
     message: '%<value>s is not a valid project type'
   }
 
+  before_validation :set_default_project_type, on: :create
   before_validation :fetch_github_data, on: :create
 
   def self.project_types
@@ -22,6 +23,10 @@ class OpenSourceProject < ApplicationRecord
   end
 
   private
+
+  def set_default_project_type
+    self.project_type ||= 'contribution'
+  end
 
   def fetch_github_data
     return unless url.present?

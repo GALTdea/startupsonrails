@@ -22,15 +22,6 @@
     <%= f.url_field :url, class: "form-control", required: true %>
   </div>
 
-  <div class="mb-3">
-    <%= f.label :project_type, class: "form-label" %>
-    <%= f.select :project_type, 
-                OpenSourceProject.project_types.keys.map { |type| [type.humanize, type] },
-                { prompt: "Select a project type" },
-                class: "form-select",
-                required: true %>
-  </div>
-
   <div class="d-grid gap-2">
     <%= f.submit "Add Project", class: "btn btn-primary" %>
     <%= link_to "Back", :back, class: "btn btn-secondary mt-2" %>

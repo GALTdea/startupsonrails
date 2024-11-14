@@ -38,6 +38,6 @@ class OpenSourceProjectsController < ApplicationController
   end
 
   def open_source_project_params
-    params.require(:open_source_project).permit(:url, :project_type)
+    params.require(:open_source_project).permit(:url)
   end
 end
