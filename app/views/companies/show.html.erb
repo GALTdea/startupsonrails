@@ -142,7 +142,15 @@
                         <div class="list-group mb-3">
                           <% @company.project_supports.sponsorship.each do |support| %>
                             <div class="list-group-item d-flex justify-content-between align-items-center">
-                              <%= link_to support.open_source_project.url, support.open_source_project.url, target: "_blank", class: "text-decoration-none" %>
+                              <div class="d-flex align-items-center">
+                                <%= link_to support.open_source_project.url, target: "_blank", class: "d-flex align-items-center text-decoration-none" do %>
+                                  <img src="<%= support.open_source_project.icon_url || 'default_project_icon.png' %>" 
+                                       alt="<%= support.open_source_project.name %> Logo" 
+                                       class="me-3 rounded" 
+                                       style="width: 40px; height: 40px; object-fit: cover;">
+                                  <div class="fw-bold text-body"><%= support.open_source_project.name %></div>
+                                <% end %>
+                              </div>
                               <span class="badge bg-primary rounded-pill">Sponsor</span>
                             </div>
                           <% end %>
@@ -158,8 +166,23 @@
                         <div class="list-group mb-3">
                           <% @company.project_supports.contribution.each do |support| %>
                             <div class="list-group-item d-flex justify-content-between align-items-center">
-                              <%= link_to support.open_source_project.url, support.open_source_project.url, target: "_blank", class: "text-decoration-none" %>
-                              <span class="badge bg-success rounded-pill">Contributor</span>
+                              <div class="d-flex align-items-center flex-grow-1">
+                                <%= link_to support.open_source_project.url, target: "_blank", class: "d-flex align-items-center text-decoration-none me-3" do %>
+                                  <img src="<%= support.open_source_project.icon_url || 'default_project_icon.png' %>" 
+                                       alt="<%= support.open_source_project.name %> Logo" 
+                                       class="me-3 rounded" 
+                                       style="width: 40px; height: 40px; object-fit: cover;">
+                                  <div class="fw-bold text-body"><%= support.open_source_project.name %></div>
+                                <% end %>
+                                <p class="text-muted mb-0 d-none d-md-block text-truncate" 
+                                   style="max-width: 300px; display: -webkit-box !important; 
+                                          -webkit-line-clamp: 2; 
+                                          -webkit-box-orient: vertical; 
+                                          overflow: hidden;">
+                                  <%= support.open_source_project.description %>
+                                </p>
+                              </div>
+                              <span class="badge bg-success rounded-pill ms-2">Contributor</span>
                             </div>
                           <% end %>
                         </div>
@@ -170,8 +193,7 @@
 
                     <% if current_user && (current_user.admin? || current_user == @company.user) %>
                       <div class="mb-4">
-                        <%= link_to "Manage Company Supports",
-                            # company_supports_path(@company),  
+                        <%= link_to "Manage Company Supports",  
                             company_project_supports_path(@company), 
                             class: "btn btn-primary" %>
                       </div>
